@@ -16,4 +16,4 @@ import {
 import App from './src/app';
 
 
-AppRegistry.registerComponent('meBee1', () => meBee1);
+AppRegistry.registerComponent('meBee1', () => App);

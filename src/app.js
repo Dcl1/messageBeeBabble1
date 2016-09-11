@@ -4,14 +4,14 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
 
-import * as reducers from '../reducers';
+//import * as reducers from '../reducers';
 
 
 import BeeBabble from './beeBabble';
 
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
-const reducer = combineReducers(reducers);
-const store = createStoreWithMiddleware(reducer);
+//const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+//const reducer = combineReducers(reducers);
+//const store = createStoreWithMiddleware(reducer);
 
 
 
@@ -19,10 +19,12 @@ module.exports = React.createClass({
 
 	render: function(){
 		return (
-			<Provider>	
 				<BeeBabble />
-			</Provider>
 		);
 	}
 
 });
+
+
+
+// introduce a provider with a store complete redux build

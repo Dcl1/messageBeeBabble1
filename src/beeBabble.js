@@ -9,32 +9,34 @@ import {
 
 
 // import screens here
-
+import MsgList from './components/messageList';
 // end of import screens here
 
 
 import { Router, Scene } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
-const RouterWithRedux = connect()(Router);
+//const RouterWithRedux = connect()(Router);
 
 
 module.exports = React.createClass({
 
+	componentWillMount: function(){
 
-	getInitialState: function() {
-		return {
+		console.log("BeeBabble Mounted");
 
-		}
 	},
+
 
 	render: function(){
 		return (
-			<Scene key='roots' >
-				<Scene key="Messages" title="Recent">
-					
-				</Scene>
-			</Scene >
+			<Router>
+			<Scene key='roots' style={styles.container} >
+				<Scene key="Messages" title="Recent" >
+					<Scene key="MessageList" title="Messages" component={MsgList} initial={true} />
+				</Scene>	
+			</Scene>
+			</Router>
 		);
 	}
 

@@ -13,6 +13,9 @@ import { Actions } from 'react-native-router-flux';
 // End of Actions for switching screens
 
 
+import EpisodeCounter from './epiList/episodeCounter';
+
+
 module.exports = React.createClass({
 
 	getInitialState: function(){
@@ -43,6 +46,19 @@ module.exports = React.createClass({
 					renderSectionHeader={this._renderSectionHeader}
 				/>
 			</View>
+		);
+	},
+
+
+	_renderSectionHeader: function( sectionData, sectionID){
+		console.log("SECTION DATA: " + sectionData + " " + "SECTION ID: " + sectionID);
+
+		return (
+			<TouchableHighlight>
+				<View>
+					<EpisodeCounter />
+				</View>
+			</TouchableHighlight>
 		);
 	},
 

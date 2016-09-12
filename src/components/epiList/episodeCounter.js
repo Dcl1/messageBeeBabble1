@@ -13,15 +13,36 @@ import CounterUnit from './counterUnit';
 
 module.exports = React.createClass({
 
+	getInitialState: function(){
+
+		return {
+			episode: 1
+		}
+
+	},
+
+
+	renderUnits: function(){
+
+		var arr = [];
+		var _this = this;
+
+		for ( i = 0 ; i < 5; i ++) {
+			if( i + 1 <= _this.state.episode ){
+				arr.push(<CounterUnit key={i} count={i + 1} active={true} />)
+			} else {
+				arr.push(<CounterUnit key={i} count={i + 1} active={false} />)
+			}
+		}
+
+		return arr;
+	},
 
 
 	render: function(){
 		return (
 			<View style={styles.container}>
-				<CounterUnit count="1" active={true} />
-				<CounterUnit count="2" active={false} />
-				<CounterUnit count="3" active={false} />
-				<CounterUnit count="4" active={false} />
+				{this.renderUnits()}
 			</View>
 		);
 	}

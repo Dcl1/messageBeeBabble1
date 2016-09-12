@@ -10,6 +10,7 @@ import {
 
 // import screens here
 import MsgList from './components/messageList';
+import Conversation from './containers/convoContainer';
 // end of import screens here
 
 
@@ -34,6 +35,7 @@ module.exports = React.createClass({
 			<Scene key='roots' style={styles.container} >
 				<Scene key="Messages" title="Recent" >
 					<Scene key="MessageList" title="Messages" component={MsgList} initial={true} />
+					<Scene key="Conversation" title="Conversation" component={Conversation} />
 				</Scene>	
 			</Scene>
 			</Router>

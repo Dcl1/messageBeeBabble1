@@ -64,7 +64,7 @@ module.exports = React.createClass({
 
 	_renderRow: function(rowData: string, sectionID: number, rowID: number ){
 		return (
-			<TouchableHighlight style={styles.postCard} onPress={ () => Actions.Conversation } >
+			<TouchableHighlight style={styles.postCard} onPress={ () => Actions.Conversation() } >
 				<View>
 					<Text> {rowData.user} </Text>
 					<Text> {rowData.text} </Text>

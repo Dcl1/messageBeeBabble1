@@ -46,8 +46,9 @@ module.exports = React.createClass({
 
 				 parseText={true}
 
-				 typingMessage={}
 
+				 responseOne="Standard text for the first response"
+				 responseTwo="Standard text for the send response"
 
 			/>
 		);

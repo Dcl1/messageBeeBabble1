@@ -12,6 +12,10 @@ import {
 import GiftedMessenger from 'react-native-gifted-messenger';
 var STATUS_BAR_HEIGHT = Navigator.NavigationBar.Styles.General.StatusBarHeight;
 
+import conversationOne from '../data/epOne/conversation.json';
+
+
+
 module.exports = React.createClass({
 
 	getInitialState: function(){
@@ -36,6 +40,7 @@ module.exports = React.createClass({
 	componentDidMount: function(){
 
 		var file = this.getConvoFile(this.props.episode, this.props.convoID);
+		console.log(file);
 
 	},
 
@@ -53,7 +58,17 @@ module.exports = React.createClass({
 
 
 	getConvoFile: function( episode, conversationID ){
-		console.log(episode + " , " + conversationID )
+		console.log(episode + " , " + conversationID );
+
+		switch(episode) {
+			case 1 :
+				return conversationOne.convo[conversationID];
+			default: 
+				console.log("That's a bust");
+				return conversationOne.convo[conversationID];
+
+		};
+
 	},
 
 

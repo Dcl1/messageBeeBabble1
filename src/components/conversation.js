@@ -39,19 +39,7 @@ module.exports = React.createClass({
 
 	componentDidMount: function(){
 
-		var file = this.getConvoFile(this.props.episode, this.props.convoID);
-		var arr = [];
-		file.conversation.map(function(obj){
-
-			var imgURL = obj.position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
-			let uni = Math.round(Math.random() * 10000);
-
-			arr.push({"text" : obj.text , "name" : obj.user , "position" : obj.position , "image" : imgURL , "date" : new Date(2016, 0 ,1, 20, 0), "uniqueId" : uni  })
-		});
-
-		this.setState({
-			messages: arr
-		});
+		this.loadStartConvo();
 
 	},
 
@@ -69,7 +57,7 @@ module.exports = React.createClass({
 
 
 	getConvoFile: function( episode, conversationID ){
-		//console.log(episode + " , " + conversationID );
+		console.log(episode + " , " + conversationID );
 
 		switch(episode) {
 			case 1 :
@@ -82,6 +70,45 @@ module.exports = React.createClass({
 
 	},
 
+
+	loadStartConvo: function(){
+
+		var file = this.getConvoFile(this.props.episode, this.props.convoID);
+		var startStep = file.startStep;
+		var arr = [];
+
+		for(var i = 0; i <= startStep; i ++){
+
+			var imgURL = file.conversation[i].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
+			let uni = Math.round(Math.random() * 100000);
+
+			arr.push({
+				"text" : file.conversation[i].text , 
+				"name" : file.conversation[i].user , 
+				"position" : file.conversation[i].position , 
+				"image" : imgURL , 
+				"date" : new Date(2016, 0 ,1, 20, 0), 
+				"uniqueId" : uni  
+			})
+
+		}
+
+
+		// file.conversation.map(function(obj){
+
+		// 	var imgURL = obj.position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
+		// 	let uni = Math.round(Math.random() * 10000);
+
+		// 	arr.push({"text" : obj.text , "name" : obj.user , "position" : obj.position , "image" : imgURL , "date" : new Date(2016, 0 ,1, 20, 0), "uniqueId" : uni  })
+		// });
+
+		this.setState({
+			messages: arr
+		});
+
+
+
+	},
 
 
 	render: function(){

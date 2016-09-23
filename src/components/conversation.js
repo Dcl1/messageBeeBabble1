@@ -40,7 +40,10 @@ module.exports = React.createClass({
 	componentDidMount: function(){
 
 		var file = this.getConvoFile(this.props.episode, this.props.convoID);
-		console.log(file);
+		console.log(file.conversation);
+		this.setState({
+			messages: file.conversation
+		});
 
 	},
 

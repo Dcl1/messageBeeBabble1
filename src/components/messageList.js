@@ -34,7 +34,7 @@ module.exports = React.createClass({
 
 	componentWillMount: function(){
 
-		this.checkData( 1);
+		this.checkData( this.props.episode);
 
 	},
 

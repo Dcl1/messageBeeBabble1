@@ -14,6 +14,7 @@ import { Actions } from 'react-native-router-flux';
 
 
 import epiOneMsgList from '../data/epOne/messageList.json';
+import epiTwoMsgList from '../data/epTwo/messageList.json';
 
 import EpisodeCounter from './epiList/episodeCounter';
 
@@ -55,6 +56,16 @@ module.exports = React.createClass({
 			});
 
 		} else if (epi === 2) {
+
+			epiTwoMsgList.msgList[0].messages.map(function(obj){
+				arr.push({"user" : obj.user, "id" : obj.cid, "text" : obj.text})
+			});
+
+			var vs = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2});
+			_this.setState({
+				dataSource: vs.cloneWithRows(arr)
+			});
+
 
 		} else {
 			console.log("Cannot load message list");

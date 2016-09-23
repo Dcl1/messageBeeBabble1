@@ -23,7 +23,7 @@ class MessageContaner extends Component {
 
 		return (
 			<MessageList
-				episode={ 1 }
+				episode={ state.app.episode }
 			/>
 		);
 	}

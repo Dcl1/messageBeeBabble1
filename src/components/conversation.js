@@ -15,18 +15,47 @@ var STATUS_BAR_HEIGHT = Navigator.NavigationBar.Styles.General.StatusBarHeight;
 module.exports = React.createClass({
 
 	getInitialState: function(){
-		return {
 
+		this._Key;
+		this._Episode;
+		this._ConvoId;
+		this._CurrentStep;
+		this._messages = [];
+
+		this._isMounted = false;
+
+		return {
+			isPlayer: false,
+			messages: this._messages,
+			typingMessage: '',
+			responseUno: 'Response one here',
+			responseDeuce: 'Response two here'
 		};
 	},
 
 	componentDidMount: function(){
 
+		var file = this.getConvoFile(this.props.episode, this.props.convoID);
+
 	},
 
 	componentWillReceiveProps: function(nextProps) {
 
+
+
 	},
+
+	handleSend: function( message = {} ) {
+		var _this = this;
+		
+
+	},
+
+
+	getConvoFile: function( episode, conversationID ){
+		console.log(episode + " , " + conversationID )
+	},
+
 
 
 	render: function(){
@@ -40,6 +69,10 @@ module.exports = React.createClass({
 
 				 autoFocus={false}
 
+				 messages={this.state.messages}
+
+				 handleSend={this.handleSend}
+
 				 senderName= 'Awesome Developer'
 				 senderImage={null}
 				 displayNames={true}
@@ -47,8 +80,8 @@ module.exports = React.createClass({
 				 parseText={true}
 
 
-				 responseOne="Standard text for the first response"
-				 responseTwo="Standard text for the send response"
+				 responseOne={this.state.responseUno}
+				 responseTwo={this.state.responseDeuce}
 
 			/>
 		);

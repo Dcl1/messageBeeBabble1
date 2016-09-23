@@ -13,6 +13,8 @@ import { Actions } from 'react-native-router-flux';
 // End of Actions for switching screens
 
 
+import epiOneMsgList from '../data/epOne/messageList.json';
+
 import EpisodeCounter from './epiList/episodeCounter';
 
 
@@ -24,14 +26,40 @@ module.exports = React.createClass({
 		var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2});
 
 		return {
-			dataSource: ds.cloneWithRows(theData)
+			dataSource: ds.cloneWithRows(theData),
+			dataArray: theData
 		};
 
 	},
 
 	componentWillMount: function(){
 
-		console.log("The message list mounted");
+		this.checkData( 1);
+
+	},
+
+	checkData: function(epi){
+
+
+		
+		var _this = this;
+		var arr =[];
+
+		if(epi === 1) {
+			epiOneMsgList.msgList[0].messages.map(function(obj){
+				arr.push({"user" : obj.user, "id" : obj.cid, "text" : obj.text})
+			});
+			var vs = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2});
+			_this.setState({
+				dataSource: vs.cloneWithRows(arr)
+			});
+
+		} else if (epi === 2) {
+
+		} else {
+			console.log("Cannot load message list");
+		}
+
 
 	},
 
@@ -64,7 +92,7 @@ module.exports = React.createClass({
 
 	_renderRow: function(rowData: string, sectionID: number, rowID: number ){
 		return (
-			<TouchableHighlight style={styles.postCard} onPress={ () => Actions.Conversation() } >
+			<TouchableHighlight style={styles.postCard} onPress={ () => Actions.Conversation({cid: rowData.id}) } >
 				<View>
 					<Text> {rowData.user} </Text>
 					<Text> {rowData.text} </Text>

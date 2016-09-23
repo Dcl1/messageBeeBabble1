@@ -40,9 +40,17 @@ module.exports = React.createClass({
 	componentDidMount: function(){
 
 		var file = this.getConvoFile(this.props.episode, this.props.convoID);
-		console.log(file.conversation);
+		var arr = [];
+		file.conversation.map(function(obj){
+
+			var imgURL = obj.position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
+			let uni = Math.round(Math.random() * 10000);
+
+			arr.push({"text" : obj.text , "name" : obj.user , "position" : obj.position , "image" : imgURL , "date" : new Date(2016, 0 ,1, 20, 0), "uniqueId" : uni  })
+		});
+
 		this.setState({
-			messages: file.conversation
+			messages: arr
 		});
 
 	},
@@ -61,7 +69,7 @@ module.exports = React.createClass({
 
 
 	getConvoFile: function( episode, conversationID ){
-		console.log(episode + " , " + conversationID );
+		//console.log(episode + " , " + conversationID );
 
 		switch(episode) {
 			case 1 :

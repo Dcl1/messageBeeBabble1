@@ -11,6 +11,7 @@ import {
 
 import GiftedMessenger from 'react-native-gifted-messenger';
 var STATUS_BAR_HEIGHT = Navigator.NavigationBar.Styles.General.StatusBarHeight;
+import { Actions } from 'react-native-router-flux';
 
 import conversationOne from '../data/epOne/conversation.json';
 
@@ -45,7 +46,9 @@ module.exports = React.createClass({
 
 	componentWillReceiveProps: function(nextProps) {
 
-
+		if(nextProps.convoID !== this.props.convoID) {
+			Actions.pop();
+		}
 
 	},
 
@@ -75,6 +78,7 @@ module.exports = React.createClass({
 
 		var file = this.getConvoFile(this.props.episode, this.props.convoID);
 		var startStep = file.startStep;
+		this._CurrentStep = startStep;
 		var arr = [];
 
 		for(var i = 0; i <= startStep; i ++){
@@ -106,7 +110,43 @@ module.exports = React.createClass({
 			messages: arr
 		});
 
+		this.checkNextMessage();
+	},
 
+	checkNextMessage: function(){
+
+		var nextStep = this._CurrentStep + 1;
+
+		var file = this.getConvoFile(this.props.episode, this.props.convoID);
+
+		if( nextStep < file.conversation.length ) {
+			var user = file.conversation[nextStep].user;
+
+			if(user.toUpperCase() == 'PLAYER') {
+
+				this.setState({
+					responseUno: file.conversation[nextStep].text,
+					responseDeuce: file.conversation[nextStep].text2
+				});
+
+			} else {
+
+				this.setState({
+					responseUno: '',
+					responseDeuce: ''
+				});
+
+				this.renderNextMessage(nextStep);
+
+			}
+
+		} 
+
+
+	},
+
+
+	renderNextMessage: function(next) {
 
 	},
 

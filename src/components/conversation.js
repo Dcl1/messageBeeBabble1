@@ -125,6 +125,7 @@ module.exports = React.createClass({
 			if(user.toUpperCase() == 'PLAYER') {
 
 				this.setState({
+					isPlayer: true,
 					responseUno: file.conversation[nextStep].text,
 					responseDeuce: file.conversation[nextStep].text2
 				});
@@ -132,6 +133,7 @@ module.exports = React.createClass({
 			} else {
 
 				this.setState({
+					isPlayer: false,
 					responseUno: '',
 					responseDeuce: ''
 				});
@@ -147,6 +149,78 @@ module.exports = React.createClass({
 
 
 	renderNextMessage: function(next) {
+
+		var file = this.getConvoFile(this.props.episode, this.props.convoID);
+		var obj = file.conversation[next];
+		var ray = this.state.messages;
+
+		setTimeout(() => {
+			this.setState({
+				typingMessage: 'Typing a message...',
+			});
+		}, 400);
+
+		setTimeout(() => {
+			this.setState({
+				typingMessage: '',
+			});
+		}, 1200 );
+
+		setTimeout(() => {
+
+			var imgURL = file.conversation[i].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
+			let uni = Math.round(Math.random() * 100000);
+
+			ray.push({
+				"text" : obj.text , 
+				"name" : obj.user , 
+				"position" : obj.position , 
+				"image" : imgURL , 
+				"date" : new Date(2016, 0 ,1, 20, 0), 
+				"uniqueId" : uni  
+			});
+
+			this.setState({
+				messages: ray
+			});
+
+
+		}, Math.random() * (4000 - 2200) + 2200);
+
+
+
+	},
+
+	handleSend: function( message = {} ){
+
+		var file = this.getConvoFile(this.props.episode, this.props.convoID);
+		var ray = this.state.messages;
+		var nextStep = this._CurrentStep + 1;
+		var imgURL = file.conversation[nextStep].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
+		let uni = Math.round(Math.random() * 100000);
+
+		this.setState({
+			isPlayer: false
+		});
+
+		ray.push({
+			"text" : message.text , 
+			"name" : message.name , 
+			"position" : message.position , 
+			"image" : imgURL , 
+			"date" : message.date, 
+			"uniqueId" : uni  
+		});
+
+		this.setState({
+			messages: ray
+		});
+
+		setTimeout(() => {
+			console.log(message);
+			console.log(ray);
+		}, 1000);
+
 
 	},
 
@@ -171,7 +245,8 @@ module.exports = React.createClass({
 				 displayNames={true}
 
 				 parseText={true}
-
+				 typingMessage={this.state.typingMessage}
+				 disabled={this.state.isPlayer ? false : true}
 
 				 responseOne={this.state.responseUno}
 				 responseTwo={this.state.responseDeuce}

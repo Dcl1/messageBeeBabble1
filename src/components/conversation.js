@@ -31,7 +31,7 @@ module.exports = React.createClass({
 
 		return {
 			isPlayer: false,
-			messages: this._messages,
+			messages: [],
 			typingMessage: '',
 			responseUno: 'Response one here',
 			responseDeuce: 'Response two here'
@@ -51,13 +51,6 @@ module.exports = React.createClass({
 		}
 
 	},
-
-	handleSend: function( message = {} ) {
-		var _this = this;
-		
-
-	},
-
 
 	getConvoFile: function( episode, conversationID ){
 		console.log(episode + " , " + conversationID );
@@ -110,10 +103,17 @@ module.exports = React.createClass({
 			messages: arr
 		});
 
+		console.log("First Ray " + arr);
+		console.log(arr);
+
 		this.checkNextMessage();
 	},
 
 	checkNextMessage: function(){
+
+
+		var ray = this.state.messages;
+
 
 		var nextStep = this._CurrentStep + 1;
 
@@ -193,15 +193,14 @@ module.exports = React.createClass({
 
 	handleSend: function( message = {} ){
 
+		var _this = this;
 		var file = this.getConvoFile(this.props.episode, this.props.convoID);
-		var ray = this.state.messages;
+		var ray = this.state.messages.slice();
+
 		var nextStep = this._CurrentStep + 1;
 		var imgURL = file.conversation[nextStep].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
 		let uni = Math.round(Math.random() * 100000);
 
-		this.setState({
-			isPlayer: false
-		});
 
 		ray.push({
 			"text" : message.text , 
@@ -213,12 +212,13 @@ module.exports = React.createClass({
 		});
 
 		this.setState({
+			isPlayer: false,
 			messages: ray
 		});
 
+
 		setTimeout(() => {
-			console.log(message);
-			console.log(ray);
+
 		}, 1000);
 
 

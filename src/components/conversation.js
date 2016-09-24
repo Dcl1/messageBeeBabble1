@@ -124,6 +124,8 @@ module.exports = React.createClass({
 
 			if(user.toUpperCase() == 'PLAYER') {
 
+				console.log("PLAYER");
+
 				this.setState({
 					isPlayer: true,
 					responseUno: file.conversation[nextStep].text,
@@ -131,6 +133,8 @@ module.exports = React.createClass({
 				});
 
 			} else {
+
+				console.log("Not PLAYER");
 
 				this.setState({
 					isPlayer: false,
@@ -152,7 +156,7 @@ module.exports = React.createClass({
 
 		var file = this.getConvoFile(this.props.episode, this.props.convoID);
 		var obj = file.conversation[next];
-		var ray = this.state.messages;
+		var ray = this.state.messages.slice();
 
 		setTimeout(() => {
 			this.setState({
@@ -168,7 +172,7 @@ module.exports = React.createClass({
 
 		setTimeout(() => {
 
-			var imgURL = file.conversation[i].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
+			var imgURL = file.conversation[next].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
 			let uni = Math.round(Math.random() * 100000);
 
 			ray.push({
@@ -184,6 +188,7 @@ module.exports = React.createClass({
 				messages: ray
 			});
 
+			console.log(ray);
 
 		}, Math.random() * (4000 - 2200) + 2200);
 
@@ -218,8 +223,20 @@ module.exports = React.createClass({
 
 
 		setTimeout(() => {
-
+			_this._CurrentStep = nextStep
 		}, 1000);
+
+
+	},
+
+	componentDidUpdate: function(prevProps, prevState) {
+
+		if(prevState.messages !== this.state.messages ){
+			console.log("I am calling this because a message was sent");
+			//console.log(prevState.messages);
+			//console.log(this.state.messages);
+		 	this.checkNextMessage();
+		}
 
 
 	},

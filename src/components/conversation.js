@@ -53,13 +53,11 @@ module.exports = React.createClass({
 	},
 
 	getConvoFile: function( episode, conversationID ){
-		console.log(episode + " , " + conversationID );
 
 		switch(episode) {
 			case 1 :
 				return conversationOne.convo[conversationID];
 			default: 
-				console.log("That's a bust");
 				return conversationOne.convo[conversationID];
 
 		};
@@ -103,9 +101,6 @@ module.exports = React.createClass({
 			messages: arr
 		});
 
-		console.log("First Ray " + arr);
-		console.log(arr);
-
 		this.checkNextMessage();
 	},
 
@@ -113,7 +108,6 @@ module.exports = React.createClass({
 
 
 		var ray = this.state.messages;
-
 
 		var nextStep = this._CurrentStep + 1;
 
@@ -124,8 +118,6 @@ module.exports = React.createClass({
 
 			if(user.toUpperCase() == 'PLAYER') {
 
-				console.log("PLAYER");
-
 				this.setState({
 					isPlayer: true,
 					responseUno: file.conversation[nextStep].text,
@@ -134,7 +126,6 @@ module.exports = React.createClass({
 
 			} else {
 
-				console.log("Not PLAYER");
 
 				this.setState({
 					isPlayer: false,
@@ -188,10 +179,10 @@ module.exports = React.createClass({
 				messages: ray
 			});
 
-			console.log(ray);
-
 		}, Math.random() * (4000 - 2200) + 2200);
 
+
+		this._CurrentStep = next;
 
 
 	},
@@ -222,8 +213,10 @@ module.exports = React.createClass({
 		});
 
 
+		this._CurrentStep = nextStep;
+
 		setTimeout(() => {
-			_this._CurrentStep = nextStep
+			
 		}, 1000);
 
 
@@ -232,9 +225,6 @@ module.exports = React.createClass({
 	componentDidUpdate: function(prevProps, prevState) {
 
 		if(prevState.messages !== this.state.messages ){
-			console.log("I am calling this because a message was sent");
-			//console.log(prevState.messages);
-			//console.log(this.state.messages);
 		 	this.checkNextMessage();
 		}
 

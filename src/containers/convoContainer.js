@@ -18,23 +18,12 @@ class ConvoContainer extends Component {
 		super(props);
 	}
 
-	
-
-
-	componentWillReceiveProps(nextProps){
-
-		//console.log("That's an update : " + nextProps.cid);
-
-
-		if(nextProps.cid !== this.props.cid) {
-			//console.log("This is definitely a different convo");
-		}
-
-	}
-
-	componentWillUnmount(){
-		console.log("This is an unmount");
-	}
+	// componentWillReceiveProps(nextProps){
+	// 	//console.log("That's an update : " + nextProps.cid);
+	// 	if(nextProps.cid !== this.props.cid) {
+	// 		//console.log("This is definitely a different convo");
+	// 	}
+	// }
 
 
 	render(){
@@ -46,6 +35,7 @@ class ConvoContainer extends Component {
 			<Conversation
 				episode={1}
 				convoID={cID}
+				{...actions}
 			/>
 		);
 	}

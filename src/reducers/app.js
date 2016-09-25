@@ -14,7 +14,7 @@ export default function appreducer(state = initialState, action = {}) {
 		case types.UPDATESTEP:
 			return {
 				...state,
-				step: state.episode + 1
+				step: state.step + 1
 			}
 		default: 
 			return state;

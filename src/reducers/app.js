@@ -1,7 +1,9 @@
+import * as types from '../actions/actionTypes';
 
 
 const initialState = {
-	episode: 1
+	episode: 1,
+	step: 1
 };
 
 
@@ -9,6 +11,11 @@ const initialState = {
 export default function appreducer(state = initialState, action = {}) {
 
 	switch(action.type) {
+		case types.UPDATESTEP:
+			return {
+				...state,
+				step: state.episode + 1
+			}
 		default: 
 			return state;
 	}

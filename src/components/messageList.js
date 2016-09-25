@@ -17,6 +17,7 @@ import epiOneMsgList from '../data/epOne/messageList.json';
 import epiTwoMsgList from '../data/epTwo/messageList.json';
 
 import EpisodeCounter from './epiList/episodeCounter';
+import CounterContainer from '../containers/counterContainer';
 
 
 module.exports = React.createClass({
@@ -95,7 +96,7 @@ module.exports = React.createClass({
 		return (
 			<TouchableHighlight>
 				<View>
-					<EpisodeCounter />
+					<CounterContainer />
 				</View>
 			</TouchableHighlight>
 		);

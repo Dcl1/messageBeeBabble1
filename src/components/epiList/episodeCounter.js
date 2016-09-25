@@ -43,6 +43,11 @@ module.exports = React.createClass({
 		return (
 			<View style={styles.container}>
 				{this.renderUnits()}
+				<View>
+					<Text>
+					{this.props.count}
+					</Text>
+				</View>
 			</View>
 		);
 	}

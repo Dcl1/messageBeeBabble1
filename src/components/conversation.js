@@ -182,7 +182,8 @@ module.exports = React.createClass({
 		}, Math.random() * (4000 - 2200) + 2200);
 
 
-		this._CurrentStep = next;
+		
+		this.increaseStep(next);
 
 
 	},
@@ -213,7 +214,8 @@ module.exports = React.createClass({
 		});
 
 
-		this._CurrentStep = nextStep;
+		
+		this.increaseStep(nextStep);
 
 		setTimeout(() => {
 			
@@ -229,6 +231,22 @@ module.exports = React.createClass({
 		}
 
 
+	},
+
+
+	increaseStep: function(newStep){
+
+		var _this = this;
+
+		var file = this.getConvoFile(this.props.episode, this.props.convoID);
+		if(newStep >= file.conversation.length - 1) {
+			console.log("There are no more steps LEFT");
+			_this.props.updatestep();
+		} else {
+			console.log("This is the newStep count " + newStep);
+		}
+
+		this._CurrentStep = newStep;
 	},
 
 

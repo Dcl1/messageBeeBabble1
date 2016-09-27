@@ -25,7 +25,6 @@ export default function messagesreducer(state = initialState, action) {
 	switch (action.type) {
 		case types.UPDATEMESSAGELIST:
 
-			console.log("Update Message List was called");
 
 			return {
 				...state,

@@ -46,20 +46,31 @@ module.exports = React.createClass({
 	},
 
 	loadData: function(){
-		console.log("load data");
 		//this.props.updatemessagelist.bind(null, "Hen", "Only text", "true", 0);
 		this.props.updatemessagelist("Hen", "Only text", "true", 0);
+		var episode = this.props.episode;
+
+		switch(episode) {
+
+			case 1 :
+				
+
+			default :
+				return  this.props.updatemessagelist("ERROR", "WE NEED AN ERROR MESSAGE", "true", 9234);
+
+		}
+
+		
+
+
+
 	},
 
 	componentWillUpdate: function(nextProps, nextState){
-		console.log("component will update");
+
 	 	var _this = this;
 	 	var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2});
-	// 	var array = _this.props.list;
 
-	// 	this.setState({
-	// 		dataSource: ds.cloneWithRows(array)
-	// 	});
 
 		if(nextProps.list !== this.props.list){
 			console.log("The list is different");

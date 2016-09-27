@@ -36,14 +36,42 @@ module.exports = React.createClass({
 
 	componentWillMount: function(){
 
-		this.checkData( this.props.episode);
+		//this.checkData( this.props.episode);
+		//this.loadData.bind(null, this);
 
+	},
+
+	componentDidMount: function(){
+		this.loadData();
 	},
 
 	loadData: function(){
-
+		console.log("load data");
+		//this.props.updatemessagelist.bind(null, "Hen", "Only text", "true", 0);
 		this.props.updatemessagelist("Hen", "Only text", "true", 0);
 	},
+
+	componentWillUpdate: function(nextProps, nextState){
+		console.log("component will update");
+	 	var _this = this;
+	 	var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2});
+	// 	var array = _this.props.list;
+
+	// 	this.setState({
+	// 		dataSource: ds.cloneWithRows(array)
+	// 	});
+
+		if(nextProps.list !== this.props.list){
+			console.log("The list is different");
+			var array = nextProps.list;
+			_this.setState({
+				dataSource: ds.cloneWithRows(array)
+			});
+		} else {
+			console.log("Not different");
+		}
+
+	 },
 
 	checkData: function(epi){
 

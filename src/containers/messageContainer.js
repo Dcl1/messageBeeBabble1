@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 
 import MessageList from '../components/messageList';
-import MessageActions from '../actions/messageActions';
+import * as MessageActions from '../actions/messageActions';
 /* This is where you would import actions from */
 
 /* This is the end of where you would import actions from */
@@ -18,12 +18,18 @@ class MessageContaner extends Component {
 		super(props);
 	}
 
+	componentWillUpdate(nextProps, nextState){
+		console.log(nextState);
+	}	
+
 	render() {
 		const { state, actions } = this.props;
 
 		return (
 			<MessageList
 				episode={ state.app.episode }
+				list= { state.messages.mlist }
+				{...actions}
 			/>
 		);
 	}

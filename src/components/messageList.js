@@ -40,6 +40,11 @@ module.exports = React.createClass({
 
 	},
 
+	loadData: function(){
+
+		this.props.updatemessagelist("Hen", "Only text", "true", 0);
+	},
+
 	checkData: function(epi){
 
 

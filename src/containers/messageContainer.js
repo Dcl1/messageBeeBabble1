@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 
 import MessageList from '../components/messageList';
-
+import MessageActions from '../actions/messageActions';
 /* This is where you would import actions from */
 
 /* This is the end of where you would import actions from */
@@ -35,6 +35,6 @@ export default connect(state => ({
 		state: state	
 	}),
 	(dispatch) => ({
-		actions: bindActionCreators(Object.assign({}), dispatch)
+		actions: bindActionCreators(Object.assign({}, MessageActions), dispatch)
 	})
 )(MessageContaner);

@@ -73,13 +73,11 @@ module.exports = React.createClass({
 
 
 		if(nextProps.list !== this.props.list){
-			console.log("The list is different");
 			var array = nextProps.list;
 			_this.setState({
 				dataSource: ds.cloneWithRows(array)
 			});
 		} else {
-			console.log("Not different");
 		}
 
 	 },
@@ -113,7 +111,7 @@ module.exports = React.createClass({
 
 
 		} else {
-			console.log("Cannot load message list");
+			//console.log("Cannot load message list");
 		}
 
 
@@ -135,7 +133,7 @@ module.exports = React.createClass({
 
 
 	_renderSectionHeader: function( sectionData, sectionID){
-		console.log("SECTION DATA: " + sectionData + " " + "SECTION ID: " + sectionID);
+		//console.log("SECTION DATA: " + sectionData + " " + "SECTION ID: " + sectionID);
 
 		return (
 			<TouchableHighlight>

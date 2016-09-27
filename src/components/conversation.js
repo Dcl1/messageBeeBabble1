@@ -41,7 +41,8 @@ module.exports = React.createClass({
 	componentDidMount: function(){
 
 		console.log("This is the start step " + this.props.start);
-		this.loadStartConvo();
+		var step = this.props.start;
+		this.loadStartConvo(step);
 
 	},
 
@@ -66,10 +67,12 @@ module.exports = React.createClass({
 	},
 
 
-	loadStartConvo: function(){
+	loadStartConvo: function(ss){
 
 		var file = this.getConvoFile(this.props.episode, this.props.convoID);
-		var startStep = this.props.start;
+		//var startStep = this.props.start;
+		//var startStep = file.startStep;
+		var startStep = ss;
 		this._CurrentStep = startStep;
 		var arr = [];
 
@@ -102,6 +105,8 @@ module.exports = React.createClass({
 			messages: arr
 		});
 
+
+		this._isMounted = true;
 		this.checkNextMessage();
 	},
 
@@ -149,6 +154,7 @@ module.exports = React.createClass({
 		var file = this.getConvoFile(this.props.episode, this.props.convoID);
 		var obj = file.conversation[next];
 		var ray = this.state.messages.slice();
+		//console.log(this.state.messages);
 
 		setTimeout(() => {
 			this.setState({
@@ -194,6 +200,7 @@ module.exports = React.createClass({
 		var _this = this;
 		var file = this.getConvoFile(this.props.episode, this.props.convoID);
 		var ray = this.state.messages.slice();
+		console.log(ray);
 
 		var nextStep = this._CurrentStep + 1;
 		var imgURL = file.conversation[nextStep].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
@@ -228,7 +235,18 @@ module.exports = React.createClass({
 	componentDidUpdate: function(prevProps, prevState) {
 
 		if(prevState.messages !== this.state.messages ){
-		 	this.checkNextMessage();
+			//console.log(prevState.messages);
+			//console.log(this.state.messages);
+			console.log("Things are different");
+			if(this._isMounted === true) {
+				this.checkNextMessage();
+			} else if (this._isMounted !== true){
+				var step = this.props.start;
+				this.loadStartConvo(step);
+			} else {
+				
+			}
+		 	
 		}
 
 

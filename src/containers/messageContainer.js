@@ -19,7 +19,6 @@ class MessageContaner extends Component {
 	}
 
 	componentWillUpdate(nextProps, nextState){
-		console.log(nextState);
 	}	
 
 	render() {

@@ -47,16 +47,16 @@ module.exports = React.createClass({
 
 	loadData: function(){
 		//this.props.updatemessagelist.bind(null, "Hen", "Only text", "true", 0);
-		this.props.updatemessagelist("Hen", "Only text", "true", 0);
+		this.props.updatemessagelist("Hen", "Only text", "true", 1, 1);
 		var episode = this.props.episode;
 
 		switch(episode) {
 
 			case 1 :
-				
+				return null;
 
 			default :
-				return  this.props.updatemessagelist("ERROR", "WE NEED AN ERROR MESSAGE", "true", 9234);
+				return  this.props.updatemessagelist("ERROR", "WE NEED AN ERROR MESSAGE", "true", 9234, 0);
 
 		}
 
@@ -148,7 +148,7 @@ module.exports = React.createClass({
 
 	_renderRow: function(rowData: string, sectionID: number, rowID: number ){
 		return (
-			<TouchableHighlight style={styles.postCard} onPress={ () => Actions.Conversation({cid: rowData.id}) } >
+			<TouchableHighlight style={styles.postCard} onPress={ () => Actions.Conversation({cid: rowData.id, start: rowData.start}) } >
 				<View>
 					<Text> {rowData.user} </Text>
 					<Text> {rowData.text} </Text>

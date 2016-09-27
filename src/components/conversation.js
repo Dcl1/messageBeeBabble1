@@ -40,6 +40,7 @@ module.exports = React.createClass({
 
 	componentDidMount: function(){
 
+		console.log("This is the start step " + this.props.start);
 		this.loadStartConvo();
 
 	},
@@ -68,7 +69,7 @@ module.exports = React.createClass({
 	loadStartConvo: function(){
 
 		var file = this.getConvoFile(this.props.episode, this.props.convoID);
-		var startStep = file.startStep;
+		var startStep = this.props.start;
 		this._CurrentStep = startStep;
 		var arr = [];
 

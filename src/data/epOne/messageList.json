@@ -5,12 +5,14 @@
 				{
 					"user" : "Principal Coleman",
 					"text" : "yo lo mo lo from JSON",
-					"cid" : 1
+					"cid" : 1,
+					"start" : 1
 				},
 				{
 					"user" : "Lexi",
 					"text" : "Cmon here!",
-					"cid" : 2
+					"cid" : 2,
+					"start" : 1
 				}
 			]
 		}

@@ -6,7 +6,8 @@ const initialState = {
 			user: 'Nobody',
 			text: 'Nobody wants to say something to you',
 			active: true,
-			id: 0
+			id: 0,
+			start: 1
 		}
 	]
 }
@@ -33,7 +34,8 @@ export default function messagesreducer(state = initialState, action) {
 						id: action.id,
 						complete: true,
 						user: action.user,
-						text: action.text
+						text: action.text,
+						start: action.start
 					},
 					...state.mlist
 				]

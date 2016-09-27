@@ -1,15 +1,7 @@
 import * as types from '../actions/actionTypes';
 
 const initialState = {
-		mlist : [
-		{
-			user: 'Nobody',
-			text: 'Nobody wants to say something to you',
-			active: true,
-			id: 0,
-			start: 1
-		}
-	]
+		mlist : []
 }
 
 // const initialState = [

@@ -23,46 +23,44 @@ import CounterContainer from '../containers/counterContainer';
 module.exports = React.createClass({
 
 	getInitialState: function(){
-		var theData = [{"user" : "fred", "id" : 1 ,"text" : "cmon man"}, {"user" : "helio", "id" : 2 ,"text" : "zoom zoom"}];
+		var theData = [];
 
 		var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2});
+		this._episode;
 
 		return {
-			dataSource: ds.cloneWithRows(theData),
-			dataArray: theData
+			dataSource: ds.cloneWithRows(theData)
 		};
 
 	},
 
 	componentWillMount: function(){
 
-		//this.checkData( this.props.episode);
-		//this.loadData.bind(null, this);
+		console.log("Something should be happening");
+
+		this._episode = this.props.epidsode;
 
 	},
 
 	componentDidMount: function(){
-		this.loadData();
+
+		console.log("component did mount");
+
+		this.loadData(this._episode);
 	},
 
-	loadData: function(){
+	loadData: function(epi){
+
+		var _this = this;
 		//this.props.updatemessagelist.bind(null, "Hen", "Only text", "true", 0);
-		this.props.updatemessagelist("Hen", "Only text", "true", 1, 1);
-		var episode = this.props.episode;
-
-		switch(episode) {
-
-			case 1 :
-				return null;
-
-			default :
-				return  this.props.updatemessagelist("ERROR", "WE NEED AN ERROR MESSAGE", "true", 9234, 0);
-
+		//this.props.updatemessagelist("Hen", "Only text", "true", 1, 1);
+		console.log("load Data");
+		if( epi === 1 ) {
+			console.log("inside if statement");
+			epiOneMsgList.msgList[0].messages.map(function(obj){
+				_this.props.updatemessagelist(obj.user, obj.text, obj.completed, obj.cid, obj.start);
+			});
 		}
-
-		
-
-
 
 	},
 
@@ -126,6 +124,7 @@ module.exports = React.createClass({
 					dataSource={this.state.dataSource}
 					renderRow= {this._renderRow}
 					renderSectionHeader={this._renderSectionHeader}
+					enableEmptySections = {true}
 				/>
 			</View>
 		);

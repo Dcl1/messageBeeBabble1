@@ -4,13 +4,15 @@
 			"messages" : [
 				{
 					"user" : "Principal Coleman",
-					"text" : "yo lo mo lo from JSON",
+					"completed" : true,
+					"text" : "NEED TO FIGURE HOW TO GET THE START MESSAGE",
 					"cid" : 1,
 					"start" : 1
 				},
 				{
 					"user" : "Lexi",
-					"text" : "Cmon here!",
+					"completed" : true,
+					"text" : "NEED TO FIGURE HOW TO GET THE START MESSAGE",
 					"cid" : 2,
 					"start" : 1
 				}

@@ -27,6 +27,9 @@ module.exports = React.createClass({
 		this._conversationID;
 		this._episode;
 
+
+		this._file;
+
 		return {
 			isPlayer: false,
 			messages: [],
@@ -64,8 +67,9 @@ module.exports = React.createClass({
 
 		switch(epi) {
 			case 1 :
-				var file = conversationOne.convo;
-				this.grabConvo(file, convo, step);
+				var file = conversationOne.convo[convo];
+				this._file = file;
+				this.grabConvo(file , step);
 				return null;
 			default :
 				console.log("No episode detected");
@@ -74,20 +78,20 @@ module.exports = React.createClass({
 
 	},
 
-	grabConvo: function( f, c, s){
+	grabConvo: function( f, s){
 
-		var CV = f[c];
+	
 		var arr = [];
 
 		for(var i = 0 ; i <= s; i ++) {
-			console.log("File " + f +  "Convo ID " + c + "Step " + i);
-			var imgURL = CV.conversation[i].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
+			//console.log("File " + f +  "Convo ID " + c + "Step " + i);
+			var imgURL = f.conversation[i].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
 			let uni = Math.round(Math.random() * 100000);
 
 			arr.push({
-				"text" : CV.conversation[i].text,
-				"name" : CV.conversation[i].user,
-				"position" : CV.conversation[i].position,
+				"text" : f.conversation[i].text,
+				"name" : f.conversation[i].user,
+				"position" : f.conversation[i].position,
 				"image" : imgURL,
 				"date" : new Date(),
 				"uniqueId" : uni
@@ -103,6 +107,71 @@ module.exports = React.createClass({
 
 	},
 
+	componentWillReceiveProps: function(nextProps) {
+
+		if(nextProps.convoID !== this.props.convoID) {
+			Actions.pop();
+		}
+
+	},
+
+	componentWillUpdate: function( nextProps, nextState){
+		if(nextState.messages !== this.state.messages){
+			var now = nextState.messages;
+			var past = this.state.messages;
+			console.log( now + " " + past);
+
+
+			this.checkNextMessage(this._step);
+
+		}
+	},
+
+
+	checkNextMessage: function(ste){
+
+		var nextStep = this._step + 1;
+		var ray = this.state.messages;
+		var file = this._file;
+
+		if( nextStep < file.conversation.length ) {
+			var user = file.conversation[nextStep].user;
+
+			if(user.toUpperCase() == 'PLAYER') {
+
+				console.log("This the player's turn");
+
+				this.setState({
+					isPlayer: true,
+					responseUno: file.conversation[nextStep].text,
+					responseDeuce: file.conversation[nextStep].text2
+				});
+
+			} else {
+
+
+				this.setState({
+					isPlayer: false,
+					responseUno: '',
+					responseDeuce: ''
+				});
+
+				this.renderNextMessage(nextStep);
+
+			}
+
+		} 
+
+
+
+	},
+
+
+	renderNextMessage: function(){
+
+		console.log("This is render the next message");
+
+	},
 
 
 	render: function(){

@@ -46,11 +46,13 @@ module.exports = React.createClass({
 		this._conversationID = this.props.convoID;
 		this._episode = this.props.episode;
 
+		
+
 	},
 
 	componentDidMount: function(){
 
-		this.loadEpisode(this._episode, this._conversationID, this._step);
+		this.loadEpisode(this._episode, this._conversationID, this._step);		
 
 	},
 
@@ -111,14 +113,20 @@ module.exports = React.createClass({
 	},
 
 	componentWillUpdate: function( nextProps, nextState){
-		if(nextState.messages !== this.state.messages){
+
+		var ray = this.state.messages;
+		console.log("CWU Ray's length " + ray.length);
+
+		if(nextState.messages !== this.state.messages ){
 			var now = nextState.messages;
 			var past = this.state.messages;
-			//console.log( now + " " + past);
-
+			console.log( now + " " + past);
+			console.log("Calling checkNextMessage");
 			//console.log("This step " + this._step);
 			this.checkNextMessage(this._step);
 
+		} else {
+			console.log(this.state.messages);
 		}
 	},
 
@@ -182,7 +190,7 @@ module.exports = React.createClass({
 		var _this = this;
 		var file = this._file;
 		var obj = file.conversation[next];
-		var ray= [];		
+		var ray = this.state.messages.slice();		
 		var nextStep = next;
 		//console.log(this.state.messages);
 
@@ -233,31 +241,78 @@ module.exports = React.createClass({
 		// 	});
 		// }, Math.random() * (4000 - 2200) + 2200);
 
-		var p1 = new Promise(
+		// var p1 = new Promise(
+		
 
-			function(resolve, reject) {
+		// 		function(resolve, reject) {
 
-					ray = _this.state.messages.slice();
-					console.log("Inside the promise " + ray);
-					resolve(ray);
-					if(ray !== null){
-						resolve(ray);
-					}
+		// 				console.log(ray.length);
+		// 				console.log("Inside the promise " + ray);
+		// 				if(ray.length > 0){
+		// 					setTimeout(() => {
+		// 						resolve(ray);
+		// 					}, Math.random() * (4000 - 2200) + 2200);
+		// 				} else {
+		// 					console.log("Else statement inside of promise");
+		// 				}
 
-			}
+		// 		}
+			
 
-		);
+		// );
 
-		setTimeout(() => {
-		p1.then(
-			function(){
+		// p1.then(
+		// 	function(){
 
-				console.log("Inside then ");
+		// 		console.log("Inside then ");
 
 				
 
-				var imgURL = file.conversation[next].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
-				let uni = Math.round(Math.random() * 100000);
+		 		var imgURL = file.conversation[next].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
+		 		let uni = Math.round(Math.random() * 100000);
+
+		// 		ray.push({
+		// 			"text" : obj.text , 
+		// 			"name" : obj.user , 
+		// 			"position" : obj.position , 
+		// 			"image" : imgURL , 
+		// 			"date" : new Date(2016, 0 ,1, 20, 0), 
+		// 			"uniqueId" : uni  
+		// 		});
+
+
+				
+
+
+		// 		_this.setState({
+		// 			messages: ray
+		// 		});
+		// 		_this.increaseStep(nextStep);
+		// 	}
+
+		// ).catch(
+		// 	function(reason) {
+		// 		console.log(reason);
+		// });
+
+
+		// let grabMessages = function(){
+		// 	return new Promise(function(resolve,reject){
+
+		// 		var arr= _this.state.messages.slice();
+
+		// 		resolve(arr);
+		// 	});
+		// };
+
+
+		// grabMessages().then(function(ary){
+		// 	console.log(ary);
+		// }).catch(
+		// 	function(reason){
+		// 		console.log(reason);
+		// 	}
+		// );
 
 				ray.push({
 					"text" : obj.text , 
@@ -268,21 +323,10 @@ module.exports = React.createClass({
 					"uniqueId" : uni  
 				});
 
-
-				
-
-
 				_this.setState({
 					messages: ray
 				});
-				_this.increaseStep(nextStep);
-			}
-
-		).catch(
-			function(reason) {
-				console.log(reason);
-		});
-		}, 4000);
+				this.increaseStep(nextStep);
 
 	},
 

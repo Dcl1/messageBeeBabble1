@@ -70,6 +70,7 @@ module.exports = React.createClass({
 				var file = conversationOne.convo[convo];
 				this._file = file;
 				this.grabConvo(file , step);
+				console.log("STEP ONE");
 				return null;
 			default :
 				return null;
@@ -112,27 +113,52 @@ module.exports = React.createClass({
 
 	},
 
-	componentWillUpdate: function( nextProps, nextState){
+	// componentWillUpdate: function( nextProps, nextState){
+
+	// 	var ray = this.state.messages;
+	// 	console.log("CWU Ray's length " + ray.length);
+
+	// 	if(nextState.messages !== this.state.messages ){
+	// 		var now = nextState.messages;
+	// 		var past = this.state.messages;
+	// 		console.log("STEP TWO " + now);
+	// 		console.log(past);
+
+	// 		this.setState({
+	// 			messages: nextState.messages
+	// 		});
+	// 		//console.log( now + " " + past);
+	// 		//console.log("Calling checkNextMessage");
+	// 		//console.log("This step " + this._step);
+	// 		this.checkNextMessage(this._step);
+
+	// 	} else {
+	// 		console.log(this.state.messages);
+	// 	}
+	// },
+
+
+	componentDidUpdate: function(prevProps, prevState){
 
 		var ray = this.state.messages;
-		console.log("CWU Ray's length " + ray.length);
+		console.log("CDU Ray's length " + ray.length);
 
-		if(nextState.messages !== this.state.messages ){
-			var now = nextState.messages;
-			var past = this.state.messages;
-			console.log( now + " " + past);
-			console.log("Calling checkNextMessage");
-			//console.log("This step " + this._step);
+		if(prevState.messages !== this.state.messages ) {
+
+			var now = this.state.messages;
+
+			console.log(now);
 			this.checkNextMessage(this._step);
 
-		} else {
-			console.log(this.state.messages);
 		}
+
+
 	},
 
 
 	checkNextMessage: function(ste){
 
+		var _this = this;
 		var nextStep = this._step + 1;
 		var file = this._file;
 
@@ -151,7 +177,10 @@ module.exports = React.createClass({
 
 			} else {
 
-				console.log("It is the app's turn to respond");
+				//console.log("It is the app's turn to respond");
+				var test = this.state.messages;
+				console.log(test);
+				console.log("STEP THREE " + _this.state.messages);
 
 				this.setState({
 					isPlayer: false,
@@ -187,146 +216,36 @@ module.exports = React.createClass({
 
 	renderNextMessage: function(next){
 
-		var _this = this;
 		var file = this._file;
-		var obj = file.conversation[next];
-		var ray = this.state.messages.slice();		
-		var nextStep = next;
-		//console.log(this.state.messages);
+		var obje = file.conversation[next];
 
-		// setTimeout(() => {
-		// 	this.setState({
-		// 		typingMessage: 'Typing a message...',
-		// 	});
-		// }, 400);
-
-		// setTimeout(() => {
-		// 	this.setState({
-		// 		typingMessage: '',
-		// 	});
-		// }, 1200 );
-
-		//setTimeout(() => {
-
-		// 	var imgURL = file.conversation[next].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
-		// 	let uni = Math.round(Math.random() * 100000);
-
-		// 	ray.push({
-		// 		"text" : obj.text , 
-		// 		"name" : obj.user , 
-		// 		"position" : obj.position , 
-		// 		"image" : imgURL , 
-		// 		"date" : new Date(2016, 0 ,1, 20, 0), 
-		// 		"uniqueId" : uni  
-		// 	});
-
-		// 	this.setState({
-		// 		messages: ray
-		// 	});
-
-		// }, Math.random() * (4000 - 2200) + 2200);
-
-		// setTimeout(() => {
-
-		// 	var imgURL = file.conversation[next].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
-		// 	let uni = Math.round(Math.random() * 100000);
-
-		// 	ray.push({
-		// 		"text" : obj.text , 
-		// 		"name" : obj.user , 
-		// 		"position" : obj.position , 
-		// 		"image" : imgURL , 
-		// 		"date" : new Date(2016, 0 ,1, 20, 0), 
-		// 		"uniqueId" : uni  
-		// 	});
-		// }, Math.random() * (4000 - 2200) + 2200);
-
-		// var p1 = new Promise(
-		
-
-		// 		function(resolve, reject) {
-
-		// 				console.log(ray.length);
-		// 				console.log("Inside the promise " + ray);
-		// 				if(ray.length > 0){
-		// 					setTimeout(() => {
-		// 						resolve(ray);
-		// 					}, Math.random() * (4000 - 2200) + 2200);
-		// 				} else {
-		// 					console.log("Else statement inside of promise");
-		// 				}
-
-		// 		}
-			
-
-		// );
-
-		// p1.then(
-		// 	function(){
-
-		// 		console.log("Inside then ");
-
-				
-
-		 		var imgURL = file.conversation[next].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
-		 		let uni = Math.round(Math.random() * 100000);
-
-		// 		ray.push({
-		// 			"text" : obj.text , 
-		// 			"name" : obj.user , 
-		// 			"position" : obj.position , 
-		// 			"image" : imgURL , 
-		// 			"date" : new Date(2016, 0 ,1, 20, 0), 
-		// 			"uniqueId" : uni  
-		// 		});
+		var ray = this.addMessages(obje);
+		console.log("STEP FIVE");
+		console.log(ray);
 
 
-				
+	},
 
 
-		// 		_this.setState({
-		// 			messages: ray
-		// 		});
-		// 		_this.increaseStep(nextStep);
-		// 	}
+	addMessages: function(obj){
 
-		// ).catch(
-		// 	function(reason) {
-		// 		console.log(reason);
-		// });
+		var stat = this.state;
+		console.log(stat.messages);
+		var imgURL = obj.position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
+		let uni = Math.round(Math.random() * 100000);
+		console.log("STEP FOUR");
+		return [
+			...stat.messages,
+			{
+				"text" : obj.text,
+				"name" : obj.user,
+				"position" : obj.position,
+				"image" : imgURL,
+				"date" : new Date(2016, 0 ,1, 20, 0), 
+				"uniqueId" : uni
+			}
+		]
 
-
-		// let grabMessages = function(){
-		// 	return new Promise(function(resolve,reject){
-
-		// 		var arr= _this.state.messages.slice();
-
-		// 		resolve(arr);
-		// 	});
-		// };
-
-
-		// grabMessages().then(function(ary){
-		// 	console.log(ary);
-		// }).catch(
-		// 	function(reason){
-		// 		console.log(reason);
-		// 	}
-		// );
-
-				ray.push({
-					"text" : obj.text , 
-					"name" : obj.user , 
-					"position" : obj.position , 
-					"image" : imgURL , 
-					"date" : new Date(2016, 0 ,1, 20, 0), 
-					"uniqueId" : uni  
-				});
-
-				_this.setState({
-					messages: ray
-				});
-				this.increaseStep(nextStep);
 
 	},
 

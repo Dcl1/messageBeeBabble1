@@ -33,6 +33,23 @@ export default function messagesreducer(state = initialState, action) {
 				]
 			};
 
+		case types.UPDATEMESSAGESTEP:
+
+			console.log("UPDATEMESSAGESTEP CALLED");
+
+			return {
+				...state,
+				mlist: [
+					state.mlist.map(msg =>
+						msg.id === action.id ?
+						{...msg, start: action.step} :
+						msg
+
+					)
+				]
+			}
+
+
 		default: 
 			return state
 	}

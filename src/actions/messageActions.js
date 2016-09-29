@@ -10,3 +10,12 @@ export function updatemessagelist(user, text, active, id, start){
 		start
 	}
 }
+
+
+export function updatemessagestep(id, step){
+	return {
+		type: types.UPDATEMESSAGESTEP,
+		id,
+		step
+	}
+}

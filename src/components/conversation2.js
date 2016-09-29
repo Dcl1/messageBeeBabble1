@@ -116,12 +116,12 @@ module.exports = React.createClass({
 
 		var ray = this.state.messages;
 
-		console.log("This is the global step count " + this._step);
-		console.log(this.state);
+		//console.log("This is the global step count " + this._step);
+		//console.log(this.state);
 
 		if(prevState.messages !== this.state.messages ) {
 
-			console.log("Seems like the messages are changing");
+			//console.log("Seems like the messages are changing");
 
 			var now = this.state.messages;
 			this.checkNextMessage(this._step);
@@ -180,6 +180,8 @@ module.exports = React.createClass({
 		}
 
 		this._step = newStep;
+
+		this.props.updatemessagestep(this._conversationID, newStep);
 
 	},
 

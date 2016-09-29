@@ -18,11 +18,18 @@ class MessageContaner extends Component {
 		super(props);
 	}
 
-	componentWillUpdate(nextProps, nextState){
+	componentDidUpdate(prevProps, prevState){
+
+		const { state, actions } = this.props;
+
+		console.log(state.messages.mlist);
+
 	}	
 
 	render() {
 		const { state, actions } = this.props;
+
+
 
 		return (
 			<MessageList

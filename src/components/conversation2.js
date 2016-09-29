@@ -70,7 +70,6 @@ module.exports = React.createClass({
 				var file = conversationOne.convo[convo];
 				this._file = file;
 				this.grabConvo(file , step);
-				console.log("STEP ONE");
 				return null;
 			default :
 				return null;
@@ -84,7 +83,6 @@ module.exports = React.createClass({
 		var arr = [];
 
 		for(var i = 0 ; i <= s; i ++) {
-			//console.log("File " + f +  "Convo ID " + c + "Step " + i);
 			var imgURL = f.conversation[i].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
 			let uni = Math.round(Math.random() * 100000);
 
@@ -113,41 +111,19 @@ module.exports = React.createClass({
 
 	},
 
-	// componentWillUpdate: function( nextProps, nextState){
-
-	// 	var ray = this.state.messages;
-	// 	console.log("CWU Ray's length " + ray.length);
-
-	// 	if(nextState.messages !== this.state.messages ){
-	// 		var now = nextState.messages;
-	// 		var past = this.state.messages;
-	// 		console.log("STEP TWO " + now);
-	// 		console.log(past);
-
-	// 		this.setState({
-	// 			messages: nextState.messages
-	// 		});
-	// 		//console.log( now + " " + past);
-	// 		//console.log("Calling checkNextMessage");
-	// 		//console.log("This step " + this._step);
-	// 		this.checkNextMessage(this._step);
-
-	// 	} else {
-	// 		console.log(this.state.messages);
-	// 	}
-	// },
-
 
 	componentDidUpdate: function(prevProps, prevState){
 
 		var ray = this.state.messages;
-		console.log("CDU Ray's length " + ray.length);
+
+		console.log("This is the global step count " + this._step);
+		console.log(this.state);
 
 		if(prevState.messages !== this.state.messages ) {
 
-			var now = this.state.messages;
+			console.log("Seems like the messages are changing");
 
-			console.log(now);
+			var now = this.state.messages;
 			this.checkNextMessage(this._step);
 
 		}
@@ -167,8 +143,6 @@ module.exports = React.createClass({
 
 			if(user.toUpperCase() == 'PLAYER') {
 
-				console.log("It is the player's turn to respond");
-
 				this.setState({
 					isPlayer: true,
 					responseUno: file.conversation[nextStep].text,
@@ -176,11 +150,7 @@ module.exports = React.createClass({
 				});
 
 			} else {
-
-				//console.log("It is the app's turn to respond");
 				var test = this.state.messages;
-				console.log(test);
-				console.log("STEP THREE " + _this.state.messages);
 
 				this.setState({
 					isPlayer: false,
@@ -206,7 +176,7 @@ module.exports = React.createClass({
 		if(newStep >= file.conversation.length - 1) {
 			_this.props.updatestep();
 		} else {
-			//console.log("This is the newStep count " + newStep);
+
 		}
 
 		this._step = newStep;
@@ -220,14 +190,30 @@ module.exports = React.createClass({
 		var obje = file.conversation[next];
 
 		var ray = this.addMessages(obje);
-		console.log("STEP FIVE");
-		console.log(ray);
 
-		this.setState({
-			messages: ray
-		});
+		setTimeout(() => {
+			this.setState({
+				typingMessage: 'Typing a message...',
+			});
+		}, 400);
 
-		this.increaseStep(next);
+		setTimeout(() => {
+			this.increaseStep(next);
+			
+			this.setState({
+				typingMessage: '',
+			});
+		}, 1200 );
+
+
+		setTimeout(() => {
+			this.setState({
+				messages: ray
+			});
+
+			
+		},  Math.random() * (4000 - 2200) + 2200);
+
 
 	},
 
@@ -235,10 +221,8 @@ module.exports = React.createClass({
 	addMessages: function(obj){
 
 		var stat = this.state;
-		console.log(stat.messages);
 		var imgURL = obj.position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
 		let uni = Math.round(Math.random() * 100000);
-		console.log("STEP FOUR");
 		return [
 			...stat.messages,
 			{

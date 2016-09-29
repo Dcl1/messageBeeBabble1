@@ -199,7 +199,7 @@ module.exports = React.createClass({
 
 		setTimeout(() => {
 			this.increaseStep(next);
-			
+
 			this.setState({
 				typingMessage: '',
 			});
@@ -234,6 +234,27 @@ module.exports = React.createClass({
 				"uniqueId" : uni
 			}
 		]
+
+
+	},
+
+
+	handleSend: function( message = {}){
+
+		var _this = this;
+		var file = this._file;
+		var nextStep = this._step + 1;
+
+
+		var obje = file.conversation[nextStep];
+
+		var ray = this.addMessages(obje);
+
+		this.increaseStep(nextStep);
+
+		this.setState({
+			messages: ray
+		});
 
 
 	},

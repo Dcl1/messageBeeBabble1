@@ -223,6 +223,11 @@ module.exports = React.createClass({
 		console.log("STEP FIVE");
 		console.log(ray);
 
+		this.setState({
+			messages: ray
+		});
+
+		this.increaseStep(next);
 
 	},
 

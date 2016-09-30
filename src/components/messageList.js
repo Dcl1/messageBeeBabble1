@@ -145,8 +145,8 @@ module.exports = React.createClass({
 		return (
 			<TouchableHighlight style={styles.postCard} onPress={ () => Actions.Conversation({cid: rowData.id, start: rowData.start}) } >
 				<View>
-					<Text> {rowData.user} </Text>
-					<Text> {rowData.text} </Text>
+					<Text ellipsizeMode={'middle'} numberOfLines={2}> {rowData.user} </Text>
+					<Text ellipsizeMode={'middle'} numberOfLines={2}> {rowData.text} </Text>
 				</View>
 			</TouchableHighlight>
 		);
@@ -164,6 +164,10 @@ var styles = StyleSheet.create({
 
 	msgList: {
 		marginTop: 66
+	},
+
+	truncate: {
+
 	},
 
 	postCard: {

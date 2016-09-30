@@ -5,14 +5,14 @@
 				{
 					"user" : "Principal Coleman",
 					"completed" : true,
-					"text" : "NEED TO FIGURE HOW TO GET THE START MESSAGE",
+					"text" : "Hello. It is my genuine pleasure to welcome you to the Brookhaven Preparatory Acadamy. (Go Bees!) This “BeeBabble” application is a useful tool for interacting with classmates, alumni and faculty members. Here at Brookhaven, we pride ourselves on our robust offering of extracurricular activities (you are expected to participate in two student organizations per semester.) One of these can be a Brookhaven Society. These six societies offer closed membership and can influence your success beyond your time at Brookhaven.",
 					"cid" : 1,
-					"start" : 1
+					"start" : 0
 				},
 				{
 					"user" : "Lexi",
 					"completed" : true,
-					"text" : "NEED TO FIGURE HOW TO GET THE START MESSAGE",
+					"text" : "Great meeting you in class today!",
 					"cid" : 2,
 					"start" : 0
 				}

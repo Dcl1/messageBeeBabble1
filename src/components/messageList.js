@@ -54,7 +54,9 @@ module.exports = React.createClass({
 
 		if( epi === 1 ) {
 			epiOneMsgList.msgList[0].messages.map(function(obj){
+
 				_this.props.updatemessagelist(obj.user, obj.text, obj.completed, obj.cid, obj.start);
+				
 			});
 		} else {
 			console.log("Set up the other episodes for message list");
@@ -87,7 +89,7 @@ module.exports = React.createClass({
 
 		if(epi === 1) {
 			epiOneMsgList.msgList[0].messages.map(function(obj){
-				arr.push({"user" : obj.user, "id" : obj.cid, "text" : obj.text})
+				arr.push({"user" : obj.user, "id" : obj.cid, "text" : obj.text}, "step" : obj.start)
 			});
 			var vs = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2});
 			_this.setState({
@@ -147,6 +149,7 @@ module.exports = React.createClass({
 				<View>
 					<Text ellipsizeMode={'middle'} numberOfLines={2}> {rowData.user} </Text>
 					<Text ellipsizeMode={'middle'} numberOfLines={2}> {rowData.text} </Text>
+					<Text ellipsizeMode={'middle'} numberOfLines={2}> {rowData.start} </Text>
 				</View>
 			</TouchableHighlight>
 		);
@@ -164,10 +167,6 @@ var styles = StyleSheet.create({
 
 	msgList: {
 		marginTop: 66
-	},
-
-	truncate: {
-
 	},
 
 	postCard: {

@@ -4,21 +4,14 @@ const initialState = {
 		mlist : []
 }
 
-// const initialState = [
-// 	{
-// 		user: 'Nobody',
-// 		text: 'Nobody wants to say something to you',
-// 		active: true,
-// 		id: 0
-// 	}
-// ]
+
+
 
 
 export default function messagesreducer(state = initialState, action) {
 	switch (action.type) {
+
 		case types.UPDATEMESSAGELIST:
-
-
 			return {
 				...state,
 				mlist: [
@@ -33,20 +26,29 @@ export default function messagesreducer(state = initialState, action) {
 				]
 			};
 
+		case types.ADDTOMESSAGELIST:
+
+			console.log("New Update Message list is called");
+
+			return {
+				...state,
+				mlist: [
+					
+				]
+			};
+
 		case types.UPDATEMESSAGESTEP:
 
 			console.log("UPDATEMESSAGESTEP CALLED");
 
 			return {
 				...state,
-				mlist: [
-					state.mlist.map(msg =>
+				mlist: state.mlist.map(msg =>
 						msg.id === action.id ?
 						{...msg, start: action.step} :
 						msg
 
-					)
-				]
+					)	
 			}
 
 

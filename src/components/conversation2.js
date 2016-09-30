@@ -114,9 +114,9 @@ module.exports = React.createClass({
 		if(nextState.messages !== this.state.messages){
 			var now = nextState.messages;
 			var past = this.state.messages;
-			console.log( now + " " + past);
+			//console.log( now + " " + past);
 
-			console.log("This step " + this._step);
+			//console.log("This step " + this._step);
 			this.checkNextMessage(this._step);
 
 		}
@@ -169,7 +169,7 @@ module.exports = React.createClass({
 		if(newStep >= file.conversation.length - 1) {
 			_this.props.updatestep();
 		} else {
-			console.log("This is the newStep count " + newStep);
+			//console.log("This is the newStep count " + newStep);
 		}
 
 		this._step = newStep;
@@ -198,7 +198,7 @@ module.exports = React.createClass({
 		// 	});
 		// }, 1200 );
 
-		// setTimeout(() => {
+		//setTimeout(() => {
 
 		// 	var imgURL = file.conversation[next].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
 		// 	let uni = Math.round(Math.random() * 100000);
@@ -237,17 +237,18 @@ module.exports = React.createClass({
 
 			function(resolve, reject) {
 
-				setTimeout(() => {
-					console.log("Inside the setTimeout");
 					ray = _this.state.messages.slice();
 					console.log("Inside the promise " + ray);
 					resolve(ray);
-				}, 400);
+					if(ray !== null){
+						resolve(ray);
+					}
+
 			}
 
 		);
 
-
+		setTimeout(() => {
 		p1.then(
 			function(){
 
@@ -281,7 +282,7 @@ module.exports = React.createClass({
 			function(reason) {
 				console.log(reason);
 		});
-
+		}, 4000);
 
 	},
 

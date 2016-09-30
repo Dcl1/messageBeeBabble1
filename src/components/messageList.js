@@ -36,16 +36,12 @@ module.exports = React.createClass({
 
 	componentWillMount: function(){
 
-		console.log("Something should be happening ");
-
-
 		this._episode = this.props.episode;
 
 	},
 
 	componentDidMount: function(){
 
-		console.log("component did mount");
 
 		this.loadData(this._episode);
 	},
@@ -55,9 +51,8 @@ module.exports = React.createClass({
 		var _this = this;
 		//this.props.updatemessagelist.bind(null, "Hen", "Only text", "true", 0);
 		//this.props.updatemessagelist("Hen", "Only text", "true", 1, 1);
-		console.log("load Data " + epi);
+
 		if( epi === 1 ) {
-			console.log("inside if statement");
 			epiOneMsgList.msgList[0].messages.map(function(obj){
 				_this.props.updatemessagelist(obj.user, obj.text, obj.completed, obj.cid, obj.start);
 			});

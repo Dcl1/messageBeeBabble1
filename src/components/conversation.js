@@ -124,6 +124,8 @@ module.exports = React.createClass({
 
 			if(user.toUpperCase() == 'PLAYER') {
 
+				console.log("It is the player's turn to respond");
+
 				this.setState({
 					isPlayer: true,
 					responseUno: file.conversation[nextStep].text,
@@ -132,6 +134,7 @@ module.exports = React.createClass({
 
 			} else {
 
+				console.log("It is the app's turn to respond");
 
 				this.setState({
 					isPlayer: false,

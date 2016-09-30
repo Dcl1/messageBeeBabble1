@@ -50,14 +50,12 @@ module.exports = React.createClass({
 
 	componentDidMount: function(){
 
-		console.log("That's a mount");
 		this.loadEpisode(this._episode, this._conversationID, this._step);
 
 	},
 
 	componentWillUnmount: function(){
 
-		console.log("That is a unmount");
 
 	},
 
@@ -72,7 +70,6 @@ module.exports = React.createClass({
 				this.grabConvo(file , step);
 				return null;
 			default :
-				console.log("No episode detected");
 				return null;
 		}
 
@@ -99,8 +96,6 @@ module.exports = React.createClass({
 
 		}
 
-		console.log(arr);
-
 		this.setState({
 			messages: arr
 		});
@@ -121,7 +116,7 @@ module.exports = React.createClass({
 			var past = this.state.messages;
 			console.log( now + " " + past);
 
-
+			console.log("This step " + this._step);
 			this.checkNextMessage(this._step);
 
 		}
@@ -131,7 +126,6 @@ module.exports = React.createClass({
 	checkNextMessage: function(ste){
 
 		var nextStep = this._step + 1;
-		var ray = this.state.messages;
 		var file = this._file;
 
 		if( nextStep < file.conversation.length ) {
@@ -139,7 +133,7 @@ module.exports = React.createClass({
 
 			if(user.toUpperCase() == 'PLAYER') {
 
-				console.log("This the player's turn");
+				console.log("It is the player's turn to respond");
 
 				this.setState({
 					isPlayer: true,
@@ -149,6 +143,7 @@ module.exports = React.createClass({
 
 			} else {
 
+				console.log("It is the app's turn to respond");
 
 				this.setState({
 					isPlayer: false,
@@ -167,9 +162,126 @@ module.exports = React.createClass({
 	},
 
 
-	renderNextMessage: function(){
+	increaseStep: function(newStep){
 
-		console.log("This is render the next message");
+		var _this = this;
+		var file = this._file;
+		if(newStep >= file.conversation.length - 1) {
+			_this.props.updatestep();
+		} else {
+			console.log("This is the newStep count " + newStep);
+		}
+
+		this._step = newStep;
+
+	},
+
+
+	renderNextMessage: function(next){
+
+		var _this = this;
+		var file = this._file;
+		var obj = file.conversation[next];
+		var ray= [];		
+		var nextStep = next;
+		//console.log(this.state.messages);
+
+		// setTimeout(() => {
+		// 	this.setState({
+		// 		typingMessage: 'Typing a message...',
+		// 	});
+		// }, 400);
+
+		// setTimeout(() => {
+		// 	this.setState({
+		// 		typingMessage: '',
+		// 	});
+		// }, 1200 );
+
+		// setTimeout(() => {
+
+		// 	var imgURL = file.conversation[next].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
+		// 	let uni = Math.round(Math.random() * 100000);
+
+		// 	ray.push({
+		// 		"text" : obj.text , 
+		// 		"name" : obj.user , 
+		// 		"position" : obj.position , 
+		// 		"image" : imgURL , 
+		// 		"date" : new Date(2016, 0 ,1, 20, 0), 
+		// 		"uniqueId" : uni  
+		// 	});
+
+		// 	this.setState({
+		// 		messages: ray
+		// 	});
+
+		// }, Math.random() * (4000 - 2200) + 2200);
+
+		// setTimeout(() => {
+
+		// 	var imgURL = file.conversation[next].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
+		// 	let uni = Math.round(Math.random() * 100000);
+
+		// 	ray.push({
+		// 		"text" : obj.text , 
+		// 		"name" : obj.user , 
+		// 		"position" : obj.position , 
+		// 		"image" : imgURL , 
+		// 		"date" : new Date(2016, 0 ,1, 20, 0), 
+		// 		"uniqueId" : uni  
+		// 	});
+		// }, Math.random() * (4000 - 2200) + 2200);
+
+		var p1 = new Promise(
+
+			function(resolve, reject) {
+
+				setTimeout(() => {
+					console.log("Inside the setTimeout");
+					ray = _this.state.messages.slice();
+					console.log("Inside the promise " + ray);
+					resolve(ray);
+				}, 400);
+			}
+
+		);
+
+
+		p1.then(
+			function(){
+
+				console.log("Inside then ");
+
+				
+
+				var imgURL = file.conversation[next].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
+				let uni = Math.round(Math.random() * 100000);
+
+				ray.push({
+					"text" : obj.text , 
+					"name" : obj.user , 
+					"position" : obj.position , 
+					"image" : imgURL , 
+					"date" : new Date(2016, 0 ,1, 20, 0), 
+					"uniqueId" : uni  
+				});
+
+
+				
+
+
+				_this.setState({
+					messages: ray
+				});
+				_this.increaseStep(nextStep);
+			}
+
+		).catch(
+			function(reason) {
+				console.log(reason);
+		});
+
 
 	},
 

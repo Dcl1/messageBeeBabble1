@@ -24,12 +24,10 @@ module.exports = React.createClass({
 
 	componentWillMount: function(){
 
-		console.log("BeeBabble Mounted");
 
 	},
 
 	backCall: function(){
-		console.log("That's a back");
 		Actions.pop();
 	},
 

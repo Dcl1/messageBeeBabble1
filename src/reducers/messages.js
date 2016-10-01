@@ -28,7 +28,6 @@ export default function messagesreducer(state = initialState, action) {
 
 		case types.ADDTOMESSAGELIST:
 
-			console.log("New Update Message list is called");
 
 			return {
 				...state,
@@ -39,7 +38,6 @@ export default function messagesreducer(state = initialState, action) {
 
 		case types.UPDATEMESSAGESTEP:
 
-			console.log("UPDATEMESSAGESTEP CALLED");
 
 			return {
 				...state,

@@ -5,6 +5,7 @@ import {
 	StyleSheet,
 	Text,
 	ListView,
+	Image,
 	TouchableHighlight
 } from 'react-native';
 
@@ -146,11 +147,17 @@ module.exports = React.createClass({
 	_renderRow: function(rowData: string, sectionID: number, rowID: number ){
 		return (
 			<TouchableHighlight style={styles.postCard} onPress={ () => Actions.Conversation({cid: rowData.id, start: rowData.start}) } >
-				<View>
+			<View style={styles.rowElement}>
+				<View style={styles.col}>
 					<Text ellipsizeMode={'middle'} numberOfLines={2}> {rowData.user} </Text>
 					<Text ellipsizeMode={'middle'} numberOfLines={2}> {rowData.text} </Text>
-					<Text ellipsizeMode={'middle'} numberOfLines={2}> {rowData.start} </Text>
 				</View>
+				<View >
+					<Image
+						source={require('image!rightChevron')}
+					/>
+				</View>	
+			</View>
 			</TouchableHighlight>
 		);
 	}
@@ -169,10 +176,25 @@ var styles = StyleSheet.create({
 		marginTop: 66
 	},
 
+	col: {
+		flex: 1,
+		flexDirection: 'column'
+	},
+
+	rowElement: {
+		flex: 1,
+		flexDirection: 'row',
+	},
+
+	chevron: {
+		alignSelf: 'flex-end',
+		justifyContent: 'center'
+	},
+
 	postCard: {
 		flex: 1,
-		flexDirection: 'column',
-		padding: 15,
+		flexDirection: 'row',
+		padding: 30,
 		backgroundColor: 'white',
 		borderBottomWidth: 1,
 		borderBottomColor: 'grey'

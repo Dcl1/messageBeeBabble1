@@ -181,7 +181,7 @@ module.exports = React.createClass({
 
 		this._step = newStep;
 
-		this.props.updatemessagestep(this._conversationID, newStep);
+		
 
 	},
 
@@ -225,6 +225,11 @@ module.exports = React.createClass({
 		var stat = this.state;
 		var imgURL = obj.position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
 		let uni = Math.round(Math.random() * 100000);
+		var newStep = this._step + 1;
+
+
+		this.props.updatemessagestep(this._conversationID, newStep, obj.text);
+
 		return [
 			...stat.messages,
 			{

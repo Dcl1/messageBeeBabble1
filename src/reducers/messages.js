@@ -45,7 +45,7 @@ export default function messagesreducer(state = initialState, action) {
 				...state,
 				mlist: state.mlist.map(msg =>
 						msg.id === action.id ?
-						{...msg, start: action.step} :
+						{...msg, start: action.step, text: action.text} :
 						msg
 
 					)	

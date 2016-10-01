@@ -251,11 +251,12 @@ module.exports = React.createClass({
 		var _this = this;
 		var file = this._file;
 		var nextStep = this._step + 1;
-
+		//console.log("Inside conversation2 handleSend");
+		//console.log(choice);
 
 		var obje = file.conversation[nextStep];
 
-		var ray = this.addMessages(obje);
+		var ray = this.addMessages(message);
 
 		this.increaseStep(nextStep);
 

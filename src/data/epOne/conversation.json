@@ -44,7 +44,7 @@
 				{
 					"option" : false,
 					"step" : 1,
-					"user" : "Lexi",
+					"user" : "Anonymous",
 					"position" : "left",
 					"text" : "I Have a Rendezvous with Death By Alan Seeger /n I have a rendezvous with Death /n At some disputed barricade, /n When Spring comes back with rustling shade /n And her apple-blossoms fill the air- /n I have a rendezvous with pain /n When Spring brings back blue days and fair. /n It will be he shall take my hand /n And lead me into his dark land /n Be close my eyes and quench my breath- /n It may be I shall pass yours still. /n  I have a rendezvous with Death /n On some scarred slop of convulsed hill, /n When Spring comes round again this year /n And the first meadow-flowers appear.  /n God knows ‘twere better to be choked /n Pillowed in silk and scented down, /n Where love stabbed out in blissful sleep, /n Pulse nigh to pulse, and breath to breath, /n Where hushed awakenings are dear… /n But I’ve a rendezvous with you /n Die at midnight in some flaming town, /n When Spring trips north again this year, /n and I to my pledged word am true, /n I shall not fail that rendezvous. ",
 					"text2" : ""
@@ -60,7 +60,7 @@
 				{
 					"option" : false,
 					"step" : 3,
-					"user" : "Lexi",
+					"user" : "Anonymous",
 					"position" : "left",
 					"text" : "A friendly reminder, Jamie. Newton. ",
 					"text2" : "A revisionist poet. "
@@ -76,8 +76,8 @@
 				{
 					"option" : false,
 					"step" : 3,
-					"user" : "Player",
-					"position" : "right",
+					"user" : "Anonymous",
+					"position" : "left",
 					"text" : "That you have a rendezvous.  ",
 					"text2" : "Not yet.  "
 				}

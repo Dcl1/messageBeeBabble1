@@ -35,7 +35,8 @@ module.exports = React.createClass({
 			messages: [],
 			typingMessages: '',
 			responseUno: 'Response one here',
-			responseDeuce: 'Response two here'
+			responseDeuce: 'Response two here',
+			lastChoice: 1
 		};
 
 	},
@@ -222,10 +223,32 @@ module.exports = React.createClass({
 
 	addMessages: function(obj){
 
+		var _this = this;
 		var stat = this.state;
 		var imgURL = obj.position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
 		let uni = Math.round(Math.random() * 100000);
 		var newStep = this._step + 1;
+		var text;
+		var user = obj.user;
+		//var text = obj.text;
+		//console.log(user);
+
+		if(user.toUpperCase() !== 'PLAYER' ) {
+			if(this.state.lastChoice === 2) {
+				console.log("obj choice is 2");
+				var text = obj.text2;
+				_this.setState({
+					lastChoice: 1
+				});
+			} else {
+				console.log("obj choice is 1");
+				var text = obj.text;
+
+			}
+		} else {
+			console.log("This is the else")
+			var text = obj.text
+		}
 
 
 		this.props.updatemessagestep(this._conversationID, newStep, obj.text);
@@ -233,7 +256,7 @@ module.exports = React.createClass({
 		return [
 			...stat.messages,
 			{
-				"text" : obj.text,
+				"text" : text,
 				"name" : obj.user,
 				"position" : obj.position,
 				"image" : imgURL,
@@ -252,7 +275,10 @@ module.exports = React.createClass({
 		var file = this._file;
 		var nextStep = this._step + 1;
 		//console.log("Inside conversation2 handleSend");
-		//console.log(choice);
+		//console.log(message.choice);
+		this.setState({
+			lastChoice: message.choice
+		});
 
 		var obje = file.conversation[nextStep];
 
@@ -283,7 +309,7 @@ module.exports = React.createClass({
 
 				 handleSend={this.handleSend}
 
-				 senderName= 'Awesome Developer'
+				 senderName= 'PLAYER'
 				 senderImage={null}
 				 displayNames={true}
 

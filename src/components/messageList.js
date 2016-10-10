@@ -39,26 +39,32 @@ module.exports = React.createClass({
 
 		this._episode = this.props.episode;
 
+
+		console.log(this.props.appStep);
+
 	},
 
 	componentDidMount: function(){
 
 
-		this.loadData(this._episode);
+		this.loadData(this._episode, this.props.appStep);
 	},
 
-	loadData: function(epi){
+	loadData: function(epi, step){
 
 		var _this = this;
 		//this.props.updatemessagelist.bind(null, "Hen", "Only text", "true", 0);
 		//this.props.updatemessagelist("Hen", "Only text", "true", 1, 1);
 
-		if( epi === 1 ) {
+		if( epi === 1 && step === 1  ) {
 			epiOneMsgList.msgList[0].messages.map(function(obj){
 
 				_this.props.updatemessagelist(obj.user, obj.text, obj.completed, obj.cid, obj.start);
 				
 			});
+
+			this.props.updatestep();
+
 		} else {
 			console.log("Set up the other episodes for message list");
 		}
@@ -81,40 +87,40 @@ module.exports = React.createClass({
 
 	 },
 
-	checkData: function(epi){
+	// checkData: function(epi){
 
 
 		
-		var _this = this;
-		var arr =[];
+	// 	var _this = this;
+	// 	var arr =[];
 
-		if(epi === 1) {
-			epiOneMsgList.msgList[0].messages.map(function(obj){
-				arr.push({"user" : obj.user, "id" : obj.cid, "text" : obj.text}, "step" : obj.start)
-			});
-			var vs = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2});
-			_this.setState({
-				dataSource: vs.cloneWithRows(arr)
-			});
+	// 	if(epi === 1) {
+	// 		epiOneMsgList.msgList[0].messages.map(function(obj){
+	// 			arr.push({"user" : obj.user, "id" : obj.cid, "text" : obj.text}, "step" : obj.start)
+	// 		});
+	// 		var vs = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2});
+	// 		_this.setState({
+	// 			dataSource: vs.cloneWithRows(arr)
+	// 		});
 
-		} else if (epi === 2) {
+	// 	} else if (epi === 2) {
 
-			epiTwoMsgList.msgList[0].messages.map(function(obj){
-				arr.push({"user" : obj.user, "id" : obj.cid, "text" : obj.text})
-			});
+	// 		epiTwoMsgList.msgList[0].messages.map(function(obj){
+	// 			arr.push({"user" : obj.user, "id" : obj.cid, "text" : obj.text})
+	// 		});
 
-			var vs = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2});
-			_this.setState({
-				dataSource: vs.cloneWithRows(arr)
-			});
-
-
-		} else {
-			//console.log("Cannot load message list");
-		}
+	// 		var vs = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2});
+	// 		_this.setState({
+	// 			dataSource: vs.cloneWithRows(arr)
+	// 		});
 
 
-	},
+	// 	} else {
+	// 		//console.log("Cannot load message list");
+	// 	}
+
+
+	// },
 
 	render: function(){
 		return (

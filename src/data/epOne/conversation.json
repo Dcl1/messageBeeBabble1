@@ -2,16 +2,16 @@
 	"convo" : [
 		{
 			"convoID" : 0,
-			"startStep" : 1,
+			"switchCheck" : [],
 			"conversation" : []
 		},
 		{
 			"convoID" : 1,
-			"startStep" : 0,
+			"switchCheck" : [],
 			"conversation" : [
 				{
 					"option" : false,
-					"step" : 1,
+					"step" : 0,
 					"user" : "Brookhaven Announcements",
 					"position" : "left",
 					"text" : " Hello. It is my genuine pleasure to welcome you to the Brookhaven Preparatory Acadamy. (Go Bees!) This “BeeBabble” application is a useful tool for interacting with classmates, alumni and faculty members. Here at Brookhaven, we pride ourselves on our robust offering of extracurricular activities (you are expected to participate in two student organizations per semester.) One of these can be a Brookhaven Society. These six societies offer closed membership and can influence your success beyond your time at Brookhaven. Will you like to see the list of societies?",
@@ -19,7 +19,7 @@
 				},
 				{
 					"option" : false,
-					"step" : 2,
+					"step" : 1,
 					"user" : "player",
 					"position" : "right",
 					"text" : "Show me list of societies",
@@ -27,7 +27,7 @@
 				},
 				{
 					"option" : false,
-					"step" : 3,
+					"step" : 2,
 					"user" : "Brookhaven Announcements",
 					"position" : "left",
 					"text" : "Here is the list of our six societies: Leverage, Inclination, Revolution, Succession, Evolution, and Clockwork",
@@ -39,11 +39,11 @@
 
 		{
 			"convoID" : 2,
-			"startStep" : 0,
+			"switchCheck" : [1],
 			"conversation" : [
 				{
 					"option" : false,
-					"step" : 1,
+					"step" : 0,
 					"user" : "Anonymous",
 					"position" : "left",
 					"text" : "I Have a Rendezvous with Death By Alan Seeger /n I have a rendezvous with Death /n At some disputed barricade, /n When Spring comes back with rustling shade /n And her apple-blossoms fill the air- /n I have a rendezvous with pain /n When Spring brings back blue days and fair. /n It will be he shall take my hand /n And lead me into his dark land /n Be close my eyes and quench my breath- /n It may be I shall pass yours still. /n  I have a rendezvous with Death /n On some scarred slop of convulsed hill, /n When Spring comes round again this year /n And the first meadow-flowers appear.  /n God knows ‘twere better to be choked /n Pillowed in silk and scented down, /n Where love stabbed out in blissful sleep, /n Pulse nigh to pulse, and breath to breath, /n Where hushed awakenings are dear… /n But I’ve a rendezvous with you /n Die at midnight in some flaming town, /n When Spring trips north again this year, /n and I to my pledged word am true, /n I shall not fail that rendezvous. ",
@@ -51,7 +51,7 @@
 				},
 				{
 					"option" : false,
-					"step" : 2,
+					"step" : 1,
 					"user" : "player",
 					"position" : "right",
 					"text" : "What is this?",
@@ -59,7 +59,7 @@
 				},
 				{
 					"option" : false,
-					"step" : 3,
+					"step" : 2,
 					"user" : "Anonymous",
 					"position" : "left",
 					"text" : "A friendly reminder, Jamie. Newton. ",
@@ -67,7 +67,7 @@
 				},
 				{
 					"option" : false,
-					"step" : 4,
+					"step" : 3,
 					"user" : "player",
 					"position" : "right",
 					"text" : "A reminder of what?",
@@ -75,7 +75,7 @@
 				},
 				{
 					"option" : false,
-					"step" : 3,
+					"step" : 4,
 					"user" : "Anonymous",
 					"position" : "left",
 					"text" : "That you have a rendezvous.  ",

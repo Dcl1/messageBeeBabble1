@@ -26,7 +26,7 @@ module.exports = React.createClass({
 		this._step;
 		this._conversationID;
 		this._episode;
-
+		this._switchCheck;
 
 		this._file;
 
@@ -36,7 +36,8 @@ module.exports = React.createClass({
 			typingMessages: '',
 			responseUno: 'Response one here',
 			responseDeuce: 'Response two here',
-			lastChoice: 1
+			lastChoice: 0 ,
+			switchStep: false
 		};
 
 	},
@@ -71,6 +72,7 @@ module.exports = React.createClass({
 				var file = conversationOne.convo[convo];
 				this._file = file;
 				this.grabConvo(file , step);
+				this._switchCheck = file.switchCheck;
 				return null;
 			default :
 				return null;
@@ -138,6 +140,22 @@ module.exports = React.createClass({
 		var _this = this;
 		var nextStep = this._step + 1;
 		var file = this._file;
+
+		console.log(this.state.switchStep);
+
+		if(this._switchCheck.indexOf(this._step)){
+			console.log("Yes in the switchCheck array");
+			_this.setState({
+				switchStep: true
+			});
+
+		} else {
+			console.log("Not in the switchCheck array");
+			_this.setState({
+				switchStep: false
+			});
+		}
+
 
 		if( nextStep < file.conversation.length ) {
 			var user = file.conversation[nextStep].user;

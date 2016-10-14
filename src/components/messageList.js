@@ -28,6 +28,7 @@ module.exports = React.createClass({
 
 		var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2});
 		this._episode;
+		this._actionlist;
 
 		return {
 			dataSource: ds.cloneWithRows(theData)
@@ -57,9 +58,14 @@ module.exports = React.createClass({
 		//this.props.updatemessagelist("Hen", "Only text", "true", 1, 1);
 
 		if( epi === 1 && step === 1  ) {
+			_this._actionlist =	epiOneMsgList.msgList[0].actionCheck;
+
 			epiOneMsgList.msgList[0].messages.map(function(obj){
 
-				_this.props.updatemessagelist(obj.user, obj.text, obj.completed, obj.cid, obj.start);
+				if(obj.active === true){
+					_this.props.updatemessagelist(obj.user, obj.text, obj.active, obj.cid, obj.start);
+				}	
+				
 				
 			});
 
@@ -85,7 +91,25 @@ module.exports = React.createClass({
 		} else {
 		}
 
+
 	 },
+
+
+	 componentDidUpdate: function( prevProps, prevState){
+
+	 	var stp = this.props.appStep;
+	 	console.log(stp);
+
+	 	var arr = this._actionlist;
+
+	 	arr.map(function(obj){
+	 		console.log(obj.step === stp);
+	 	});
+
+
+	 },
+
+
 
 	// checkData: function(epi){
 

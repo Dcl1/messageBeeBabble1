@@ -17,7 +17,7 @@ export default function messagesreducer(state = initialState, action) {
 				mlist: [
 					{
 						id: action.id,
-						complete: true,
+						active: action.active,
 						user: action.user,
 						text: action.text,
 						start: action.start

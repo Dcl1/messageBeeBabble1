@@ -112,12 +112,11 @@ module.exports = React.createClass({
 
 	},
 
-	findInArray: function(check){
-		console.log(check);
-		console.log(this._step);
+	// findInArray: function(check){
 
-		return check === this._step;
-	},
+
+	// 	return check === this._step;
+	// },
 
 	callBack: function(){
 		return this._switchCheck.find(_this.findInArray) === undefined;
@@ -153,12 +152,9 @@ module.exports = React.createClass({
 		//console.log(_this._switchCheck);
 		var arr = _this._switchCheck;
 		//console.log(arr.includes(ste));
-		console.log(arr);
-		console.log(ste+1);
 
 		if(arr.includes(ste+1) === true){
 			_this.checkNextMessage(ste);
-			console.log("that");
 		} else {
 			_this.checkForceMessage(ste, _this.state.lastChoice);
 		}

@@ -1,19 +1,27 @@
 {
 	"msgList" : [
 		{
+			"actionCheck" : [{"step" : 4, "type" : "addMore"}],
 			"messages" : [
 				{
 					"user" : "Brookhaven Announcements",
-					"completed" : true,
+					"active" : true,
 					"text" : "Hello. It is my genuine pleasure to welcome you to the Brookhaven Preparatory Acadamy. (Go Bees!) This “BeeBabble” application is a useful tool for interacting with classmates, alumni and faculty members. Here at Brookhaven, we pride ourselves on our robust offering of extracurricular activities (you are expected to participate in two student organizations per semester.) One of these can be a Brookhaven Society. These six societies offer closed membership and can influence your success beyond your time at Brookhaven.",
 					"cid" : 1,
 					"start" : 0
 				},
 				{
 					"user" : "Anonymous",
-					"completed" : true,
+					"active" : true,
 					"text" : "Great meeting you in class today!",
 					"cid" : 2,
+					"start" : 0
+				},
+				{
+					"user" : "Hello third friend",
+					"active" : false,
+					"text" : "This is the third conversation",
+					"cid" : 3,
 					"start" : 0
 				}
 			]

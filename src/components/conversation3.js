@@ -112,21 +112,63 @@ module.exports = React.createClass({
 
 	},
 
+	findInArray: function(check){
+		console.log(check);
+		console.log(this._step);
+
+		return check === this._step;
+	},
+
+	callBack: function(){
+		return this._switchCheck.find(_this.findInArray) === undefined;
+	},
+
+
 	isSwitch: function(ste){
 
 		var _this = this;
 
-		console.log(this._switchCheck.indexOf(ste));
+		//console.log(this._switchCheck.indexOf(ste));
 
-		if(this._switchCheck.indexOf(ste) !== -1){
-			console.log("index of");
-			_this.checkForceMessage(ste, _this.state.lastChoice);
+		// if(this._switchCheck.indexOf(ste) !== -1){
+		// 	console.log("index of");
+		// 	_this.checkForceMessage(ste, _this.state.lastChoice);
 			
 
+		// } else {
+		// 	console.log("not index of");
+		// 	_this.checkNextMessage(ste);	
+		// }
+
+
+		// var val = this._switchCheck.find(_this.findInArray);
+		// console.log("val: " + val);
+
+		// if ( _this.callBack) {
+		// 	console.log("Its true???");
+		// 	_this.checkNextMessage(ste);
+		// } else {
+		// 	_this.checkForceMessage(ste, _this.state.lastChoice);
+		// }
+		//console.log(_this._switchCheck);
+		var arr = _this._switchCheck;
+		//console.log(arr.includes(ste));
+		console.log(arr);
+		console.log(ste+1);
+
+		if(arr.includes(ste+1) === true){
+			_this.checkNextMessage(ste);
+			console.log("that");
 		} else {
-			console.log("not index of");
-			_this.checkNextMessage(ste);	
+			_this.checkForceMessage(ste, _this.state.lastChoice);
 		}
+
+
+		
+
+
+
+		
 
 	},
 

@@ -39,7 +39,7 @@
 
 		{
 			"convoID" : 2,
-			"switchCheck" : [1],
+			"switchCheck" : [1 , 6],
 			"conversation" : [
 				{
 					"option" : false,
@@ -80,8 +80,31 @@
 					"position" : "left",
 					"text" : "That you have a rendezvous.  ",
 					"text2" : "Not yet.  "
+				},
+				{
+					"option" : false,
+					"step" : 5,
+					"user" : "Anonymous",
+					"position" : "left",
+					"text" : "5 a ",
+					"text2" : "5 b "
+				},
+				{
+					"option" : false,
+					"step" : 6,
+					"user" : "player",
+					"position" : "right",
+					"text" : "6 a",
+					"text2" : "6 b"
+				},
+				{
+					"option" : false,
+					"step" : 7,
+					"user" : "Anonymous",
+					"position" : "left",
+					"text" : "7 a  ",
+					"text2" : " 7 b "
 				}
-
 			] 
 		} // This is the end of convoID 1
 	]

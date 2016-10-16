@@ -40,9 +40,6 @@ module.exports = React.createClass({
 
 		this._episode = this.props.episode;
 
-
-		console.log(this.props.appStep);
-
 	},
 
 	componentDidMount: function(){
@@ -68,7 +65,7 @@ module.exports = React.createClass({
 				
 				
 			});
-
+			console.log("How many times is this called");
 			this.props.updatestep();
 
 		} else {
@@ -103,13 +100,15 @@ module.exports = React.createClass({
 
 	 	var arr = this._actionlist;
 
-	 	if(prevProps.appStep !== _this.props.appStep){
-		 	arr.map(function(obj){
-		 		console.log(obj.step === stp);
-		 		console.log("obj step " + obj.step);
-		 		_this.callCheckActions(obj.id, obj.type);
-		 	});
-	 	}
+	 	// if(prevProps.appStep !== _this.props.appStep){
+	 	// 	console.log("Is this the problem");
+	 	// } else {
+		 // 	arr.map(function(obj){
+		 // 		console.log(obj.step === stp);
+		 // 		console.log("obj step " + obj.step);
+		 // 		_this.callCheckActions(obj.id, obj.type);
+		 // 	});
+	 	// }
 
 
 
@@ -123,6 +122,9 @@ module.exports = React.createClass({
 
 	 	switch(typ) {
 	 		case "addMore":
+
+	 			console.log("Add More is being called");
+
 	 			_this.props.updatemessageactive(id, true);
 	 			_this.props.updatestep();
 	 			break;

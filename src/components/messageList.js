@@ -97,14 +97,38 @@ module.exports = React.createClass({
 
 	 componentDidUpdate: function( prevProps, prevState){
 
+	 	var _this = this;
 	 	var stp = this.props.appStep;
 	 	console.log(stp);
 
 	 	var arr = this._actionlist;
 
-	 	arr.map(function(obj){
-	 		console.log(obj.step === stp);
-	 	});
+	 	if(prevProps.appStep !== _this.props.appStep){
+		 	arr.map(function(obj){
+		 		console.log(obj.step === stp);
+		 		console.log("obj step " + obj.step);
+		 		_this.callCheckActions(obj.id, obj.type);
+		 	});
+	 	}
+
+
+
+
+	 },
+
+
+	 callCheckActions: function(id , typ){
+
+	 	var _this = this;
+
+	 	switch(typ) {
+	 		case "addMore":
+	 			_this.props.updatemessageactive(id, true);
+	 			_this.props.updatestep();
+	 			break;
+	 		default:
+	 			console.log("action doesn't exist");
+	 	}
 
 
 	 },

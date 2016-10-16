@@ -32,3 +32,11 @@ export function updatemessagestep(id, step, text){
 		text
 	}
 }
+
+export function updatemessageactive(id, active){
+	return {
+		type: types.UPDATEMESSAGEACTIVE,
+		id,
+		active
+	}
+}

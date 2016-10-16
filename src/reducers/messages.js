@@ -35,6 +35,19 @@ export default function messagesreducer(state = initialState, action) {
 					
 				]
 			};
+		case types.UPDATEMESSAGEACTIVE:
+
+			return {
+				...state,
+				mlist: state.mlist.map(msg => 
+						msg.id === action.id ?
+						{...msg, active: action.active} :
+						msg
+
+					)
+
+			}
+
 
 		case types.UPDATEMESSAGESTEP:
 

@@ -59,9 +59,9 @@ module.exports = React.createClass({
 
 			epiOneMsgList.msgList[0].messages.map(function(obj){
 
-				if(obj.active === true){
+				//if(obj.active === true){
 					_this.props.updatemessagelist(obj.user, obj.text, obj.active, obj.cid, obj.start);
-				}	
+				//}	
 				
 				
 			});
@@ -82,6 +82,7 @@ module.exports = React.createClass({
 
 		if(nextProps.list !== this.props.list){
 			var array = nextProps.list;
+
 			_this.setState({
 				dataSource: ds.cloneWithRows(array)
 			});

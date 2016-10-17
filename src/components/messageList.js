@@ -65,7 +65,7 @@ module.exports = React.createClass({
 				
 				
 			});
-			console.log("How many times is this called");
+
 			this.props.updatestep();
 
 		} else {
@@ -78,16 +78,40 @@ module.exports = React.createClass({
 
 	 	var _this = this;
 	 	var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2});
-
+	 	var arr = this._actionlist;
 
 		if(nextProps.list !== this.props.list){
 			var array = nextProps.list;
+			var showArray = [];
+			array.map(function(obj){
+				if(obj.active === true){
+					showArray.push(obj);
+				}
+			});
+
 
 			_this.setState({
-				dataSource: ds.cloneWithRows(array)
+				dataSource: ds.cloneWithRows(showArray)
 			});
 		} else {
 		}
+
+
+		if( nextProps.appStep !== _this.props.appStep ) {
+			arr.map(function(obj){
+				//console.log(obj);
+				if( obj.step === nextProps.appStep ) {
+					console.log("The steps are the same same" );
+
+					_this.callCheckActions( obj.id , obj.type );
+
+				}
+
+
+			});
+		}
+
+
 
 
 	 },
@@ -97,9 +121,28 @@ module.exports = React.createClass({
 
 	 	var _this = this;
 	 	var stp = this.props.appStep;
-	 	console.log(stp);
+	 	var epi = this.props.episode;
+		console.log(stp);
 
-	 	var arr = this._actionlist;
+
+
+	 	// if( stp > 1){
+		 // 	if(_this.prevProps !== _this.props){
+		 // 		console.log("The props aren't the same");
+		 // 		console.log(_this.prevProps.episode);
+		 // 		console.log(_this.prevProps.list);
+		 // 		console.log(_this.prevProps.appStep);
+		 // 	} else if (_this.prevState !== _this.state) {
+		 // 		console.log("The states aren't the same");
+		 // 	} else {	
+		 // 		console.log("The props and state checks aren't working")
+		 // 	}
+	 	// } else {
+	 	// 	console.log("Not greater than episode 1");
+	 	// }
+
+
+	 	
 
 	 	// if(prevProps.appStep !== _this.props.appStep){
 	 	// 	console.log("Is this the problem");
@@ -112,12 +155,20 @@ module.exports = React.createClass({
 	 	// }
 
 
+ 		// if( prevProps.appStep !== _this.props.appStep ) {
+ 		// 	console.log("The app steps arent the step");
+
+ 		// } else {
+ 		// 	console.log("The steps are the same");
+ 		// }
+
+
 
 
 	 },
 
 
-	 callCheckActions: function(id , typ){
+	 callCheckActions: function(id, typ){
 
 	 	var _this = this;
 
@@ -126,11 +177,15 @@ module.exports = React.createClass({
 
 	 			console.log("Add More is being called");
 
-	 			_this.props.updatemessageactive(id, true);
-	 			_this.props.updatestep();
+	 			 _this.props.updatemessageactive(id, true);
+	 			// _this.props.updatestep();
+	 			break;
+	 		case "testAction":
+	 			console.log("TEST ACTIONS CALLED");
 	 			break;
 	 		default:
 	 			console.log("action doesn't exist");
+	 			break;
 	 	}
 
 

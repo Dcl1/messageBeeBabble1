@@ -11,6 +11,7 @@ import {
 // import screens here
 import Messages from './containers/messageContainer';
 import Conversation from './containers/convoContainer';
+import Intermission from './components/intermission';
 // end of import screens here
 
 
@@ -39,6 +40,9 @@ module.exports = React.createClass({
 				<Scene key="Messages" title="Recent" >
 					<Scene key="MessageList" title="Messages" component={Messages} initial={true} />
 					<Scene key="Conversation" title="Conversation" component={Conversation} onBack={this.backCall} />
+				</Scene>
+				<Scene key="intermission" direction="vertical">
+					<Scene key="intermissionModal" component={Intermission} schema="modal" title="Intermision" />
 				</Scene>	
 			</Scene>
 			</Router>

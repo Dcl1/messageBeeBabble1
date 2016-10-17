@@ -88,22 +88,6 @@
 					"position" : "left",
 					"text" : "5 a ",
 					"text2" : "5 b "
-				},
-				{
-					"option" : false,
-					"step" : 6,
-					"user" : "player",
-					"position" : "right",
-					"text" : "6 a",
-					"text2" : "6 b"
-				},
-				{
-					"option" : false,
-					"step" : 7,
-					"user" : "Anonymous",
-					"position" : "left",
-					"text" : "7 a  ",
-					"text2" : " 7 b "
 				}
 			] 
 		} // This is the end of convoID 1

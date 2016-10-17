@@ -1,6 +1,6 @@
 /*		App actions	 */
 export const UPDATESTEP = 'UPDATESTEP';
-
+export const NEXTEPISODE = 'NEXTEPISODE';
 /* */
 
 export const ADDTOMESSAGELIST = 'ADDTOMESSAGELIST';

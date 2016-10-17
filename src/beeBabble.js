@@ -41,7 +41,7 @@ module.exports = React.createClass({
 					<Scene key="MessageList" title="Messages" component={Messages} initial={true} />
 					<Scene key="Conversation" title="Conversation" component={Conversation} onBack={this.backCall} />
 				</Scene>
-				<Scene key="intermission" direction="vertical">
+				<Scene key="Intermission" direction="vertical">
 					<Scene key="intermissionModal" component={Intermission} schema="modal" title="Intermision" />
 				</Scene>	
 			</Scene>

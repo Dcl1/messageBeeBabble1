@@ -101,7 +101,7 @@ module.exports = React.createClass({
 			arr.map(function(obj){
 				//console.log(obj);
 				if( obj.step === nextProps.appStep ) {
-					console.log("The steps are the same same" );
+			//		console.log("The steps are the same same" );
 
 					_this.callCheckActions( obj.id , obj.type );
 
@@ -122,7 +122,7 @@ module.exports = React.createClass({
 	 	var _this = this;
 	 	var stp = this.props.appStep;
 	 	var epi = this.props.episode;
-		console.log(stp);
+		//console.log(stp);
 
 
 
@@ -180,6 +180,11 @@ module.exports = React.createClass({
 	 			 _this.props.updatemessageactive(id, true);
 	 			// _this.props.updatestep();
 	 			break;
+	 		case "nextEpisode":
+	 			console.log("The Next Episode is called!!!");
+	 			_this.props.nextepisode();
+	 			break;
+
 	 		case "testAction":
 	 			console.log("TEST ACTIONS CALLED");
 	 			break;

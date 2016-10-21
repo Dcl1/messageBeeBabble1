@@ -11,7 +11,7 @@ import {
 // import screens here
 import Messages from './containers/messageContainer';
 import Conversation from './containers/convoContainer';
-import Intermission from './components/intermission';
+import Intermission from './containers/intermissionContainer';
 // end of import screens here
 
 

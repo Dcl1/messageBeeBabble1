@@ -18,9 +18,12 @@ module.exports = React.createClass({
 	render: function(){
 		return (
 			<View style={styles.container}>
+				<View style={styles.viewPort}>
+
+				</View>
 				<View style={styles.textCont}>
 					<Text style={styles.bigText}>
-						Number!
+						
 					</Text>
 				</View>
 			</View>
@@ -34,7 +37,12 @@ var styles = StyleSheet.create({
 
 	container: {
 		flex: 1,
-		flexDirection: 'column'
+		flexDirection: 'column',
+		justifyContent: 'flex-start'
+	},
+	viewPort: {
+		flex:1,
+		backgroundColor: 'grey'
 	},
 	textCont: {
 		flex:1,

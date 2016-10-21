@@ -17,13 +17,15 @@ export default function appreducer(state = initialState, action = {}) {
 
 			setTimeout(() => {
 				Actions.Intermission();
-			}, 1500);
+				return {
+					...state,
+					episode: state.episode+1,
+					step: 0
+				}
+			}, 11000);
 			
 			console.log("NEXTEPISODE REDUCER CALLED");
-			return {
-				...state,
-				episode: state.episode+1
-			}
+
 		case types.UPDATESTEP:
 			return {
 				...state,

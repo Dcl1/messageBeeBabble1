@@ -37,12 +37,12 @@ module.exports = React.createClass({
 		return (
 			<Router>
 			<Scene key='roots' style={styles.container} >
-				<Scene key="Messages" title="Recent" >
+				<Scene key="Messages" title="Recent" renderLeftButton={bla~bla~bla} >
 					<Scene key="MessageList" title="Messages" component={Messages} initial={true} />
 					<Scene key="Conversation" title="Conversation" component={Conversation} onBack={this.backCall} />
 				</Scene>
 				<Scene key="Intermission" direction="vertical">
-					<Scene key="intermissionModal" component={Intermission} schema="modal" title="Intermision" />
+					<Scene key="intermissionModal" component={Intermission} panHandlers={null} schema="modal" title="Intermision" />
 				</Scene>	
 			</Scene>
 			</Router>

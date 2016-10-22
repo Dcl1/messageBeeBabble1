@@ -1,4 +1,7 @@
 import React from 'react';
+import Button from 'react-native-button';
+
+import { Actions } from 'react-native-router-flux';
 
 import {
 	View,
@@ -9,10 +12,16 @@ import {
 	TouchableHighlight
 } from 'react-native';
 
-import { Actions } from 'react-native-router-flux';
+
 
 
 module.exports = React.createClass({
+
+	_handlePress: function(){
+
+		Actions.pop();
+
+	},
 
 
 	render: function(){
@@ -25,6 +34,13 @@ module.exports = React.createClass({
 					<Text style={styles.bigText}>
 						
 					</Text>
+					<Button
+				        style={{fontSize: 20, color: 'green'}}
+				        styleDisabled={{color: 'red'}}
+				        onPress={() => this._handlePress()}>
+					
+						Next
+					</Button>
 				</View>
 			</View>
 		);

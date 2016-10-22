@@ -69,6 +69,18 @@ module.exports = React.createClass({
 
 			this.props.updatestep();
 
+		} else if ( epi === 2 && step === 1 ) {
+
+			console.log("episode 2 and loadData for epi 2 was called");
+
+			_this._actionlist = epiTwoMsgList.msgList[0].actionCheck;
+
+			epiTwoMsgList.msgList[0].messages.map(function(obj){
+
+				_this.props.updatemessagelist(obj.user, obj.text, obj.active, obj.cid, obj.start);
+
+			});
+
 		} else {
 			console.log("Set up the other episodes for message list");
 		}

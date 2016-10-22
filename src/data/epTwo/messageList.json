@@ -1,11 +1,14 @@
 {
 	"msgList" : [
 		{
+			"actionCheck" : [{"step" : 3, "type" : "addMore", "id" : 0}],
 			"messages" : [ 
 				{
 					"user" : "SecondEpisode Dude",
+					"active" : true,
 					"text" : "This is the second episode",
-					"cid" : 1
+					"cid" : 1,
+					"start" : 0
 				}
 			]
 		}

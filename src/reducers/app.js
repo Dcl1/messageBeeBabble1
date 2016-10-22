@@ -24,7 +24,7 @@ export default function appreducer(state = initialState, action = {}) {
 			return {
 				...state,
 				episode: state.episode+1,
-				step: 0
+				step: 1
 			}
 			
 			console.log("NEXTEPISODE REDUCER CALLED");

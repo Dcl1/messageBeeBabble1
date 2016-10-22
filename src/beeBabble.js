@@ -32,12 +32,16 @@ module.exports = React.createClass({
 		Actions.pop();
 	},
 
+	resetCalled: function(){
+		console.log("Reset called");
+	},
+
 
 	render: function(){
 		return (
 			<Router>
 			<Scene key='roots' style={styles.container} >
-				<Scene key="Messages" title="Recent" renderLeftButton={bla~bla~bla} >
+				<Scene key="Messages" title="Recent" leftButtonImage={require('image!starFill')} leftTitle={null} onLeft={this.resetCalled.bind(null, this)} >
 					<Scene key="MessageList" title="Messages" component={Messages} initial={true} />
 					<Scene key="Conversation" title="Conversation" component={Conversation} onBack={this.backCall} />
 				</Scene>

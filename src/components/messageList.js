@@ -51,6 +51,7 @@ module.exports = React.createClass({
 	loadData: function(epi, step){
 
 		var _this = this;
+		console.log("loadData is working");
 		//this.props.updatemessagelist.bind(null, "Hen", "Only text", "true", 0);
 		//this.props.updatemessagelist("Hen", "Only text", "true", 1, 1);
 
@@ -109,6 +110,12 @@ module.exports = React.createClass({
 
 
 			});
+		}
+
+		if(nextProps.episode !== _this.props.episode){
+
+			_this._episode = nextProps.episode;
+			_this.loadData(nextProps.episode, nextProps.appStep);
 		}
 
 

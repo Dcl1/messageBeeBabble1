@@ -1,6 +1,8 @@
 import React from 'react';
 import Button from 'react-native-button';
 
+import Video from 'react-native/video';
+
 import { Actions } from 'react-native-router-flux';
 
 import {
@@ -17,6 +19,16 @@ import {
 
 module.exports = React.createClass({
 
+
+	getInitialState: function(){
+
+		return {
+			theUrl: 'https://facebook.github.io/react/img/logo_og.png',
+		}
+
+	},
+
+
 	_handlePress: function(){
 
 		Actions.pop();
@@ -28,7 +40,13 @@ module.exports = React.createClass({
 		return (
 			<View style={styles.container}>
 				<View style={styles.viewPort}>
-
+					<Video
+						style={styles.video}
+						rate={1}
+						source = {{uri: this.state.theUrl}}
+						repeat = {true}
+						volume={1.0}
+					/>
 				</View>
 				<View style={styles.textCont}>
 					<Text style={styles.bigText}>
@@ -55,6 +73,9 @@ var styles = StyleSheet.create({
 		flex: 1,
 		flexDirection: 'column',
 		justifyContent: 'flex-start'
+	},
+	video: {
+		flex: 1
 	},
 	viewPort: {
 		flex:1,

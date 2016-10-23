@@ -112,11 +112,6 @@ module.exports = React.createClass({
 
 	},
 
-	// findInArray: function(check){
-
-
-	// 	return check === this._step;
-	// },
 
 	callBack: function(){
 		return this._switchCheck.find(_this.findInArray) === undefined;
@@ -127,44 +122,16 @@ module.exports = React.createClass({
 
 		var _this = this;
 
-		//console.log(this._switchCheck.indexOf(ste));
-
-		// if(this._switchCheck.indexOf(ste) !== -1){
-		// 	console.log("index of");
-		// 	_this.checkForceMessage(ste, _this.state.lastChoice);
-			
-
-		// } else {
-		// 	console.log("not index of");
-		// 	_this.checkNextMessage(ste);	
-		// }
-
-
-		// var val = this._switchCheck.find(_this.findInArray);
-		// console.log("val: " + val);
-
-		// if ( _this.callBack) {
-		// 	console.log("Its true???");
-		// 	_this.checkNextMessage(ste);
-		// } else {
-		// 	_this.checkForceMessage(ste, _this.state.lastChoice);
-		// }
-		//console.log(_this._switchCheck);
 		var arr = _this._switchCheck;
-		//console.log(arr.includes(ste));
 
 		if(arr.includes(ste+1) === true){
+			console.log("ITS A CHECK")
 			_this.checkNextMessage(ste);
 		} else {
+			console.log("ITS NOT A CHECK");
 			_this.checkForceMessage(ste, _this.state.lastChoice);
 		}
 
-
-		
-
-
-
-		
 
 	},
 
@@ -190,6 +157,11 @@ module.exports = React.createClass({
 					_this.setState({
 						responseUno: file.conversation[nextStep].text,
 						responseDeuce: ''
+					});
+				} else if ( last === 2 ) { 
+					_this.setState({
+						responseUno: '',
+						responseDeuce: file.conversation[nextStep].text2
 					});
 				} else {
 					_this.setState({

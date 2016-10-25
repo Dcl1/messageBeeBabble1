@@ -2,6 +2,7 @@ import React from 'react';
 import Button from 'react-native-button';
 
 import Video from 'react-native-video';
+import VideoPlayer from 'react-native-video-player';
 
 import { Actions } from 'react-native-router-flux';
 import firebase from 'firebase';
@@ -25,7 +26,8 @@ module.exports = React.createClass({
 	getInitialState: function(){
 
 		return {
-			theUrl: 'https://facebook.github.io/react/img/logo_og.png',
+			theImage: 'https://facebook.github.io/react/img/logo_og.png',
+			theUrl: ''
 		}
 
 	},
@@ -98,13 +100,16 @@ module.exports = React.createClass({
 		return (
 			<View style={styles.container}>
 				<View style={styles.viewPort}>
-					<Video
-						style={styles.video}
-						rate={1}
-						source = {{uri: this.state.theUrl}}
-						repeat = {true}
-						volume={1.0}
-					/>
+
+			        <VideoPlayer
+			          endWithThumbnail
+			          thumbnail={{ uri: this.state.theImage}}
+			          video={{ uri: this.state.theUrl }}
+			          videoWidth={100}
+			          videoHeight={100}
+			          duration={2/* I'm using a hls stream here, react-native-video
+			            can't figure out the length, so I pass it here from the vimeo config */}
+			        />
 				</View>
 				<View style={styles.textCont}>
 					<Text style={styles.bigText}>

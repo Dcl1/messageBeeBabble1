@@ -7,7 +7,7 @@ import * as storage from 'redux-storage';
 import createEngine from 'redux-storage-engine-reactnativeasyncstorage';
 
 import * as reducers from './reducers';
-
+import FireB from './firebase/fbApp';
 
 import BeeBabble from './beeBabble';
 

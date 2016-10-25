@@ -13,7 +13,7 @@ import Messages from './containers/messageContainer';
 import Conversation from './containers/convoContainer';
 import Intermission from './containers/intermissionContainer';
 // end of import screens here
-
+import Firebase  from 'firebase';
 
 import { Router, Scene, Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
@@ -24,6 +24,17 @@ import { connect } from 'react-redux';
 module.exports = React.createClass({
 
 	componentWillMount: function(){
+
+		var _this = this;
+
+		Firebase.auth().signInAnonymously().catch(function(error){
+
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			console.log(errorMessage);
+
+
+		});
 
 
 	},

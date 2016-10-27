@@ -104,11 +104,10 @@ module.exports = React.createClass({
 			        <VideoPlayer
 			          endWithThumbnail
 			          thumbnail={{ uri: this.state.theImage}}
-			          video={{ uri: this.state.theUrl }}
+			          video={{ uri: "https://firebasestorage.googleapis.com/v0/b/haven-117c1.appspot.com/o/videos%2Ffootball.mp4?alt=media&token=392b794d-7035-4029-b0bd-ff7c025bf3bc" }}
 			          videoWidth={100}
 			          videoHeight={100}
-			          duration={2/* I'm using a hls stream here, react-native-video
-			            can't figure out the length, so I pass it here from the vimeo config */}
+			          autoplay={true}
 			        />
 				</View>
 				<View style={styles.textCont}>

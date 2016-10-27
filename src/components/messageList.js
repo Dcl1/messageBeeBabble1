@@ -51,7 +51,6 @@ module.exports = React.createClass({
 	loadData: function(epi, step){
 
 		var _this = this;
-		console.log("loadData is working");
 		//this.props.updatemessagelist.bind(null, "Hen", "Only text", "true", 0);
 		//this.props.updatemessagelist("Hen", "Only text", "true", 1, 1);
 
@@ -70,8 +69,6 @@ module.exports = React.createClass({
 			this.props.updatestep();
 
 		} else if ( epi === 2 && step === 1 ) {
-
-			console.log("episode 2 and loadData for epi 2 was called");
 
 			_this._actionlist = epiTwoMsgList.msgList[0].actionCheck;
 
@@ -194,13 +191,11 @@ module.exports = React.createClass({
 	 	switch(typ) {
 	 		case "addMore":
 
-	 			console.log("Add More is being called");
 
 	 			 _this.props.updatemessageactive(id, true);
 	 			// _this.props.updatestep();
 	 			break;
 	 		case "nextEpisode":
-	 			console.log("The Next Episode is called!!!");
 	 			_this.props.nextepisode();
 	 			break;
 

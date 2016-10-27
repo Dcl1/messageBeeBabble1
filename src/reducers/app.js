@@ -26,8 +26,6 @@ export default function appreducer(state = initialState, action = {}) {
 				episode: state.episode+1,
 				step: 1
 			}
-			
-			console.log("NEXTEPISODE REDUCER CALLED");
 
 		case types.UPDATESTEP:
 			return {

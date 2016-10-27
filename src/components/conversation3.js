@@ -125,10 +125,8 @@ module.exports = React.createClass({
 		var arr = _this._switchCheck;
 
 		if(arr.includes(ste+1) === true){
-			console.log("ITS A CHECK")
 			_this.checkNextMessage(ste);
 		} else {
-			console.log("ITS NOT A CHECK");
 			_this.checkForceMessage(ste, _this.state.lastChoice);
 		}
 

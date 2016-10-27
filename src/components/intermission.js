@@ -42,7 +42,7 @@ module.exports = React.createClass({
 			if(user) {
 				_this.callUrl();
 			} else {
-
+				console.log("firebase auth() not working");
 			}
 
 		});
@@ -52,10 +52,14 @@ module.exports = React.createClass({
 
 	callUrl: function(){
 
+		console.log("callURl");
+
 		var _this = this;
 
-		var mediaRef = storageRef.child("football");
+		var mediaRef = storageRef.child("videos/football.mp4");
 		mediaRef.getDownloadURL().then(function(url){
+
+			console.log("url " + url);
 
 			_this.setState({
 				thisUrl: url
@@ -83,6 +87,9 @@ module.exports = React.createClass({
 		    	console.log("Unknown error occurred, inspect the server response");
 		      // Unknown error occurred, inspect the server response
 		      break;
+		    default: 
+		    	console.log("default called " + error.code);
+		    	break;
 		  }
 		});
 
@@ -97,14 +104,21 @@ module.exports = React.createClass({
 
 
 	render: function(){
+
+		console.log("https://firebasestorage.googleapis.com/v0/b/haven-117c1.appspot.com/o/videos%2Ffootball.mp4?alt=media&token=392b794d-7035-4029-b0bd-ff7c025bf3bc");
+		console.log("state.theUrl " + this.state.theUrl);
+		var _this = this;
+
 		return (
 			<View style={styles.container}>
 				<View style={styles.viewPort}>
 
+
+
 			        <VideoPlayer
 			          endWithThumbnail
 			          thumbnail={{ uri: this.state.theImage}}
-			          video={{ uri: "https://firebasestorage.googleapis.com/v0/b/haven-117c1.appspot.com/o/videos%2Ffootball.mp4?alt=media&token=392b794d-7035-4029-b0bd-ff7c025bf3bc" }}
+			          video={{ uri: _this.state.theUrl }}
 			          videoWidth={100}
 			          videoHeight={100}
 			          autoplay={true}

@@ -68,7 +68,10 @@ module.exports = React.createClass({
 
 			this.props.updatestep();
 
+
 		} else if ( epi === 2 && step === 1 ) {
+
+			_this.props.aboveone();
 
 			_this._actionlist = epiTwoMsgList.msgList[0].actionCheck;
 
@@ -77,6 +80,9 @@ module.exports = React.createClass({
 				_this.props.updatemessagelist(obj.user, obj.text, obj.active, obj.cid, obj.start);
 
 			});
+
+		}else if (epi === 3 && step === 1){	
+
 
 		} else {
 			console.log("Set up the other episodes for message list");

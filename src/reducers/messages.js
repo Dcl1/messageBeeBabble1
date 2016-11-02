@@ -1,6 +1,7 @@
 import * as types from '../actions/actionTypes';
 
 const initialState = {
+		above: false,
 		mlist : []
 }
 
@@ -11,21 +12,75 @@ const initialState = {
 export default function messagesreducer(state = initialState, action) {
 	switch (action.type) {
 
-		case types.UPDATEMESSAGELIST:
+		case types.ABOVEONE:
 
 			return {
+
 				...state,
-				mlist: [
-					{
-						id: action.id,
-						active: action.active,
-						user: action.user,
-						text: action.text,
-						start: action.start
-					},
-					...state.mlist
-				]
-			};
+				above: true
+
+			}
+
+		case types.UPDATEMESSAGELIST:
+
+			console.log(state);
+
+			if(state.adove > 1 ) {
+
+				console.log("Above one");
+
+				return {
+					...state,
+					mlist: state.mlist.map(msg =>
+							msg.id === action.id ?
+							{...msg,
+								id: action.id,
+								active: action.active,
+								user: action.user,
+								text: msg.text,
+								start: msg.start
+							} : msg
+						)
+				};
+
+			} else {
+
+				console.log("not above one");
+
+				return {
+					...state,
+					mlist: [
+						{
+							id: action.id,
+							active: action.active,
+							user: action.user,
+							text: action.text,
+							start: action.start
+						},
+						...state.mlist
+					]
+				};
+
+			}
+
+
+
+
+		// case types.UPDATEMESSAGELIST:
+
+		// 	return {
+		// 		...state,
+		// 		mlist: [
+		// 			{
+		// 				id: action.id,
+		// 				active: action.active,
+		// 				user: action.user,
+		// 				text: action.text,
+		// 				start: action.start
+		// 			},
+		// 			...state.mlist
+		// 		]
+		// 	};
 
 		case types.ADDTOMESSAGELIST:
 

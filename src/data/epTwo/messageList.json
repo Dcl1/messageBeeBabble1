@@ -1,14 +1,14 @@
 {
 	"msgList" : [
 		{
-			"actionCheck" : [{"step" : 3, "type" : "addMore", "id" : 0}],
+			"actionCheck" : [{"step" : 3, "type" : "addMore", "id" : 0}, {"step" : 5, "type" : "nextEpisode", "id" : 0}],
 			"messages" : [ 
 				{
-					"user" : "SecondEpisode Dude",
+					"user" : "Brookhaven Announcements",
 					"active" : true,
 					"text" : "This is the second episode",
 					"cid" : 1,
-					"start" : 0
+					"start" : 10000
 				}
 			]
 		}

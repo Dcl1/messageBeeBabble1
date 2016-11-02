@@ -1,5 +1,12 @@
 import * as types from './actionTypes';
 
+export function aboveone() {
+	return {
+		type: types.ABOVEONE
+	}
+}
+
+
 export function addtomessagelist( user, text, active, id, start ){
 	return {
 		type: types.CREATEMESSAGELIST,

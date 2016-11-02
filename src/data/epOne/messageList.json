@@ -16,13 +16,6 @@
 					"text" : "Great meeting you in class today!",
 					"cid" : 2,
 					"start" : 0
-				},
-				{
-					"user" : "Hello third friend",
-					"active" : false,
-					"text" : "This is the third conversation",
-					"cid" : 3,
-					"start" : 0
 				}
 			]
 		}

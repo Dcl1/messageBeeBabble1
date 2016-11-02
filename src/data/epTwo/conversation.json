@@ -1,0 +1,25 @@
+{
+	"convo" : [
+		{
+			"convoID" : 0,
+			"switchCheck" : [],
+			"conversation" : []
+		},
+		{
+			"convoID" : 1,
+			"switchCheck" : [],
+			"conversation" : [
+				{
+					"option" : false,
+					"step" : 0,
+					"user" : "Brookhaven Announcements",
+					"position" : "left",
+					"text" : "Yesterday, a tragedy befell our Brookhaven community. It is with immense sadness that I inform you of the death of Fran Stewart, a sophomore attending Brookhaven Preparatory Academy. Ms. Stewart passed away late last night. The untimely passing of one of our own is an unsettling and difficult challenge that we must face together. Morning classes have been cancelled. For those of you who knew Fran, we ask that you use this time to remember and celebrate her warmth and friendship. If you did not, care for your fellow students. While the school and local law enforcement works to understand the circumstances surrounding Fran’s death, we ask that you refrain from gossip out of respect for Fran’s family and her memory. Our faculty and staff is available as a resource during this trying time. We will have more information about access to psychologists and counselors in the next few hours. Thank you and please remember to reach out if you feel you are need of support.",
+					"text2" : ""
+				}
+
+			]
+		}
+
+	]
+}

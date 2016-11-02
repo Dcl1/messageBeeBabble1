@@ -33,7 +33,7 @@ module.exports = React.createClass({
 	},
 
 
-	componentWillMount: function(){
+	componentDidMount: function(){
 
 		var _this = this;
 
@@ -62,7 +62,7 @@ module.exports = React.createClass({
 			console.log("url " + url);
 
 			_this.setState({
-				thisUrl: url
+				theUrl: url
 			});
 
 		}).catch(function(error){
@@ -118,7 +118,7 @@ module.exports = React.createClass({
 			        <VideoPlayer
 			          endWithThumbnail
 			          thumbnail={{ uri: this.state.theImage}}
-			          video={{ uri: _this.state.theUrl }}
+			          video={{ uri: "https://firebasestorage.googleapis.com/v0/b/haven-117c1.appspot.com/o/videos%2Ffootball.mp4?alt=media&token=392b794d-7035-4029-b0bd-ff7c025bf3bc"}}
 			          videoWidth={100}
 			          videoHeight={100}
 			          autoplay={true}

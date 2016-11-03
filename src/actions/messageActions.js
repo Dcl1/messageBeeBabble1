@@ -1,10 +1,19 @@
 import * as types from './actionTypes';
 
-export function aboveone() {
+
+export function startmessagelist(user, text, active, id, start){
+
 	return {
-		type: types.ABOVEONE
+		type: types.STARTMESSAGELIST,
+		user,
+		text,
+		active,
+		id,
+		start
 	}
+
 }
+
 
 
 export function addtomessagelist( user, text, active, id, start ){

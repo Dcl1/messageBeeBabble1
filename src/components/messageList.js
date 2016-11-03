@@ -60,7 +60,7 @@ module.exports = React.createClass({
 			epiOneMsgList.msgList[0].messages.map(function(obj){
 
 				//if(obj.active === true){
-					_this.props.updatemessagelist(obj.user, obj.text, obj.active, obj.cid, obj.start);
+					_this.props.startmessagelist(obj.user, obj.text, obj.active, obj.cid, obj.start);
 				//}	
 				
 				
@@ -71,7 +71,7 @@ module.exports = React.createClass({
 
 		} else if ( epi === 2 && step === 1 ) {
 
-			_this.props.aboveone();
+
 
 			_this._actionlist = epiTwoMsgList.msgList[0].actionCheck;
 

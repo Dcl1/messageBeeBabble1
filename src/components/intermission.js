@@ -19,21 +19,24 @@ import {
 var storage = firebase.storage();
 var storageRef = storage.ref();
 
+const UIManager = require('NativeModules').UIManager;
+
 
 module.exports = React.createClass({
 
 
 	getInitialState: function(){
 
+
 		return {
 			theImage: 'https://facebook.github.io/react/img/logo_og.png',
-			theUrl: ''
+			theUrl: 'https://facebook.github.io/react/img/logo_og.png'
 		}
 
 	},
 
 
-	componentDidMount: function(){
+	componentWillMount: function(){
 
 		var _this = this;
 
@@ -53,20 +56,22 @@ module.exports = React.createClass({
 	callUrl: function(){
 
 		console.log("callURl");
+		console.log(storageRef);
 
 		var _this = this;
 
 		var mediaRef = storageRef.child("videos/football.mp4");
+
+
 		mediaRef.getDownloadURL().then(function(url){
 
-			console.log("url " + url);
+			console.log("url url " + url);
 
 			_this.setState({
 				theUrl: url
 			});
 
 		}).catch(function(error){
-			
 		  switch (error.code) {
 		    case 'storage/object_not_found':
 		    	console.log("File doesn't exist");
@@ -87,11 +92,9 @@ module.exports = React.createClass({
 		    	console.log("Unknown error occurred, inspect the server response");
 		      // Unknown error occurred, inspect the server response
 		      break;
-		    default: 
-		    	console.log("default called " + error.code);
-		    	break;
 		  }
 		});
+
 
 	},
 
@@ -105,7 +108,7 @@ module.exports = React.createClass({
 
 	render: function(){
 
-		console.log("https://firebasestorage.googleapis.com/v0/b/haven-117c1.appspot.com/o/videos%2Ffootball.mp4?alt=media&token=392b794d-7035-4029-b0bd-ff7c025bf3bc");
+		//console.log("https://firebasestorage.googleapis.com/v0/b/haven-117c1.appspot.com/o/videos%2Ffootball.mp4?alt=media&token=392b794d-7035-4029-b0bd-ff7c025bf3bc");
 		console.log("state.theUrl " + this.state.theUrl);
 		var _this = this;
 
@@ -114,15 +117,16 @@ module.exports = React.createClass({
 				<View style={styles.viewPort}>
 
 
+				<Video
 
-			        <VideoPlayer
-			          endWithThumbnail
-			          thumbnail={{ uri: this.state.theImage}}
-			          video={{ uri: "https://firebasestorage.googleapis.com/v0/b/haven-117c1.appspot.com/o/videos%2Ffootball.mp4?alt=media&token=392b794d-7035-4029-b0bd-ff7c025bf3bc"}}
-			          videoWidth={100}
-			          videoHeight={100}
-			          autoplay={true}
-			        />
+					style={styles.video}
+					rate={1}
+					source={{uri: _this.state.theUrl}}
+					repeat={true}
+					volume={1.0}
+
+				/>
+	
 				</View>
 				<View style={styles.textCont}>
 					<Text style={styles.bigText}>

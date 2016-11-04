@@ -20,7 +20,7 @@ export default function appreducer(state = initialState, action = {}) {
 			setTimeout(() => {
 				Actions.Intermission();
 
-			}, 11000);
+			}, 3000);
 			return {
 				...state,
 				episode: state.episode+1,

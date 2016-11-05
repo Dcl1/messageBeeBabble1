@@ -109,7 +109,7 @@ module.exports = React.createClass({
 	render: function(){
 
 		//console.log("https://firebasestorage.googleapis.com/v0/b/haven-117c1.appspot.com/o/videos%2Ffootball.mp4?alt=media&token=392b794d-7035-4029-b0bd-ff7c025bf3bc");
-		console.log("state.theUrl " + this.state.theUrl);
+		//console.log("state.theUrl " + this.state.theUrl);
 		var _this = this;
 
 		return (

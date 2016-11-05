@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 
-import Conversation from '../components/conversation3';
+import Conversation from '../components/conversation';
 
 
 import * as AppActions from '../actions/appActions';

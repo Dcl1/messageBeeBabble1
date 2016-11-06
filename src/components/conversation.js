@@ -50,6 +50,7 @@ module.exports = React.createClass({
 
 	componentDidMount: function(){
 
+		console.log("Component Did Mount");
 		this.loadEpisode(this._episode, this._conversationID, this._step);
 
 	},
@@ -67,13 +68,13 @@ module.exports = React.createClass({
 				this._switchCheck = file.switchCheck;
 				return null;
 			case 2:
-				// console.log("Load Episode 2 ");
-				// var file =  conversationTwo.convo[convo];
-				// console.log(file);
-				// var sttep = 0;
+				console.log("Load Episode 2 ");
+				var file =  conversationTwo.convo[convo];
+				console.log(file);
+				var sttep = 0;
 				// console.log("sttep " + sttep);
-				// this._file = file;
-				// //this.grabConvo(file, sttep);
+				this._file = file;
+				this.grabConvo(file, sttep);
 
 				// for(var i = 0; i <= sttep; i++ ) {
 				// 	var imgURL = file.conversation[i].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
@@ -90,7 +91,7 @@ module.exports = React.createClass({
 
 				// 	//_this.addMessages(file.conversation[i]);
 				// }
-				// this._switchCheck = file.switchCheck;
+				this._switchCheck = file.switchCheck;
 				return null;
 			default : 
 				return null;

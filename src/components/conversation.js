@@ -57,6 +57,8 @@ module.exports = React.createClass({
 
 	loadEpisode: function( epi, convo, step){
 
+		var _this = this;
+
 		switch(epi){
 			case 1 :
 				var file = conversationOne.convo[convo];
@@ -67,9 +69,28 @@ module.exports = React.createClass({
 			case 2:
 				console.log("Load Episode 2 ");
 				var file =  conversationTwo.convo[convo];
+				console.log(file);
+				var sttep = 0;
+				console.log("sttep " + sttep);
 				this._file = file;
-				this.grabConvo(file, step);
-				this._switchCheck = files.switchCheck;
+				//this.grabConvo(file, sttep);
+
+				for(var i = 0; i <= sttep; i++ ) {
+					var imgURL = file.conversation[i].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
+					let uni = Math.round(Math.random() * 100000);
+
+					var obj = {
+						"text" : file.conversation[i].text,
+						"user" : file.conversation[i].user,
+						"position" : file.conversation[i].position,
+						"image" : imgURL,
+						"date" : new Date(),
+						"uniqueId" : uni				
+					}
+
+					_this.addMessages(file.conversation[i]);
+				}
+				this._switchCheck = file.switchCheck;
 				return null;
 			default : 
 				return null;
@@ -87,6 +108,8 @@ module.exports = React.createClass({
 
 		for(var i = 0 ; i <= s; i ++) {
 			console.log("i " + i);
+			console.log("s " + s);
+			console.log(f.conversation[i]);
 			var imgURL = f.conversation[i].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
 			let uni = Math.round(Math.random() * 100000);
 

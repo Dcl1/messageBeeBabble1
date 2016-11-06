@@ -41,6 +41,8 @@ class ConvoContainer extends Component {
 		var ste = this.props.start;
 		var epi = this.props.epi;
 
+		console.log("epi " + epi);
+
 		return (
 			<Conversation
 				episode={epi}

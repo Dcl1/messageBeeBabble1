@@ -14,7 +14,7 @@ var STATUS_BAR_HEIGHT = Navigator.NavigationBar.Styles.General.StatusBarHeight;
 import { Actions } from 'react-native-router-flux';
 
 import conversationOne from '../data/epOne/conversation.json';
-
+import conversationTwo from '../data/epTwo/conversation.json';
 
 module.exports = React.createClass({
 
@@ -64,6 +64,13 @@ module.exports = React.createClass({
 				this.grabConvo(file , step);
 				this._switchCheck = file.switchCheck;
 				return null;
+			case 2:
+				console.log("Load Episode 2 ");
+				var file =  conversationTwo.convo[convo];
+				this._file = file;
+				this.grabConvo(file, step);
+				this._switchCheck = files.switchCheck;
+				return null;
 			default : 
 				return null;
 		}
@@ -72,10 +79,14 @@ module.exports = React.createClass({
 
 	grabConvo: function( f , s){
 
+
+		console.log("Grab convo called " + f);
+		console.log(f);
 	
 		var arr = [];
 
 		for(var i = 0 ; i <= s; i ++) {
+			console.log("i " + i);
 			var imgURL = f.conversation[i].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
 			let uni = Math.round(Math.random() * 100000);
 
@@ -109,6 +120,16 @@ module.exports = React.createClass({
 		if(prevState.messages !== this.state.messages) {
 			this.isSwitch(this._step);
 		}
+
+
+		if(prevProps.episode !== this.props.episode) {
+			this._step = this.props.start;
+			this._conversationID = this.props.convoID;
+			this._episode = this.props.episode;
+			this.loadEpisode(this._episode, this._conversationID, this._step);
+
+		}
+
 
 	},
 

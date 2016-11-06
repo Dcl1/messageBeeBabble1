@@ -28,16 +28,22 @@ class ConvoContainer extends Component {
 	// 	}
 	// }
 
+	componentDidUpdate(prevProps, prevState){
+
+
+	}
+
 
 	render(){
 
 		const { state, actions } = this.props;
 		var cID = this.props.cid;
 		var ste = this.props.start;
+		var epi = this.props.epi;
 
 		return (
 			<Conversation
-				episode={1}
+				episode={epi}
 				convoID={cID}
 				start={ste}
 				{...actions}

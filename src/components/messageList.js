@@ -282,8 +282,11 @@ module.exports = React.createClass({
 	},
 
 	_renderRow: function(rowData: string, sectionID: number, rowID: number ){
+
+		var _this = this;
+
 		return (
-			<TouchableHighlight style={styles.postCard} onPress={ () => Actions.Conversation({cid: rowData.id, start: rowData.start}) } >
+			<TouchableHighlight style={styles.postCard} onPress={ () => Actions.Conversation({cid: rowData.id, start: rowData.start, epi: _this._episode}) } >
 			<View style={styles.rowElement}>
 				<View style={styles.col}>
 					<Text ellipsizeMode={'middle'} numberOfLines={2}> {rowData.user} </Text>

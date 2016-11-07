@@ -5,7 +5,7 @@ const initialState = {
 
 	clist: [
 		{
-			id: 0,
+			id: 4444,
 			convo: []
 		}
 
@@ -14,7 +14,7 @@ const initialState = {
 }
 
 
-export default function convoList(state = initialState, action ={}){
+export default function convoList(state = initialState, action = {}){
 
 	switch(action.type) {
 
@@ -26,9 +26,9 @@ export default function convoList(state = initialState, action ={}){
 				clist: [
 					{
 						id: action.id,
-						convo: []
+						convo: action.convo
 
-					}
+					},
 					...state.clist
 				]
 

@@ -74,7 +74,7 @@ module.exports = React.createClass({
 				var sttep = 0;
 				// console.log("sttep " + sttep);
 				this._file = file;
-				this.grabConvo(file, sttep);
+				this.updateConvo(file, sttep);
 
 				// for(var i = 0; i <= sttep; i++ ) {
 				// 	var imgURL = file.conversation[i].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
@@ -101,11 +101,9 @@ module.exports = React.createClass({
 
 	grabConvo: function( f , s){
 
-
-		console.log("Grab convo called " + f);
-		console.log(f);
 	
 		var arr = [];
+
 
 		for(var i = 0 ; i <= s; i ++) {
 			console.log("i " + i);
@@ -125,11 +123,43 @@ module.exports = React.createClass({
 
 		}
 
+		console.log("Grab Convo");
+		console.log(arr);
+
 		this.setState({
 			messages: arr
 		});
 
 	},
+
+
+	updateConvo: function( f, s ){
+
+		console.log("Update Convo");
+		var arr = this.state.messages;
+		console.log(arr);
+
+
+		for(var i = 0 ; i <= s ; i ++){
+			var imgURL = f.conversation[i].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
+			let uni = Math.round(Math.random() * 100000);
+			arr.push({
+				"text" : f.conversation[i].text,
+				"name" : f.conversation[i].user,
+				"position" : f.conversation[i].position,
+				"image" : imgURL,
+				"date" : new Date(),
+				"uniqueId" : uni
+			});
+		}
+
+		this.setState({
+			messages: arr
+		});
+
+
+	},
+
 
 	componentWillReceiveProps: function( nextProps ){
 
@@ -145,6 +175,8 @@ module.exports = React.createClass({
 			this.isSwitch(this._step);
 		}
 
+
+		console.log(this.state.messages);
 
 		// if(prevProps.episode !== this.props.episode) {
 		// 	this._step = this.props.start;

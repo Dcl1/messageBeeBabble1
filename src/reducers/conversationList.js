@@ -5,7 +5,11 @@ const initialState = {
 
 	clist: [
 		{
-			id: 4444,
+			id: 444,
+			convo: []
+		},
+		{
+			id: 888,
 			convo: []
 		}
 

@@ -44,7 +44,7 @@ class ConvoContainer extends Component {
 
 		return (
 			<Conversation
-				episode={epi}
+				episode={1}
 				convoID={cID}
 				start={ste}
 				{...actions}

@@ -59,6 +59,7 @@ module.exports = React.createClass({
 	loadEpisode: function( epi, convo, step){
 
 		var _this = this;
+		console.log("The step is " + step);
 
 		switch(epi){
 			case 1 :

@@ -92,6 +92,8 @@ module.exports = React.createClass({
 
 	},
 
+
+
 	loadEpisode: function( epi, convo, step){
 
 		var _this = this;
@@ -110,6 +112,9 @@ module.exports = React.createClass({
 		}
 
 	},
+
+
+
 
 	continueConvo: function(epi, convo, step){
 
@@ -301,7 +306,25 @@ module.exports = React.createClass({
 			}
 		]
 
+	},
 
+	handleSend: function( message = {} ) {
+
+		var _this = this;
+		var file = this._file;
+		var nextStep = this._step + 1;
+
+		this.setState({
+			lastChoice: message.choice
+		});
+
+
+		var ray = this.addMessages(message);
+		this.increaseStep(nextStep);
+
+		this.setState({
+			messages: ray
+		});
 
 	},
 
@@ -336,7 +359,7 @@ module.exports = React.createClass({
 				disabled={this.state.isPlayer ? false : true}
 
 				responseOne={this.state.responseUno}
-				repsonseTwo={this.state.responseDeuce}
+				responseTwo={this.state.responseDeuce}
 
 			/>
 		);

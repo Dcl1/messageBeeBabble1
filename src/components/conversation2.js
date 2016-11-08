@@ -329,13 +329,32 @@ module.exports = React.createClass({
 
 
 		var ray = this.addMessages(message);
-		//this.increaseStep(nextStep);
+		this.increaseStep(nextStep);
 
 		this.setState({
 			messages: ray
 		});
 
 	},
+
+
+	increaseStep: function(newStep){
+
+		var _this = this;
+		var file = this._file;
+
+		if(newStep >= file.conversation.length - 1) {
+			_this.props.updatestep();
+		} else {
+
+		}
+
+		this._step = newStep;
+
+
+	},
+
+
 
 
 	componentWillUnmount: function(){

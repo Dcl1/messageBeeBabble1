@@ -205,8 +205,55 @@ module.exports = React.createClass({
 	},
 
 
-	checkForceMessage: function(){
+	checkForceMessage: function( ste , last ){
 		console.log("This is a check force message");
+
+		var _this = this;
+		var nextStep = ste + 1;
+		var file = this._file;
+
+
+		if( nextStep < file.conversation.length ) {
+			var user = file.conversation[nextStep].user;
+
+			if( user.toUpperCase() ===  'PLAYER' ) {
+
+				this.setState({
+					isPlayer: true
+				});
+
+				if( last === 1 ) {
+					_this.setState({
+						responseUno: file.conversation[nextStep].text,
+						responseDeuce: ''
+					});
+				} else if ( last === 2 ) {
+					_this.setState({
+						responseUno: '',
+						responseDeuce: file.conversation[nextStep].text2
+					});
+				} else {
+					_this.setState({
+						responseUno: '',
+						responseDeuce: ''
+					});
+
+					_this.renderNextMessage(nextStep);
+				}
+
+			} else {
+
+				this.setState({
+					responseUno: '',
+					responseDeuce: ''
+				});
+
+				_this.renderNextMessage(nextStep);
+
+			}
+
+		}
+
 	},
 
 
@@ -245,7 +292,7 @@ module.exports = React.createClass({
 	},
 
 
-	renderNextMesssage: function(next){
+	renderNextMessage: function(next){
 
 		var file = this._file;
 		var obje = file.conversation[next];

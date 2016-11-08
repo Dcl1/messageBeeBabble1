@@ -154,6 +154,9 @@ module.exports = React.createClass({
 
 		if( prevState.messages !== this.state.messages && prevProps.episode === this.props.episode ) {
 			this.isSwitch(this._step);
+			console.log("its true!!!");
+		} else {
+			console.log("its NOT true");
 		}
 
 	},
@@ -198,6 +201,12 @@ module.exports = React.createClass({
 			_this.checkForceMessage(ste, _this.state.lastChoice);
 		}
 
+
+	},
+
+
+	checkForceMessage: function(){
+		console.log("This is a check force message");
 	},
 
 
@@ -320,7 +329,7 @@ module.exports = React.createClass({
 
 
 		var ray = this.addMessages(message);
-		this.increaseStep(nextStep);
+		//this.increaseStep(nextStep);
 
 		this.setState({
 			messages: ray
@@ -329,7 +338,25 @@ module.exports = React.createClass({
 	},
 
 
+	componentWillUnmount: function(){
 
+		console.log("Component Will Unmount");
+
+		var _this = this;
+		var clist = this._clist;
+		var cid = this._conversationID;
+
+		var check = this.checkEpisode(clist, this._conversationID);
+
+		if(check) {
+			//true
+		} else {
+			//false
+			_this.props.updateconversationlist(_this._conversationID, _this.state.messages );
+		}
+
+
+	},
 
 
 

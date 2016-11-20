@@ -59,7 +59,6 @@ module.exports = React.createClass({
 		
 
 		if(check) {
-			console.log("true")
 			this.continueConvo(this._episode , this._conversationID , this._step );
 		} else {
 			this.loadEpisode( this._episode , this._conversationID , this._step );
@@ -73,14 +72,9 @@ module.exports = React.createClass({
 
 	checkEpisode: function(cl, cid){
 
-		console.log("CHECK EPISODE");
-		console.log(cl);
-		console.log(cid);
 		var _this = this;
 
 		cl.map(function(item){
-			console.log(item);
-			console.log(item.id);
 			if(item.id === cid){
 				return true
 			} else {
@@ -97,7 +91,6 @@ module.exports = React.createClass({
 	loadEpisode: function( epi, convo, step){
 
 		var _this = this;
-		console.log("Load Episode, The step is " + step);
 
 		switch(epi){
 			case 1 :
@@ -154,9 +147,7 @@ module.exports = React.createClass({
 
 		if( prevState.messages !== this.state.messages && prevProps.episode === this.props.episode ) {
 			this.isSwitch(this._step);
-			console.log("its true!!!");
 		} else {
-			console.log("its NOT true");
 		}
 
 	},
@@ -206,7 +197,6 @@ module.exports = React.createClass({
 
 
 	checkForceMessage: function( ste , last ){
-		console.log("This is a check force message");
 
 		var _this = this;
 		var nextStep = ste + 1;
@@ -406,11 +396,15 @@ module.exports = React.createClass({
 
 	componentWillUnmount: function(){
 
-		console.log("Component Will Unmount");
+		
 
 		var _this = this;
 		var clist = this._clist;
 		var cid = this._conversationID;
+
+		console.log("Component Will Unmount");
+		console.log(clist);
+		console.log(this._conversationID);
 
 		var check = this.checkEpisode(clist, this._conversationID);
 

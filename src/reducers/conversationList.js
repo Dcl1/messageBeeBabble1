@@ -24,6 +24,10 @@ export default function convoList(state = initialState, action = {}){
 
 		case types.UPDATECONVERSATIONLIST:
 
+			//console.log("UPDATECONVERSATIONLIST");
+			console.log(state);
+			//console.log(action);
+
 			return {
 
 				...state,

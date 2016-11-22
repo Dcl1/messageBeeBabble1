@@ -156,10 +156,13 @@ module.exports = React.createClass({
 	grabConvo: function( f , s ) {
 
 		var arr = [];
+		var _this = this;
 
 		for(var i = 0 ; i <= s; i ++) {
 			var imgURL = f.conversation[i].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null; 
 			let uni = Math.round(Math.random() * 100000);
+
+			_this.props.addconvomessage(uni, f.conversation[i].user , f.conversation[i].position , f.conversation[i].text);
 
 			arr.push({
 				"text" : f.conversation[i].text,
@@ -171,6 +174,8 @@ module.exports = React.createClass({
 			});
 		}
 
+
+		
 
 		this.setState({
 			messages: arr
@@ -396,15 +401,10 @@ module.exports = React.createClass({
 
 	componentWillUnmount: function(){
 
-		
-
 		var _this = this;
 		var clist = this._clist;
 		var cid = this._conversationID;
 
-		console.log("Component Will Unmount");
-		console.log(clist);
-		console.log(this._conversationID);
 
 		var check = this.checkEpisode(clist, this._conversationID);
 
@@ -412,7 +412,7 @@ module.exports = React.createClass({
 			//true
 		} else {
 			//false
-			_this.props.updateconversationlist(_this._conversationID, _this.state.messages );
+			//_this.props.updateconversationlist(_this._conversationID, _this.state.messages );
 		}
 
 

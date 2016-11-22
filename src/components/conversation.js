@@ -104,6 +104,7 @@ module.exports = React.createClass({
 
 	
 		var arr = [];
+		var _this = this;
 
 
 		for(var i = 0 ; i <= s; i ++) {
@@ -121,6 +122,8 @@ module.exports = React.createClass({
 				"date" : new Date(),
 				"uniqueId" : uni
 			});
+
+			//_this.props.addconvomessage( uni, f.conversation[i].user, f.conversation[i].position, f.conversation[i].text );
 
 		}
 

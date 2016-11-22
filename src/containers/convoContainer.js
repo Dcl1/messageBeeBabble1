@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 
-import Conversation from '../components/conversation2';
+import Conversation from '../components/conversation3';
 
 
 import * as AppActions from '../actions/appActions';
@@ -40,14 +40,14 @@ class ConvoContainer extends Component {
 		var cID = this.props.cid;
 		var ste = this.props.start;
 		var epi = this.props.epi;
-		var idList = state.conversationList.clist
+		//var idList = state.conversationList.clist
 
 		return (
 			<Conversation
 				episode={1}
 				convoID={cID}
 				start={ste}
-				clist={idList}
+				//clist={idList}
 				{...actions}
 			/>
 		);

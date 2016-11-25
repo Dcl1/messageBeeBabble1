@@ -38,16 +38,16 @@ class ConvoContainer extends Component {
 
 		const { state, actions } = this.props;
 		var cID = this.props.cid;
-		var ste = this.props.start;
+		var ste = state.messages.start;
 		var epi = this.props.epi;
-		//var idList = state.conversationList.clist
+		var idList = state.conversationList.clist;
 
 		return (
 			<Conversation
 				episode={1}
 				convoID={cID}
-				start={ste}
-				//clist={idList}
+				ste={ste}
+				clist={idList}
 				{...actions}
 			/>
 		);

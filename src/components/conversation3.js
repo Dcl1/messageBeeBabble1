@@ -22,8 +22,125 @@ import conversationTwo from '../data/epTwo/conversation.json';
 
 
 
-module.exports = React.createClasee({
+module.exports = React.createClass({
 
-	
+
+	getInitialState: function(){
+
+		this._conversationID;
+		this._episode;
+		this._file;
+		this._step;
+		this._ste;
+
+		this._switchCheck;
+
+		return {
+			messages: [],
+			typingMessages: '',
+			responseUno: 'Response one here',
+			responseDeuce: 'Response two here',
+			isPlayer: false,
+			lastChoice: 1,
+		};
+
+	},
+
+
+	componentWillMount: function(){
+		
+		this._conversationID = this.props.convoID;
+		this._episode = this.props.episode;
+		this._ste = this.props.ste;
+		
+
+	},
+
+
+	componentDidMount: function(){
+
+		this.loadEpisode(this._episode, this._conversationID);
+
+	},
+
+
+	loadEpisode: function(epi, convo) {
+
+		var _this = this;
+
+
+
+		switch(epi) {
+			case 1 :
+				var file = conversationOne.convo[convo];
+				this._file = file;
+
+				this.grabConvo(file, this._ste);
+				this._switchCheck = file.switchCheck;
+
+			default:
+				return null;
+		}
+
+	},
+
+
+	grabConvo: function( f , s) {
+
+		var _this = this;
+
+		for( var i = 0 ; i <= s ; i ++ ) {
+			var imgURL = f.conversation[i].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null;
+			let uni = Math.round(Math.random() * 100000);
+
+			let user = f.conversation[i].user;
+			let position = f.conversation[i].position;
+			let text = f.conversation[i].text;
+
+			_this.props.addconvomessage( this._conversationID , uni , user , position , text );
+
+		}
+
+
+	},
+
+
+	render: function(){
+		return (
+			<View />
+		);
+	}
+
+
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

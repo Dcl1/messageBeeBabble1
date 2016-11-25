@@ -19,32 +19,35 @@ export default function convoList(state = initialState, action = {}){
 
 		case types.ADDCONVOMESSAGE:
 
-			console.log(state);
 			let idAlreadyExist;
 
 
+			console.log(action);
+			console.log("ADDCONVOMESSAGE");
+
+
 			//let idAlreadyExist = state.clist.indexOf(action.convoid) ? -1;
-			state.clist.map(function(obj){
-				if(obj.convoid == action.convoid ) {
-					idAlreadyExist = true;
-				} else {
-					idAlreadyExist = false;
-				}
-			});
+			// state.clist.map(function(obj){
+			// 	if(obj.convoid == action.convoid ) {
+			// 		idAlreadyExist = true;
+			// 	} else {
+			// 		idAlreadyExist = false;
+			// 	}
+			// });
 
 
-			console.log(idAlreadyExist);
+			// console.log(idAlreadyExist);
 
 
-			let clist = state.clist.slice();
+			// let clist = state.clist.slice();
 
 
-			if(idAlreadyExist) {
-				clist = clist.filter(convoid => convoid == action.convoid);
+			// if(idAlreadyExist) {
+			// 	clist = clist.filter(convoid => convoid == action.convoid);
 
-			} else {
+			// } else {
 
-			}
+			// }
 
 
 
@@ -87,26 +90,26 @@ export default function convoList(state = initialState, action = {}){
 
 		// 	};
 
-		case types.UPDATECONVERSATION:
+		// case types.UPDATECONVERSATION:
 
-			return {
-				...state,
-				clist: state.clist.map(cv => 
-						cv.id === action.id ?
-						{...cv,
-							convo: [
-								...cv.convo,
-								{
-									option : action.option,
-									user : action.user,
-									position : action.position,
-									text : action.text
-								}
-							]
+		// 	return {
+		// 		...state,
+		// 		clist: state.clist.map(cv => 
+		// 				cv.id === action.id ?
+		// 				{...cv,
+		// 					convo: [
+		// 						...cv.convo,
+		// 						{
+		// 							option : action.option,
+		// 							user : action.user,
+		// 							position : action.position,
+		// 							text : action.text
+		// 						}
+		// 					]
 
-						} : cv
-					)
-			};
+		// 				} : cv
+		// 			)
+		// 	};
 
 		default :
 			return state

@@ -46,7 +46,10 @@ export default function convoList(state = initialState, action = {}){
 
 
 			list.map(function(obj){
-				console.log(obj);
+
+				let val = hasValue(obj, action.convoid);
+				console.log(val);
+
 			});
 
 

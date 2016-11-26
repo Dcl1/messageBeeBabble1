@@ -27,6 +27,7 @@ export function updateconversation(id, option, user, position, text ){
 export function addconvomessage(convoid , id, user, position, text){
 	return {
 		type: types.ADDCONVOMESSAGE,
+		convoid: convoid,
 		id,
 		user,
 		position,

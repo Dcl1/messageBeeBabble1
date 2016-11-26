@@ -35,8 +35,26 @@ export default function convoList(state = initialState, action = {}){
 			// 	}
 			// });
 
+			function hasValue(obj, value) {
+				return obj.hasOwnProperty("convoid") && obj.convoid === value;
+			}
 
-			// console.log(idAlreadyExist);
+
+			var list = state.clist;
+
+			//let idAlreadyEst = hasValue(, action.convoid);
+
+
+			list.map(function(obj){
+				console.log(obj);
+			});
+
+
+			//let idAlreadyExist = state.clist.indexOf(action.convoid) ? -1;
+	
+
+
+			//console.log(idAlreadyExist);
 
 
 			// let clist = state.clist.slice();
@@ -51,24 +69,7 @@ export default function convoList(state = initialState, action = {}){
 
 
 
-			return {
-				// ...state,
-
-
-
-
-				// clist: [
-				// 	{
-				// 		id: action.id,
-				// 		user: action.user,
-				// 		position: action.position,
-				// 		text: action.text
-				// 	},
-				// 	...state.clist
-
-				// ]
-
-			};
+			return state
 
 		// case types.UPDATECONVERSATIONLIST:
 

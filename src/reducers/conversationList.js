@@ -7,6 +7,17 @@ const initialState = {
 		{
 			convoid: 1,
 			convo: []
+		},
+		{
+			convoid: 2,
+			convo: [
+				{
+					id: 44,
+					user: "non",
+					position: "right",
+					text: "dummy text"
+				}
+			]
 		}
 	]
 
@@ -19,60 +30,50 @@ export default function convoList(state = initialState, action = {}){
 
 		case types.ADDCONVOMESSAGE:
 
-			let idAlreadyExist;
-
-
-			console.log(action);
-			console.log("ADDCONVOMESSAGE");
-
-
-			//let idAlreadyExist = state.clist.indexOf(action.convoid) ? -1;
-			// state.clist.map(function(obj){
-			// 	if(obj.convoid == action.convoid ) {
-			// 		idAlreadyExist = true;
-			// 	} else {
-			// 		idAlreadyExist = false;
-			// 	}
-			// });
+			console.log("Add Convo Message");
+			//console.log(state);
 
 			function hasValue(obj, value) {
 				return obj.hasOwnProperty("convoid") && obj.convoid === value;
 			}
 
+			let list = state.clist;
 
-			var list = state.clist;
+			let idAlreadyExist = list.some(function(obj){
 
-			//let idAlreadyEst = hasValue(, action.convoid);
-
-
-			list.map(function(obj){
-
-				let val = hasValue(obj, action.convoid);
-				console.log(val);
+				return hasValue(obj, action.convoid);
+				//console.log(val);
 
 			});
 
 
-			//let idAlreadyExist = state.clist.indexOf(action.convoid) ? -1;
-	
-
 
 			//console.log(idAlreadyExist);
+			let id = action.convoid - 1;
+			let convo;
 
 
-			// let clist = state.clist.slice();
+			if (idAlreadyExist) {
+
+				console.log(state.clist[id].convo);
+
+				// return {
+				// 	...state,
+				// 	clist[id].convo: [
+				// 		{
+				// 			id: action.id,
+				// 			user: action.user,
+				// 			position: action.position,
+				// 			text: action.text
+				// 		},
+				// 		...state.clist[id]
+				// 	]
+				// };
+			} 
 
 
-			// if(idAlreadyExist) {
-			// 	clist = clist.filter(convoid => convoid == action.convoid);
+			return state;
 
-			// } else {
-
-			// }
-
-
-
-			return state
 
 		// case types.UPDATECONVERSATIONLIST:
 

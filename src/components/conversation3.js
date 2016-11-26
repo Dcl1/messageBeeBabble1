@@ -59,15 +59,17 @@ module.exports = React.createClass({
 
 	componentDidMount: function(){
 
-		this.loadEpisode(this._episode, this._conversationID);
+
+		console.log("Component Did Mount");
+		this.loadEpisode(this._episode, this._conversationID, this._ste);
 
 	},
 
 
-	loadEpisode: function(epi, convo) {
+	loadEpisode: function(epi, convo, step) {
 
 		var _this = this;
-
+		console.log("Load Episode");
 
 
 		switch(epi) {
@@ -75,7 +77,7 @@ module.exports = React.createClass({
 				var file = conversationOne.convo[convo];
 				this._file = file;
 
-				this.grabConvo(file, this._ste);
+				this.grabConvo(file, step);
 				this._switchCheck = file.switchCheck;
 
 			default:
@@ -87,6 +89,8 @@ module.exports = React.createClass({
 
 	grabConvo: function( f , s) {
 
+		console.log("grab convo called " + s + " ");
+
 		var _this = this;
 
 		for( var i = 0 ; i <= s ; i ++ ) {
@@ -96,6 +100,8 @@ module.exports = React.createClass({
 			let user = f.conversation[i].user;
 			let position = f.conversation[i].position;
 			let text = f.conversation[i].text;
+
+			console.log("grab convo called, for loop");
 
 			_this.props.addconvomessage( this._conversationID , uni , user , position , text );
 

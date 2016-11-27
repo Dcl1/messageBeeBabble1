@@ -30,16 +30,19 @@ export default function convoList(state = initialState, action = {}){
 				return hasValue(obj, action.convoid);
 			});
 
-
+			console.log(isAlreadyExist);
 			if(isAlreadyExist){
 
-				list.map(function(obj){
+				list.map(function(obj, index){
+
+					console.log(index);
+
 					if(obj.convoid === action.convoid){
-						state.clist[id].convo.map(function(msg){
+						obj.convo.map(function(msg){
 							if(msg.stepid !== action.stepid){
 								return {
 									...state,
-									clist: state.clist[id].convo.push(
+									clist: state.clist[index].convo.push(
 										{
 											"text" : action.text,
 											"name" : action.user,

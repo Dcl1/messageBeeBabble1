@@ -38,14 +38,26 @@ class ConvoContainer extends Component {
 
 		const { state, actions } = this.props;
 		var cID = this.props.cid;
-		var itemID = cID - 1;
-		var ste = state.messages.mlist[itemID].start;
+		var ste = this.props.start;
 		var epi = this.props.epi;
 		var idList;
 
-		if (state.conversationList.clist[itemID]) {
-			console.log("item exists")
-			idList = state.conversationList.clist[itemID].convo;
+
+		function hasValue(obj, key , value){
+			return obj.hasOwnProperty(key) && obj[key] === value;
+		}
+
+		var InList = state.conversationList.clist.some(function(convo){
+			return hasValue(convo, "convoid", cID);
+		})
+
+
+		if (InList){
+			state.conversationList.clist.map(function(convo, index){
+				if(state.conversationList.clist[index].convoid === cID ){
+					idList = state.conversationList.clist[index].convo;
+				}
+			});
 		} else {
 			idList = [];
 		}

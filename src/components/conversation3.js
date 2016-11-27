@@ -96,13 +96,15 @@ module.exports = React.createClass({
 
 		for( var i = 0 ; i <= s ; i ++ ) {
 			var imgURL = f.conversation[i].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null;
-			let uni = Math.round(Math.random() * 100000);
+			let uni = Math.round(Math.random() * 1000000);
 
 			let user = f.conversation[i].user;
 			let position = f.conversation[i].position;
 			let text = f.conversation[i].text;
 
 			let stepID = parseInt(this._episode + "" + f.convoID + "" + f.conversation[i].step);
+
+			console.log( f.convoID + " " + stepID );
 
 			_this.props.addconvomessage( this._conversationID , uni , user , position , text , imgURL, stepID );
 
@@ -117,6 +119,7 @@ module.exports = React.createClass({
 		var _this = this;
 
 		if( nextProps.clist !== this.props.clist && nextProps.convoID == this.props.convoID) {
+			console.log(nextProps.clist);
 			_this.setState({
 				messages: nextProps.clist
 			});

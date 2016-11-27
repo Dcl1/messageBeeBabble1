@@ -102,7 +102,9 @@ module.exports = React.createClass({
 			let position = f.conversation[i].position;
 			let text = f.conversation[i].text;
 
-			_this.props.addconvomessage( this._conversationID , uni , user , position , text , imgURL );
+			let stepID = parseInt(this._episode + "" + f.convoID + "" + f.conversation[i].step);
+
+			_this.props.addconvomessage( this._conversationID , uni , user , position , text , imgURL, stepID );
 
 		}
 

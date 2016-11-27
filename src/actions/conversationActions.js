@@ -24,7 +24,7 @@ export function updateconversation(id, option, user, position, text ){
 }
 
 
-export function addconvomessage(convoid , id, user, position, text, img){
+export function addconvomessage(convoid , id, user, position, text, img, stepid){
 	return {
 		type: types.ADDCONVOMESSAGE,
 		convoid: convoid,
@@ -32,7 +32,8 @@ export function addconvomessage(convoid , id, user, position, text, img){
 		user,
 		position,
 		text,
-		img
+		img,
+		stepid
 	}
 
 }

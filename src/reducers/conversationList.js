@@ -53,8 +53,8 @@ export default function convoList(state = initialState, action = {}){
 									"position" : action.position,
 									"image" : action.img,
 									"date" : new Date(),
-									"uniqueId" : action.id
-									
+									"uniqueId" : action.id,
+									"stepid" : action.stepid
 									
 								}	
 							)

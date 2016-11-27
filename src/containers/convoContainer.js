@@ -41,7 +41,7 @@ class ConvoContainer extends Component {
 		var itemID = cID - 1;
 		var ste = state.messages.mlist[itemID].start;
 		var epi = this.props.epi;
-		var idList = state.conversationList.clist;
+		var idList = state.conversationList.clist[itemID].convo;
 
 		return (
 			<Conversation

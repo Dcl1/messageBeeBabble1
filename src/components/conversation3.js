@@ -61,6 +61,12 @@ module.exports = React.createClass({
 
 		this.loadEpisode(this._episode, this._conversationID, this._ste);
 
+
+		console.log(this.props.clist);
+		this.setState({
+			messages: this.props.clist
+		});
+
 	},
 
 
@@ -96,7 +102,7 @@ module.exports = React.createClass({
 			let position = f.conversation[i].position;
 			let text = f.conversation[i].text;
 
-			_this.props.addconvomessage( this._conversationID , uni , user , position , text );
+			_this.props.addconvomessage( this._conversationID , uni , user , position , text , imgURL );
 
 		}
 
@@ -104,9 +110,53 @@ module.exports = React.createClass({
 	},
 
 
+	componentWillReceiveProps: function( nextProps ){
+
+		var _this = this;
+
+		if( nextProps.clist !== this.props.clist && nextProps.convoID == this.props.convoID) {
+			_this.setState({
+				messages: nextProps.clist
+			});
+		}
+
+
+		if( nextProps.convoID !== this.props.convoID ) {
+			Actions.pop();
+		}
+
+	},
+
+
+
 	render: function(){
 		return (
-			<View />
+			<GiftedMessenger
+
+				ref={(c) => this._GiftedMessenger = c}
+				style={{
+					marginTop: 66 + STATUS_BAR_HEIGHT
+				}}
+
+				autoFocus={false}
+				messages={this.state.messages}
+
+				handleSend={this.handleSend}
+
+				// Legacy code from before hacked package //
+				senderName=''
+				senderIamge={null}
+				displayName={true}
+				// ** //
+
+				parseText={true}
+				typingMessage={this.state.typingMessage}
+				disabled={this.state.isPlayer ? false : true}
+
+				responseOne={this.state.responseUno}
+				responseTwo={this.state.responseDeuce}
+
+			/>
 		);
 	}
 

@@ -3,16 +3,7 @@ import * as types from '../actions/actionTypes';
 
 const initialState = {
 
-	clist: [
-		{
-			convoid: 1,
-			convo: []
-		},
-		{
-			convoid: 2,
-			convo: []
-		}
-	]
+	clist: []
 
 }
 
@@ -23,7 +14,7 @@ export default function convoList(state = initialState, action = {}){
 
 		case types.ADDCONVOMESSAGE:
 
-			//console.log(state);
+			console.log(state);
 
 			function hasValue(obj, value) {
 				return obj.hasOwnProperty("convoid") && obj.convoid === value;
@@ -44,9 +35,40 @@ export default function convoList(state = initialState, action = {}){
 
 				list.map(function(obj){
 					if(obj.convoid === action.convoid){
-						return {
-							...state,
-							clist: state.clist[id].convo.push(
+						state.clist[id].convo.map(function(msg){
+							if(msg.stepid !== action.stepid){
+								return {
+									...state,
+									clist: state.clist[id].convo.push(
+										{
+											"text" : action.text,
+											"name" : action.user,
+											"position" : action.position,
+											"image" : action.img,
+											"date" : new Date(),
+											"uniqueId" : action.id,
+											"stepid" : action.stepid
+											
+										}	
+									)
+								}
+							} else {
+								return state;
+							}
+						});
+
+					}
+				});
+
+
+
+			} else {
+				return {
+					...state,
+					clist: [
+						{
+							convoid: action.convoid,
+							convo: [
 								{
 									"text" : action.text,
 									"name" : action.user,
@@ -55,16 +77,12 @@ export default function convoList(state = initialState, action = {}){
 									"date" : new Date(),
 									"uniqueId" : action.id,
 									"stepid" : action.stepid
-									
-								}	
-							)
-
-						}
-					}
-				});
-
-			} else {
-				return state;
+								}
+							]
+						},
+						...state.clist
+					]
+				}
 			}
 
 

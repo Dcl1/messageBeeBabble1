@@ -41,7 +41,15 @@ class ConvoContainer extends Component {
 		var itemID = cID - 1;
 		var ste = state.messages.mlist[itemID].start;
 		var epi = this.props.epi;
-		var idList = state.conversationList.clist[itemID].convo;
+		var idList;
+
+		if (state.conversationList.clist[itemID]) {
+			console.log("item exists")
+			idList = state.conversationList.clist[itemID].convo;
+		} else {
+			idList = [];
+		}
+
 
 		return (
 			<Conversation

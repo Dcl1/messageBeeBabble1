@@ -61,8 +61,6 @@ module.exports = React.createClass({
 
 		this.loadEpisode(this._episode, this._conversationID, this._ste);
 
-
-		console.log(this.props.clist);
 		this.setState({
 			messages: this.props.clist
 		});
@@ -104,8 +102,6 @@ module.exports = React.createClass({
 
 			let stepID = parseInt(this._episode + "" + f.convoID + "" + f.conversation[i].step);
 
-			console.log( f.convoID + " " + stepID );
-
 			_this.props.addconvomessage( this._conversationID , uni , user , position , text , imgURL, stepID );
 
 		}
@@ -119,7 +115,7 @@ module.exports = React.createClass({
 		var _this = this;
 
 		if( nextProps.clist !== this.props.clist && nextProps.convoID == this.props.convoID) {
-			console.log(nextProps.clist);
+			//console.log(nextProps.clist);
 			_this.setState({
 				messages: nextProps.clist
 			});

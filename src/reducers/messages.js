@@ -6,9 +6,6 @@ const initialState = {
 }
 
 
-
-
-
 export default function messagesreducer(state = initialState, action) {
 	switch (action.type) {
 

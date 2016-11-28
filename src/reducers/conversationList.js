@@ -14,11 +14,9 @@ export default function convoList(state = initialState, action = {}){
 
 		case types.ADDCONVOMESSAGE:
 
-			console.log(state);
+			//console.log(state);
 
 			function hasValue(obj, key, value) {
-
-				console.log("hasValue called " + key);
 				return obj.hasOwnProperty(key) && obj[key] === value;
 			}
 
@@ -27,31 +25,13 @@ export default function convoList(state = initialState, action = {}){
 			let convo;
 
 
-			
-
-
-			let isAlreadyExist = list.some(function(obj){
-				return hasValue(obj, "convoid" , action.convoid);
-			});
-
-
-			console.log("isAlreadyExist " + isAlreadyExist);
-
 			if(list.some(function(obj){ return hasValue(obj, "convoid" , action.convoid) })){
 
 				list.map(function(obj, index){
 
 					if(obj.convoid === action.convoid){
-						
-						// let isAlreadyMsg = obj.convo.some(function(msg){
-						// 	return hasValue(msg, "stepid" ,  action.stepid);
-						// });
-
-						console.log("action.stepid being called " + action.stepid);
 
 						if(obj.convo.some(function(msg){ return hasValue(msg, "stepid" ,  action.stepid)}) !== true){
-
-							console.log("If statement action.stepid");
 
 							return {
 								...state,
@@ -69,9 +49,6 @@ export default function convoList(state = initialState, action = {}){
 								)
 							}
 						} else {
-
-							console.log("Else statement action.stepid");
-
 							return state;
 						}
 

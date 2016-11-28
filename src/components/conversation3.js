@@ -30,7 +30,6 @@ module.exports = React.createClass({
 		this._conversationID;
 		this._episode;
 		this._file;
-		this._step;
 		this._ste;
 
 		this._switchCheck;
@@ -116,9 +115,10 @@ module.exports = React.createClass({
 
 		if( nextProps.clist !== this.props.clist && nextProps.convoID == this.props.convoID) {
 			//console.log(nextProps.clist);
-			_this.setState({
-				messages: nextProps.clist
-			});
+			// _this.setState({
+			// 	messages: nextProps.clist
+			// });
+			_this.isSwitch(this._step);
 		}
 
 
@@ -128,6 +128,161 @@ module.exports = React.createClass({
 
 	},
 
+
+	increaseStep: function(newStep){
+
+		var _this = this;
+		var file = this._file;
+
+		if( newStep >= file.conversation.length - 1 ) {
+			_this.props.updatestep();
+		} 
+
+		this._ste = newStep;
+
+	},
+
+
+	isSwitch: function(ste) {
+
+		var _this = this;
+		var arr = _this._switchCheck;
+
+		if( arr.includes(ste + 1 ) === true ) {
+			_this.checkNextMessage(ste);
+		} else {
+			_this.checkForceMessage(ste, _this.state.lastChoice);
+		}
+
+	},
+
+
+	checkForceMessage: function( ste , last ) {
+
+		var _this = this;
+		var nextStep = ste + 1;
+		var file = this._file;
+
+		if( nextStep < file.conversation.length ) {
+
+			var user = file.conversation[nextStep].user;
+
+			if( user.toUpperCase() === 'PLAYER' ) {
+				_this.setState({
+					isPlayer: true
+				});
+
+				if( last === 1 ) {
+					_this.setState({
+						responseUno: file.conversation[nextStep].text,
+						responseDeuce: ''
+					});
+				} else if ( last == 2 ) {
+					_this.setState({
+						responseUno: '',
+						responseDeuce: file.conversation[nextStep].text2
+					});
+				} else {
+
+					_this.setState({
+						responseUno: '',
+						responseDeuce: ''
+					});
+
+					_this.renderNextMessage(nextStep);
+
+				}
+
+			} else {
+
+				this.setState({
+					responseUno: '',
+					responseDeuce: ''
+				});
+
+				_this.renderNextMessage(nextStep);
+
+			}
+
+
+		}
+
+	},
+
+
+	checkNextMessage: function( ste ) {
+
+		var _this = this;
+		var nextStep = ste + 1;
+		var file = this._file;
+
+		if( nextStep < file.conversation.length ) {
+
+			var user = file.conversation[nextStep].user;
+
+			if(user.toUpperCase() === 'PLAYER' ) {
+
+				_this.setState({
+					isPlayer: true,
+					responseUno: file.conversation[nextStep].text,
+					responseDeuce: file.conversation[nextStep].text2
+				});
+
+			} else {
+
+				_this.setState({
+					isPlayer: false,
+					responseUno: '',
+					responseDeuce: ''
+				});
+
+				_this.renderNextMessage(nextStep);
+
+			}
+
+		}
+
+	},
+
+
+	renderNextMessage: function(next) {
+
+		var _this = this;
+		var f = this._file;
+		var obje = file.covnersation[next];
+
+		//var ray = this.addMessages(obje);
+
+		setTimeout(() => {
+			this.setState({
+				typingMessage: 'Typing a message...',
+			});
+		}, 400);
+
+		setTimeout(() => {
+			this.increaseStep(next);
+
+			this.setState({
+				typingMessage: ''
+			});
+
+		}, 800);
+
+		setTimeout(() => {
+
+			var imgURL = f.conversation[next].position == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null;
+			let uni = Math.round(Math.random() * 1000000);
+			let user = f.conversation[next].user;
+			let position = f.conversation[next].position;
+			let text = f.conversation[next].text;
+			let stepID = parseInt(this._episode + "" + f.convoID + "" + f.conversation[next].step);
+
+			_this.props.addconvomessage( this._conversationID , uni , user , position , text , imgURL, stepID );
+
+		}, Math.random() * (4000 - 2200) + 2200);
+
+
+	},
 
 
 	render: function(){

@@ -36,7 +36,7 @@ module.exports = React.createClass({
 
 		return {
 			messages: [],
-			typingMessages: '',
+			typingMessage: '',
 			responseUno: 'Response one here',
 			responseDeuce: 'Response two here',
 			isPlayer: false,
@@ -53,12 +53,15 @@ module.exports = React.createClass({
 		this._ste = this.props.ste;
 		
 
+
 	},
 
 
 	componentDidMount: function(){
 
 		this.loadEpisode(this._episode, this._conversationID, this._ste);
+		
+		console.log(this.props.clist);
 
 		this.setState({
 			messages: this.props.clist
@@ -115,10 +118,14 @@ module.exports = React.createClass({
 
 		if( nextProps.clist !== this.props.clist && nextProps.convoID == this.props.convoID) {
 			//console.log(nextProps.clist);
-			// _this.setState({
-			// 	messages: nextProps.clist
-			// });
-			_this.isSwitch(this._step);
+			_this.setState({
+				messages: nextProps.clist
+			});
+			console.log(nextProps.clist);
+			console.log("Component Will Receive Props & call is switch");
+
+
+			_this.isSwitch(this._ste);
 		}
 
 
@@ -147,6 +154,7 @@ module.exports = React.createClass({
 
 		var _this = this;
 		var arr = _this._switchCheck;
+		console.log("ste " + ste);
 
 		if( arr.includes(ste + 1 ) === true ) {
 			_this.checkNextMessage(ste);
@@ -249,7 +257,9 @@ module.exports = React.createClass({
 
 		var _this = this;
 		var f = this._file;
-		var obje = file.covnersation[next];
+		//var obje = f.covnersation[next];
+
+		console.log("Render Next Message Called");
 
 		//var ray = this.addMessages(obje);
 

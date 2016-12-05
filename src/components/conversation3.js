@@ -101,7 +101,6 @@ module.exports = React.createClass({
 			let text = f.conversation[i].text;
 
 			let stepID = parseInt(this._episode + "" + f.convoID + "" + f.conversation[i].step);
-
 			_this.props.addconvomessage( this._conversationID , uni , user , position , text , imgURL, stepID );
 
 		}
@@ -115,7 +114,6 @@ module.exports = React.createClass({
 		var _this = this;
 
 		if( nextProps.clist !== this.props.clist && nextProps.convoID == this.props.convoID) {
-			//console.log(nextProps.clist);
 			_this.setState({
 				messages: nextProps.clist
 			});
@@ -191,19 +189,18 @@ module.exports = React.createClass({
 						responseDeuce: ''
 					});
 
+					console.log("This 1 is called");
 					_this.renderNextMessage(nextStep);
 
 				}
 
 			} else {
-
-				console.log(ste + " force check computer");
-
 				this.setState({
 					responseUno: '',
 					responseDeuce: ''
 				});
 
+				console.log("This 2 is called");
 				_this.renderNextMessage(nextStep);
 
 			}
@@ -240,6 +237,7 @@ module.exports = React.createClass({
 					responseDeuce: ''
 				});
 
+				console.log("This 3 is called");
 				_this.renderNextMessage(nextStep);
 
 			}
@@ -253,17 +251,12 @@ module.exports = React.createClass({
 
 		var _this = this;
 		var f = this._file;
-		//var obje = f.covnersation[next];
-
-		console.log("Render Next Message Called");
-
-		//var ray = this.addMessages(obje);
 
 		setTimeout(() => {
 			this.setState({
 				typingMessage: 'Typing a message...',
 			});
-		}, 400);
+		}, 700);
 
 		setTimeout(() => {
 			this.increaseStep(next);
@@ -272,7 +265,7 @@ module.exports = React.createClass({
 				typingMessage: ''
 			});
 
-		}, 800);
+		}, 400);
 
 		setTimeout(() => {
 
@@ -283,11 +276,9 @@ module.exports = React.createClass({
 			let text = f.conversation[next].text;
 			let stepID = parseInt(this._episode + "" + f.convoID + "" + f.conversation[next].step);
 
-			console.log("Last Time out on render next message");
+			//_this.props.addconvomessage( this._conversationID , uni , user , position , text , imgURL, stepID );
 
-			_this.props.addconvomessage( this._conversationID , uni , user , position , text , imgURL, stepID );
-
-		}, Math.random() * (4000 - 2200) + 2200);
+		}, 1000);
 
 
 	},

@@ -21,12 +21,6 @@ class ConvoContainer extends Component {
 		super(props);
 	}
 
-	// componentWillReceiveProps(nextProps){
-	// 	//console.log("That's an update : " + nextProps.cid);
-	// 	if(nextProps.cid !== this.props.cid) {
-	// 		//console.log("This is definitely a different convo");
-	// 	}
-	// }
 
 	componentDidUpdate(prevProps, prevState){
 
@@ -56,12 +50,10 @@ class ConvoContainer extends Component {
 			state.conversationList.clist.map(function(convo, index){
 				if(state.conversationList.clist[index].convoid === cID ){
 					idList = state.conversationList.clist[index].convo;
-					console.log(idList);
 				}
 			});
 		} else {
 			idList = [];
-			console.log(idList);
 		}
 
 

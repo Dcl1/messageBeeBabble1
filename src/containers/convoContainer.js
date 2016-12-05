@@ -22,9 +22,21 @@ class ConvoContainer extends Component {
 	}
 
 
-	componentDidUpdate(prevProps, prevState){
+	componentWillUpdate(nextProps, nextState){
+
+		const {state, actions} = this.props;
+
+		//console.log(state.conversationList);
+
+		if(nextState !== this.state){
+			console.log("state change");
+		}
 
 
+	}
+
+	componentWillReceiveProps(){
+		//console.log("update props");
 	}
 
 
@@ -35,6 +47,8 @@ class ConvoContainer extends Component {
 		var ste = this.props.start;
 		var epi = this.props.epi;
 		var idList;
+
+		console.log(state);
 
 
 		function hasValue(obj, key , value){

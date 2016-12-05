@@ -14,7 +14,8 @@ export default function convoList(state = initialState, action = {}){
 
 		case types.ADDCONVOMESSAGE:
 
-			console.log(state.clist);
+			//console.log(state.clist);
+			console.log("reducer ADDCONVOMESSAGE CALLED");
 
 			function hasValue(obj, key, value) {
 				return obj.hasOwnProperty(key) && obj[key] === value;

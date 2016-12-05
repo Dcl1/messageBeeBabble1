@@ -113,18 +113,37 @@ module.exports = React.createClass({
 
 		var _this = this;
 
-		if( nextProps.clist !== this.props.clist && nextProps.convoID == this.props.convoID) {
-			_this.setState({
-				messages: nextProps.clist
-			});
+		// if( nextProps.clist !== this.props.clist && nextProps.convoID == this.props.convoID) {
+		// 	_this.setState({
+		// 		messages: nextProps.clist
+		// 	});
 
-			_this.isSwitch(this._ste);
-		}
+		// 	_this.isSwitch(this._ste);
+		// }
 
 
 		if( nextProps.convoID !== this.props.convoID ) {
 			Actions.pop();
 		}
+
+	},
+
+	componentWillUpdate: function(nextProps, nextState){
+
+		//console.log("component will receive props");
+		var _this = this;
+
+		if(nextProps.clist !== this.props.clist){
+			console.log("clist is not the same");
+			console.log(nextProps.clist);
+			_this.setState({
+				messages: nextProps.clist
+			});
+
+		}
+
+
+
 
 	},
 
@@ -251,21 +270,7 @@ module.exports = React.createClass({
 
 		var _this = this;
 		var f = this._file;
-
-		setTimeout(() => {
-			this.setState({
-				typingMessage: 'Typing a message...',
-			});
-		}, 700);
-
-		setTimeout(() => {
-			this.increaseStep(next);
-
-			this.setState({
-				typingMessage: ''
-			});
-
-		}, 400);
+		console.log("Start");
 
 		setTimeout(() => {
 
@@ -276,9 +281,11 @@ module.exports = React.createClass({
 			let text = f.conversation[next].text;
 			let stepID = parseInt(this._episode + "" + f.convoID + "" + f.conversation[next].step);
 
-			//_this.props.addconvomessage( this._conversationID , uni , user , position , text , imgURL, stepID );
+			console.log("End 10 sec")
 
-		}, 1000);
+			_this.props.addconvomessage( this._conversationID , uni , user , position , text , imgURL, stepID );
+
+		}, 10000);
 
 
 	},

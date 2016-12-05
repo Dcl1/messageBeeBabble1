@@ -48,8 +48,6 @@ class ConvoContainer extends Component {
 		var epi = this.props.epi;
 		var idList;
 
-		console.log(state);
-
 
 		function hasValue(obj, key , value){
 			return obj.hasOwnProperty(key) && obj[key] === value;
@@ -69,6 +67,9 @@ class ConvoContainer extends Component {
 		} else {
 			idList = [];
 		}
+
+
+		console.log(state.conversationList.clist);
 
 
 		return (

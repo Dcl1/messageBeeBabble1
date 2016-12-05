@@ -37,8 +37,8 @@ module.exports = React.createClass({
 		return {
 			messages: [],
 			typingMessage: '',
-			responseUno: 'Response one here',
-			responseDeuce: 'Response two here',
+			responseUno: '',
+			responseDeuce: '',
 			isPlayer: false,
 			lastChoice: 1,
 		};
@@ -124,13 +124,14 @@ module.exports = React.createClass({
 		var _this = this;
 
 		if(nextProps.clist !== this.props.clist){
-			console.log("clist is not the same");
-			console.log(nextProps.clist);
 			_this.setState({
 				messages: nextProps.clist
 			});
 
 		}
+
+
+
 	},
 
 
@@ -138,10 +139,16 @@ module.exports = React.createClass({
 
 		var _this = this;
 
-		if( prevState.message !== this.state.messages ){
+		if( prevState.messages !== this.state.messages ){
 			console.log("messages change");
+			var count = this.state.messages.length - 1;
 
-			_this.isSwitch(_this._ste);
+			if( count < _this._ste ) {
+				console.log("more auto message updates to come");
+			} else {
+				console.log("now call switch");
+				_this.isSwitch(_this._ste);
+			}
 		}
 
 	},
@@ -286,7 +293,7 @@ module.exports = React.createClass({
 
 			console.log("End 10 sec")
 
-			_this.props.addconvomessage( this._conversationID , uni , user , position , text , imgURL, stepID );
+			//_this.props.addconvomessage( this._conversationID , uni , user , position , text , imgURL, stepID );
 
 		}, 10000);
 

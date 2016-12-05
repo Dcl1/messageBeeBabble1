@@ -19,12 +19,6 @@ class ConvoContainer extends Component {
 
 	constructor(props) {
 		super(props);
-
-		this.state = {
-			idList : []
-		};
-
-
 	}
 
 	// componentWillReceiveProps(nextProps){
@@ -34,53 +28,8 @@ class ConvoContainer extends Component {
 	// 	}
 	// }
 
-	componentWillMount(){
-		const { state, actions } = this.props;
-
-		this.checkExistingConvo(state.conversationList.clist);
-
-	}
-
-
-
 	componentDidUpdate(prevProps, prevState){
 
-		// if (prevState.conversationList.clist !== state.conversationList.clist){
-		// 	console.log("Not the same");
-		// }
-
-
-	}
-
-
-
-	checkExistingConvo(List){
-
-		console.log(List);
-
-		function hasValue(obj, key , value){
-			return obj.hasOwnProperty(key) && obj[key] === value;
-		}
-
-		var InList = List.some(function(convo){
-			return hasValue(convo, "convoid", cID);
-		})
-
-
-		if (InList){
-			this.setState({ idList : List.map(function(convo, index){
-				if(List[index].convoid === cID ){
-					idList = List[index].convo;
-				}
-			}) });
-
-
-
-		} else {
-			this.setState({
-				idList : []
-			});
-		}
 
 	}
 
@@ -91,9 +40,29 @@ class ConvoContainer extends Component {
 		var cID = this.props.cid;
 		var ste = this.props.start;
 		var epi = this.props.epi;
+		var idList;
 
-		var idList = state.conversationList.clist;
 
+		function hasValue(obj, key , value){
+			return obj.hasOwnProperty(key) && obj[key] === value;
+		}
+
+		var InList = state.conversationList.clist.some(function(convo){
+			return hasValue(convo, "convoid", cID);
+		})
+
+
+		if (InList){
+			state.conversationList.clist.map(function(convo, index){
+				if(state.conversationList.clist[index].convoid === cID ){
+					idList = state.conversationList.clist[index].convo;
+					console.log(idList);
+				}
+			});
+		} else {
+			idList = [];
+			console.log(idList);
+		}
 
 
 		return (
@@ -117,9 +86,6 @@ export default connect(state => ({
 		actions: bindActionCreators(Object.assign({}, AppActions, MessageActions, ConversationActions), dispatch)
 	})
 )(ConvoContainer);
-
-
-
 
 
 

@@ -60,8 +60,6 @@ module.exports = React.createClass({
 	componentDidMount: function(){
 
 		this.loadEpisode(this._episode, this._conversationID, this._ste);
-		
-		console.log(this.props.clist);
 
 		this.setState({
 			messages: this.props.clist
@@ -121,9 +119,6 @@ module.exports = React.createClass({
 			_this.setState({
 				messages: nextProps.clist
 			});
-			console.log(nextProps.clist);
-			console.log("Component Will Receive Props & call is switch");
-
 
 			_this.isSwitch(this._ste);
 		}
@@ -154,7 +149,6 @@ module.exports = React.createClass({
 
 		var _this = this;
 		var arr = _this._switchCheck;
-		console.log("ste " + ste);
 
 		if( arr.includes(ste + 1 ) === true ) {
 			_this.checkNextMessage(ste);
@@ -202,6 +196,8 @@ module.exports = React.createClass({
 				}
 
 			} else {
+
+				console.log(ste + " force check computer");
 
 				this.setState({
 					responseUno: '',
@@ -286,6 +282,8 @@ module.exports = React.createClass({
 			let position = f.conversation[next].position;
 			let text = f.conversation[next].text;
 			let stepID = parseInt(this._episode + "" + f.convoID + "" + f.conversation[next].step);
+
+			console.log("Last Time out on render next message");
 
 			_this.props.addconvomessage( this._conversationID , uni , user , position , text , imgURL, stepID );
 

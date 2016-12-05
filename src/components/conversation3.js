@@ -112,16 +112,6 @@ module.exports = React.createClass({
 	componentWillReceiveProps: function( nextProps ){
 
 		var _this = this;
-
-		// if( nextProps.clist !== this.props.clist && nextProps.convoID == this.props.convoID) {
-		// 	_this.setState({
-		// 		messages: nextProps.clist
-		// 	});
-
-		// 	_this.isSwitch(this._ste);
-		// }
-
-
 		if( nextProps.convoID !== this.props.convoID ) {
 			Actions.pop();
 		}
@@ -141,9 +131,18 @@ module.exports = React.createClass({
 			});
 
 		}
+	},
 
 
+	componentDidUpdate: function(prevProps , prevState ){
 
+		var _this = this;
+
+		if( prevState.message !== this.state.messages ){
+			console.log("messages change");
+
+			_this.isSwitch(_this._ste);
+		}
 
 	},
 
@@ -164,6 +163,8 @@ module.exports = React.createClass({
 
 	isSwitch: function(ste) {
 
+		console.log("isSwitch called " + ste);
+
 		var _this = this;
 		var arr = _this._switchCheck;
 
@@ -178,6 +179,8 @@ module.exports = React.createClass({
 
 	checkForceMessage: function( ste , last ) {
 
+		console.log("last " + typeof last);
+
 		var _this = this;
 		var nextStep = ste + 1;
 		var file = this._file;
@@ -191,7 +194,7 @@ module.exports = React.createClass({
 					isPlayer: true
 				});
 
-				if( last === 1 ) {
+				if( last == 1 ) {
 					_this.setState({
 						responseUno: file.conversation[nextStep].text,
 						responseDeuce: ''

@@ -1,5 +1,13 @@
 import * as types from './actionTypes';
 
+export function createconvo(convoid){
+	return {
+		type: types.CREATECONVO,
+		convoid
+	}
+}
+
+
 export function updateconversationlist(id, convo) {
 
 	return {

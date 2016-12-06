@@ -12,10 +12,16 @@ export default function convoList(state = initialState, action = {}){
 
 	switch(action.type) {
 
+		case types.CREATECONVO:
+
+
+
+
 		case types.ADDCONVOMESSAGE:
 
-			//console.log(state.clist);
-			console.log("reducer ADDCONVOMESSAGE CALLED");
+			console.log("ADDCONVOMESSAGE");
+			console.log(state.clist);
+			
 
 			function hasValue(obj, key, value) {
 				return obj.hasOwnProperty(key) && obj[key] === value;
@@ -27,6 +33,8 @@ export default function convoList(state = initialState, action = {}){
 
 
 			if(list.some(function(obj){ return hasValue(obj, "convoid" , action.convoid) })){
+
+				console.log("reducer ADDCONVOMESSAGE CALLED :: IF");
 
 				list.map(function(obj, index){
 
@@ -59,6 +67,9 @@ export default function convoList(state = initialState, action = {}){
 
 
 			} else {
+
+				console.log("reducer ADDCONVOMESSAGE CALLED :: ELSE");
+
 				return {
 					...state,
 					clist: [
@@ -83,9 +94,26 @@ export default function convoList(state = initialState, action = {}){
 
 
 
+		case types.UPDATECONVERSATIONLIST :
+			console.log(action.id)
+
+
+
 		default :
 			return state
 
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+

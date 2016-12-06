@@ -45,6 +45,7 @@ module.exports = React.createClass({
 		this._conversationID = this.props.convoID;
 		this._episode = this.props.episode;
 		this._step = this.props.ste;
+		this.props.createconvo(this._conversationID);
 	},
 
 	componentDidMount: function(){
@@ -52,15 +53,15 @@ module.exports = React.createClass({
 	},
 
 	loadEpisode: function(epi, cid, step){
-		console.log(epi + " " + cid + " " + step);
 
 		var _this = this;
 
 		switch(epi) {
 			case 1 :
 				var file = conversationOne.convo[cid];
-				console.log(file);
 				this._switchCheck = file.switchCheck;
+
+				this.grabConvo(file, step);
 
 			default:
 				return null;
@@ -80,6 +81,8 @@ module.exports = React.createClass({
 
 			let stepID = parseInt(this._episode + "" + f.convoID + "" + f.conversation[i].step);
 			_this.props.addconvomessage( this._conversationID , uni , user , position , text , imgURL, stepID );
+			console.log("grab convo");
+			//_this.props.updateconversationlist(i);
 		} 
 
 
@@ -89,6 +92,15 @@ module.exports = React.createClass({
 		if( nextProps.convoID !== this.props.convoID ){
 			Actions.pop();
 		}
+	},
+
+
+	handleSend: function( message ={} ){
+		var _this = this;
+		var imgURL = 'right' == 'left' ? {uri: 'https://facebook.github.io/react/img/logo_og.png'} : null;
+		let uni = Math.round(Math.random() * 1000000);
+		_this.props.addconvomessage( this._conversationID , uni , "user" , "right" , "hello there" , imgURL, uni );
+
 	},
 
 
@@ -109,7 +121,8 @@ module.exports = React.createClass({
 
 				parseText={true}
 				typingMessage={this.state.typingMessage}
-				disabled={this.state.isPlayer ? false : true}
+				//disabled={this.state.isPlayer ? false : true}
+				disabled={false}
 
 				responseOne={this.state.responseUno}
 				responseTwo={this.state.responseDeuce}

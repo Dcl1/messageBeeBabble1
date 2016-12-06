@@ -28,15 +28,17 @@ class ConvoContainer extends Component {
 
 		//console.log(state.conversationList);
 
-		if(nextState !== this.state){
-			console.log("state change");
-		}
+		console.log(state.conversationList.clist);
 
 
 	}
 
 	componentWillReceiveProps(){
 		//console.log("update props");
+		// const { state, actions } = this.props;
+
+		// console.log(state.conversationList.clist);
+
 	}
 
 
@@ -58,18 +60,21 @@ class ConvoContainer extends Component {
 		})
 
 
-		if (InList){
-			state.conversationList.clist.map(function(convo, index){
-				if(state.conversationList.clist[index].convoid === cID ){
-					idList = state.conversationList.clist[index].convo;
-				}
-			});
-		} else {
-			idList = [];
-		}
+		// if (InList){
+		// 	state.conversationList.clist.map(function(convo, index){
+		// 		if(state.conversationList.clist[index].convoid === cID ){
+		// 			idList = state.conversationList.clist[index].convo;
+		// 		}
+		// 	});
+		// } else {
+		// 	idList = [];
+		// }
 
 
-		console.log(state.conversationList.clist);
+		// console.log(state.conversationList.clist);
+
+		var idList = state.conversationList.clist;
+		console.log(idList);
 
 
 		return (

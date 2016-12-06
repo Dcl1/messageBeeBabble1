@@ -320,7 +320,7 @@ module.exports = React.createClass({
 
 				// Legacy code from before hacked package //
 				senderName=''
-				senderIamge={null}
+				senderImage={null}
 				displayName={true}
 				// ** //
 

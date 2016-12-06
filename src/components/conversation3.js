@@ -124,6 +124,9 @@ module.exports = React.createClass({
 		var _this = this;
 
 		if(nextProps.clist !== this.props.clist){
+
+			console.log(nextProps.clist);
+
 			_this.setState({
 				messages: nextProps.clist
 			});
@@ -293,9 +296,9 @@ module.exports = React.createClass({
 
 			console.log("End 10 sec")
 
-			//_this.props.addconvomessage( this._conversationID , uni , user , position , text , imgURL, stepID );
+			_this.props.addconvomessage( this._conversationID , uni , user , position , text , imgURL, stepID );
 
-		}, 10000);
+		}, 5000);
 
 
 	},

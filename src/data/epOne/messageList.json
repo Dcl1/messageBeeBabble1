@@ -1,7 +1,7 @@
 {
 	"msgList" : [
 		{
-			"actionCheck" : [{"step" : 3, "type" : "addMore", "id" : 3} , {"step" : 4, "type" : "nextEpisode" , "id" : 0} ],
+			"actionCheck" : [{"step" : 3, "type" : "addMore", "id" : 3} ],
 			"messages" : [
 				{
 					"user" : "Brookhaven Announcements",
@@ -15,6 +15,12 @@
 					"active" : true,
 					"text" : "Great meeting you in class today!",
 					"cid" : 2,
+					"start" : 0
+				},{
+					"user" : "Anonymous",
+					"active" : false,
+					"text" : "This is the new third messsage",
+					"cid" : 3,
 					"start" : 0
 				}
 			]

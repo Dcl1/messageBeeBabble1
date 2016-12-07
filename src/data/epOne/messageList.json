@@ -6,26 +6,86 @@
 				{
 					"user" : "Brookhaven Announcements",
 					"active" : true,
-					"text" : "Hello. It is my genuine pleasure to welcome you to the Brookhaven Preparatory Acadamy. (Go Bees!) This “BeeBabble” application is a useful tool for interacting with classmates, alumni and faculty members. Here at Brookhaven, we pride ourselves on our robust offering of extracurricular activities (you are expected to participate in two student organizations per semester.) One of these can be a Brookhaven Society. These six societies offer closed membership and can influence your success beyond your time at Brookhaven.",
+					"text" : "Tradegy fell upon us last night. ",
 					"cid" : 1,
 					"start" : 0
 				},
 				{
-					"user" : "Anonymous",
+					"user" : "Lexi",
 					"active" : true,
-					"text" : "Great meeting you in class today!",
+					"text" : "Where were you last night?",
 					"cid" : 2,
 					"start" : 0
-				},{
+				},
+				{
+					"user" : "President, Succession Group Chat",
+					"active" : false,
+					"text" : "Let's talk about last night!",
+					"cid" : 3,
+					"start" : 0
+				},
+				{
+					"user" : "Random Dude, School Group Chat",
+					"active" : false,
+					"text" : "Yo this shit is crazy",
+					"cid" : 4,
+					"start" : 0
+				},
+				{
+					"user" : "Counselor, Brookhaven Connect",
+					"active" : true,
+					"text" : "Welcome to school Jamie, this is our school hotline we use to stay connect with our students. You can reach me here and feel free to reach if you ever have any questions",
+					"cid" : 5,
+					"start" : 0
+				},
+				{
+					"user" : "The shitbag EX",
+					"active" : true,
+					"text" : "Fuck Off",
+					"cid" : 6,
+					"start" : 0
+				},
+				{
+					"user" : "Father",
+					"active" : false,
+					"text" : "Hey I heard what happened at school, text me back and let me know you are safe",
+					"cid" : 7,
+					"start" : 0
+				},
+				{
 					"user" : "Anonymous",
 					"active" : false,
-					"text" : "This is the new third messsage",
-					"cid" : 3,
+					"text" : "This is the poem from anonymous",
+					"cid" : 8,
+					"start" : 0
+				},
+				{
+					"user" : "Horizon Mobile",
+					"active" : true,
+					"text" : "You have used up to 25% of your monthly data usage",
+					"cid" : 9,
 					"start" : 0
 				}
 			]
 		}
 	]
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

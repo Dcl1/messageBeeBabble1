@@ -15,7 +15,7 @@ import { Actions } from 'react-native-router-flux';
 
 
 import epiOneMsgList from '../data/epOne/messageList.json';
-import epiTwoMsgList from '../data/epTwo/messageList.json';
+
 
 import EpisodeCounter from './epiList/episodeCounter';
 import CounterContainer from '../containers/counterContainer';
@@ -261,7 +261,7 @@ module.exports = React.createClass({
 					automaticallyAdjustContentInsets={false}
 					dataSource={this.state.dataSource}
 					renderRow= {this._renderRow}
-					renderSectionHeader={this._renderSectionHeader}
+					//renderSectionHeader={this._renderSectionHeader}
 					enableEmptySections = {true}
 				/>
 			</View>

@@ -18,14 +18,14 @@ export default function messagesreducer(state = initialState, action) {
 			return {
 				...state,
 				mlist: [
+					...state.mlist,
 					{
 						id: action.id,
 						active: action.active,
 						user: action.user,
 						text: action.text,
 						start: action.start
-					},
-					...state.mlist
+					}
 				]
 			};
 

@@ -117,6 +117,30 @@
 					"text" : "Welcome to school Jamie, this is our school hotline we use to stay connect with our students. You can reach me here and feel free to reach if you ever have any questions",
 					"text2": ""
 				},
+				{
+					"option" : true,
+					"step" : 1,
+					"user" : "Counselor",
+					"position" : "left",
+					"text" : "The Father's name",
+					"text2": ""
+				},
+				{
+					"option" : false,
+					"step" : 2,
+					"user" : "Counselor",
+					"position" : "left",
+					"text" : "I believe it's Dave Booomer",
+					"text2": ""
+				},
+				{
+					"option" : false,
+					"step" : 3,
+					"user" : "Counselor",
+					"position" : "left",
+					"text" : "I gotta go",
+					"text2": ""
+				},
 
 			] 
 		}, 
@@ -150,6 +174,37 @@
 
 			] 
 		}, 
+		{
+			"convoID" : 8,
+			"switchCheck" : [],
+			"conversation" : [
+				{
+					"option" : false,
+					"step" : 0,
+					"user" : "Anonymous",
+					"position" : "left",
+					"text" : "This is a crazy poem!!!",
+					"text2": ""
+				},
+
+			] 
+		}, 
+		{
+			"convoID" : 9,
+			"switchCheck" : [],
+			"conversation" : [
+				{
+					"option" : false,
+					"step" : 0,
+					"user" : "Horizon Mobile",
+					"position" : "left",
+					"text" : "You have used up to 25% of your monthly data usage",
+					"text2": ""
+				},
+
+			] 
+		}, 
+
 
 	]
 }

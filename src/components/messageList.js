@@ -261,7 +261,7 @@ module.exports = React.createClass({
 					automaticallyAdjustContentInsets={false}
 					dataSource={this.state.dataSource}
 					renderRow= {this._renderRow}
-					//renderSectionHeader={this._renderSectionHeader}
+					renderSectionHeader={this._renderSectionHeader}
 					enableEmptySections = {true}
 				/>
 			</View>

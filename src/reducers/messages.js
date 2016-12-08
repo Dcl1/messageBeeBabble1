@@ -24,13 +24,13 @@ export default function messagesreducer(state = initialState, action) {
 						active: action.active,
 						user: action.user,
 						text: action.text,
-						start: action.start
+						start: action.start,
+						continue: true
 					}
 				]
 			};
 
 		case types.UPDATEMESSAGELIST:
-
 
 			return {
 				...state,
@@ -41,7 +41,25 @@ export default function messagesreducer(state = initialState, action) {
 							active: action.active,
 							user: action.user,
 							text: msg.text,
-							start: msg.start
+							start: msg.start,
+							continue: true
+						} : msg
+					)
+			};
+
+		case types.UPDATECONTINUE:
+
+			return {
+				...state,
+				mlist: state.mlist.map(msg =>
+						msg.id === action.id ?
+						{...msg,
+							id: action.id,
+							active: msg.active,
+							user: msg.user,
+							text: msg.text,
+							start: msg.start,
+							continue: action.continue
 						} : msg
 					)
 			};

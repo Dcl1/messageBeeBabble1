@@ -56,3 +56,22 @@ export function updatemessageactive(id, active){
 		active
 	}
 }
+
+export function updatecontinue(id, continue) {
+	return {
+		type: types.UPDATECONTINUE,
+		id,
+		continue
+	}
+}
+
+
+
+
+
+
+
+
+
+
+

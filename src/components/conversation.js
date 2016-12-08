@@ -72,7 +72,9 @@ module.exports = React.createClass({
 
 	grabConvo: function( f , s){
 
-	
+		console.log("s " + s);
+
+		var _this = this;	
 		var arr = [];
 
 		for(var i = 0 ; i <= s; i ++) {
@@ -87,6 +89,10 @@ module.exports = React.createClass({
 				"date" : new Date(),
 				"uniqueId" : uni
 			});
+
+			if( i === s ) {
+				_this.updatecontinue(_this._conversationID, f.conversation[i].option );
+			}
 
 		}
 
@@ -106,7 +112,7 @@ module.exports = React.createClass({
 
 	componentDidUpdate: function( prevProps, prevState ) {
 
-		if(prevState.messages !== this.state.messages) {
+		if(prevState.messages !== this.state.messages ) {
 			this.isSwitch(this._step);
 		}
 
@@ -114,11 +120,14 @@ module.exports = React.createClass({
 
 
 	callBack: function(){
+
 		return this._switchCheck.find(_this.findInArray) === undefined;
 	},
 
 
 	isSwitch: function(ste){
+
+		console.log("isSwitch called");
 
 		var _this = this;
 

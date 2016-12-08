@@ -38,11 +38,11 @@ module.exports = React.createClass({
 		return arr;
 	},
 
-
+//{this.renderUnits()}
 	render: function(){
 		return (
 			<View style={styles.container}>
-				{this.renderUnits()}
+				
 				<View>
 					<Text>
 					{this.props.count}

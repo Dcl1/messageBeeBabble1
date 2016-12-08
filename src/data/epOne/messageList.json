@@ -1,7 +1,10 @@
 {
 	"msgList" : [
 		{
-			"actionCheck" : [{"step" : 3, "type" : "addMore", "id" : 3} ],
+			"actionCheck" : [
+				{"step" : 3, "type" : "addMore", "id" : 3} ,
+				{"step" : 5, "type" : "addMore", "id" : 3}
+			],
 			"messages" : [
 				{
 					"user" : "Brookhaven Announcements",

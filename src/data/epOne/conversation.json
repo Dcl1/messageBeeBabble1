@@ -14,84 +14,178 @@
 					"step" : 0,
 					"user" : "Brookhaven Announcements",
 					"position" : "left",
-					"text" : " Hello. It is my genuine pleasure to welcome you to the Brookhaven Preparatory Acadamy. (Go Bees!) This “BeeBabble” application is a useful tool for interacting with classmates, alumni and faculty members. Here at Brookhaven, we pride ourselves on our robust offering of extracurricular activities (you are expected to participate in two student organizations per semester.) One of these can be a Brookhaven Society. These six societies offer closed membership and can influence your success beyond your time at Brookhaven. Will you like to see the list of societies?",
+					"text" : "Tradegy fell upon us last night.  ",
+					"text2": ""
+				},
+
+			] 
+		}, 
+		{
+			"convoID" : 2,
+			"switchCheck" : [],
+			"conversation" : [
+				{
+					"option" : false,
+					"step" : 0,
+					"user" : "Lexi",
+					"position" : "left",
+					"text" : "Where were you last night? I was looking for you all night  ",
 					"text2": ""
 				},
 				{
 					"option" : false,
 					"step" : 1,
-					"user" : "player",
+					"user" : "Player",
 					"position" : "right",
-					"text" : "Show me list of societies",
-					"text2" : ""
-				},
-				{
-					"option" : false,
-					"step" : 2,
-					"user" : "Brookhaven Announcements",
-					"position" : "left",
-					"text" : "Here is the list of our six societies: Leverage, Inclination, Revolution, Succession, Evolution, and Clockwork",
-					"text2" : ""
+					"text" : "Why were you looking for me?? ",
+					"text2": ""
 				},
 
 			] 
-		}, // This is the end of convoID 1
-
+		}, 
 		{
-			"convoID" : 2,
-			"switchCheck" : [1 , 6],
+			"convoID" : 3,
+			"switchCheck" : [],
 			"conversation" : [
 				{
 					"option" : false,
 					"step" : 0,
-					"user" : "Anonymous",
+					"user" : "President",
 					"position" : "left",
-					"text" : "I Have a Rendezvous with Death By Alan Seeger /n I have a rendezvous with Death /n At some disputed barricade, /n When Spring comes back with rustling shade /n And her apple-blossoms fill the air- /n I have a rendezvous with pain /n When Spring brings back blue days and fair. /n It will be he shall take my hand /n And lead me into his dark land /n Be close my eyes and quench my breath- /n It may be I shall pass yours still. /n  I have a rendezvous with Death /n On some scarred slop of convulsed hill, /n When Spring comes round again this year /n And the first meadow-flowers appear.  /n God knows ‘twere better to be choked /n Pillowed in silk and scented down, /n Where love stabbed out in blissful sleep, /n Pulse nigh to pulse, and breath to breath, /n Where hushed awakenings are dear… /n But I’ve a rendezvous with you /n Die at midnight in some flaming town, /n When Spring trips north again this year, /n and I to my pledged word am true, /n I shall not fail that rendezvous. ",
-					"text2" : ""
+					"text" : "Let's talk about last night!",
+					"text2": ""
 				},
 				{
 					"option" : false,
 					"step" : 1,
-					"user" : "player",
-					"position" : "right",
-					"text" : "What is this?",
-					"text2" : "Who is this? "
+					"user" : "Dave",
+					"position" : "left",
+					"text" : "It was Jamie!",
+					"text2": ""
 				},
 				{
 					"option" : false,
 					"step" : 2,
-					"user" : "Anonymous",
+					"user" : "Charlotte",
 					"position" : "left",
-					"text" : "A friendly reminder, Jamie. Newton. ",
-					"text2" : "A revisionist poet. "
+					"text" : "It was Jamie!",
+					"text2": ""
 				},
-				{
-					"option" : false,
-					"step" : 3,
-					"user" : "player",
-					"position" : "right",
-					"text" : "A reminder of what?",
-					"text2" : "Do I know you?"
-				},
-				{
-					"option" : false,
-					"step" : 4,
-					"user" : "Anonymous",
-					"position" : "left",
-					"text" : "That you have a rendezvous.  ",
-					"text2" : "Not yet.  "
-				},
-				{
-					"option" : false,
-					"step" : 5,
-					"user" : "Anonymous",
-					"position" : "left",
-					"text" : "5 a ",
-					"text2" : "5 b "
-				}
+
 			] 
-		} // This is the end of convoID 1
+		},
+		{
+			"convoID" : 4,
+			"switchCheck" : [],
+			"conversation" : [
+				{
+					"option" : false,
+					"step" : 0,
+					"user" : "Random Dude",
+					"position" : "left",
+					"text" : "Yo this shit is crazy",
+					"text2": ""
+				},
+				{
+					"option" : false,
+					"step" : 1,
+					"user" : "Another Random Dude",
+					"position" : "left",
+					"text" : "I am a random dude",
+					"text2": ""
+				},
+				{
+					"option" : false,
+					"step" : 2,
+					"user" : "Another Random Dude 2",
+					"position" : "left",
+					"text" : "I am definitely another random dude",
+					"text2": ""
+				},
+
+			] 
+		}, 
+		{
+			"convoID" : 5,
+			"switchCheck" : [],
+			"conversation" : [
+				{
+					"option" : false,
+					"step" : 0,
+					"user" : "Counselor",
+					"position" : "left",
+					"text" : "Welcome to school Jamie, this is our school hotline we use to stay connect with our students. You can reach me here and feel free to reach if you ever have any questions",
+					"text2": ""
+				},
+
+			] 
+		}, 
+		{
+			"convoID" : 6,
+			"switchCheck" : [],
+			"conversation" : [
+				{
+					"option" : false,
+					"step" : 0,
+					"user" : "The shitbag EX",
+					"position" : "left",
+					"text" : "Fuck Off",
+					"text2": ""
+				},
+
+			] 
+		}, 
+		{
+			"convoID" : 7,
+			"switchCheck" : [],
+			"conversation" : [
+				{
+					"option" : false,
+					"step" : 0,
+					"user" : "Father",
+					"position" : "left",
+					"text" : "Hey I heard what happened at school, text me back and let me know you are safe",
+					"text2": ""
+				},
+
+			] 
+		}, 
+
 	]
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -1,6 +1,17 @@
 import * as types from './actionTypes';
 
 
+
+
+export function updatecontinue(id, cont) {
+	return {
+		type: types.UPDATECONTINUE,
+		id,
+		cont
+	}
+}
+
+
 export function startmessagelist(user, text, active, id, start){
 
 	return {
@@ -57,13 +68,7 @@ export function updatemessageactive(id, active){
 	}
 }
 
-export function updatecontinue(id, continue) {
-	return {
-		type: types.UPDATECONTINUE,
-		id,
-		continue
-	}
-}
+
 
 
 

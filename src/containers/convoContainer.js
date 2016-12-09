@@ -34,12 +34,21 @@ class ConvoContainer extends Component {
 		const { state, actions } = this.props;
 		var cID = this.props.cid;
 		var ste = this.props.start;
+		var mlist = state.messages.mlist;
+		var conti;
+
+		mlist.map(function(obj){
+			if ( obj.id == cID ){
+				conti = obj.continue;
+			}
+		});
 
 		return (
 			<Conversation
 				episode={1}
 				convoID={cID}
 				start={ste}
+				conti={conti}
 				{...actions}
 			/>
 		);
@@ -52,7 +61,7 @@ export default connect(state => ({
 		state: state
 	}),
 	(dispatch) => ({
-		actions: bindActionCreators(Object.assign({}, AppActions, MessageActions), dispatch)
+		actions: bindActionCreators(Object.assign({}, MessageActions ,AppActions), dispatch)
 	})
 )(ConvoContainer);
 

@@ -59,7 +59,7 @@ export default function messagesreducer(state = initialState, action) {
 							user: msg.user,
 							text: msg.text,
 							start: msg.start,
-							continue: action.continue
+							continue: action.cont
 						} : msg
 					)
 			};

@@ -25,6 +25,7 @@ module.exports = React.createClass({
 		this._episode;
 		this._file;
 		this._switchCheck;
+		this._continue;
 
 		return {
 			isPlayer: false,
@@ -44,6 +45,7 @@ module.exports = React.createClass({
 		this._step = this.props.start;
 		this._conversationID = this.props.convoID;
 		this._episode = this.props.episode;
+		this._continue = this.props.conti;
 
 	},
 
@@ -51,6 +53,8 @@ module.exports = React.createClass({
 	componentDidMount: function(){
 
 		this.loadEpisode(this._episode, this._conversationID, this._step);
+
+		console.log("continue " + this._continue);
 
 	},
 
@@ -91,7 +95,8 @@ module.exports = React.createClass({
 			});
 
 			if( i === s ) {
-				_this.updatecontinue(_this._conversationID, f.conversation[i].option );
+				_this.props.updatecontinue(_this._conversationID, f.conversation[i].option );
+				//_this.addtomessagelist("bill", "billy kid", true, 34523423, 0 );
 			}
 
 		}
@@ -108,12 +113,24 @@ module.exports = React.createClass({
 			Actions.pop();
 		}
 
+		if( nextProps.conti !== this.props.conti ){
+			this._continue = nextProps.conti
+			console.log(this._continue);
+		}
+
 	},
 
 	componentDidUpdate: function( prevProps, prevState ) {
 
+		var _this = this;
+
 		if(prevState.messages !== this.state.messages ) {
-			this.isSwitch(this._step);
+			if(_this._continue == true) {
+				_this.isSwitch(_this._step);
+			}
+			
+		} else if (prevProps.conti !== _this.props.conti && _this.props.conti == true){
+			_this.isSwitch(_this._step);
 		}
 
 	},

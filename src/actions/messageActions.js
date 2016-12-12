@@ -4,6 +4,9 @@ import * as types from './actionTypes';
 
 
 export function updatecontinue(id, cont) {
+
+	console.log("reducer updatecontinue called " + id);
+
 	return {
 		type: types.UPDATECONTINUE,
 		id,

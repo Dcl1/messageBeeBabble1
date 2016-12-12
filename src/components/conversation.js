@@ -110,7 +110,7 @@ module.exports = React.createClass({
 		}
 
 		if( nextProps.conti !== this.props.conti ){
-			this._continue = nextProps.conti
+			this._continue = this.props.conti
 		}
 
 	},
@@ -120,17 +120,43 @@ module.exports = React.createClass({
 		var _this = this;
 
 		if(prevState.messages !== this.state.messages ) {
-			if(_this.props.conti == true) {
 
+			console.log(prevProps);
+			console.log(_this.props);
+
+			console.log("The messages did change");
+
+			if(_this._continue == true) {
+				console.log("yes calling switch");
 				_this.isSwitch(_this._step);
+			} else {
+				console.log("not calling switch");
+				console.log("continue " + _this._continue);
 			}
 			
 		} else if (prevProps.conti !== _this.props.conti && _this.props.conti == true){
 			console.log("convo.js componentDidUpdate continue check changed");
 			_this.isSwitch(_this._step);
 		} else {
+
+			console.log("Component Did Update but not catching on the logic")
 		}
 
+	},
+
+
+	messageCheckActions: function(type) {
+
+		var _this = this;
+
+		switch(type) {
+			case 'continue':
+				return function(id) {
+					return _this.props.updatecontinue(id, true);
+				}
+			default:
+				return null;
+		}
 	},
 
 
@@ -140,11 +166,12 @@ module.exports = React.createClass({
 		var _this = this;
 
 		if(nextState.messages !== this.state.messages ) {
-			console.log("The messages are different");
-
 			msgArr.map(function(obj){
 				if( obj.step === _this._step ){
-					console.log("call message check action! from conversation");
+
+					var msgCheckFunc = _this.messageCheckActions(obj.type);
+					console.log(msgCheckFunc);
+					msgCheckFunc(obj.callid);
 				}
 			});
 		}

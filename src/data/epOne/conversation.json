@@ -26,7 +26,7 @@
 			"convoID" : 2,
 			"switchCheck" : [],
 			"messageCheck" : [
-				{"step" : 2,"callid" : 2 , "type" : "continue"}
+				{"step" : 2,"callid" : 5 , "type" : "continue"}
 			],
 			"conversation" : [
 				{
@@ -165,9 +165,50 @@
 					"text" : "I gotta go",
 					"text2": ""
 				},
+				{
+					"option" : true,
+					"step" : 4,
+					"user" : "Counselor",
+					"position" : "left",
+					"text" : "I gotta go",
+					"text2": ""
+				},
+				{
+					"option" : true,
+					"step" : 5,
+					"user" : "Counselor",
+					"position" : "left",
+					"text" : "I gotta go",
+					"text2": ""
+				},
+				{
+					"option" : true,
+					"step" : 6,
+					"user" : "Counselor",
+					"position" : "left",
+					"text" : "I gotta go",
+					"text2": ""
+				},
+				{
+					"option" : true,
+					"step" : 7,
+					"user" : "Counselor",
+					"position" : "left",
+					"text" : "I gotta go",
+					"text2": ""
+				},
+				{
+					"option" : true,
+					"step" : 8,
+					"user" : "Counselor",
+					"position" : "left",
+					"text" : "I gotta go",
+					"text2": ""
+				},
 
 			] 
 		}, 
+
 		{
 			"convoID" : 6,
 			"switchCheck" : [],

@@ -3,14 +3,16 @@
 		{
 			"convoID" : 0,
 			"switchCheck" : [],
+			"messageCheck" : [],
 			"conversation" : []
 		},
 		{
 			"convoID" : 1,
 			"switchCheck" : [],
+			"messageCheck" : [],
 			"conversation" : [
 				{
-					"option" : false,
+					"option" : true,
 					"step" : 0,
 					"user" : "Brookhaven Announcements",
 					"position" : "left",
@@ -23,9 +25,12 @@
 		{
 			"convoID" : 2,
 			"switchCheck" : [],
+			"messageCheck" : [
+				{"step" : 1,"id" : 5 , "type" : "continue"}
+			],
 			"conversation" : [
 				{
-					"option" : false,
+					"option" : true,
 					"step" : 0,
 					"user" : "Lexi",
 					"position" : "left",
@@ -33,22 +38,39 @@
 					"text2": ""
 				},
 				{
-					"option" : false,
+					"option" : true,
 					"step" : 1,
 					"user" : "Player",
 					"position" : "right",
 					"text" : "Why were you looking for me?? ",
 					"text2": ""
 				},
+				{
+					"option" : true,
+					"step" : 2,
+					"user" : "Lexi",
+					"position" : "left",
+					"text" : "Where were you last night? I was looking for you all night  ",
+					"text2": ""
+				},
+				{
+					"option" : true,
+					"step" : 3,
+					"user" : "Lexi",
+					"position" : "left",
+					"text" : "Where were you last night? I was looking for you all night  ",
+					"text2": ""
+				}
 
 			] 
 		}, 
 		{
 			"convoID" : 3,
 			"switchCheck" : [],
+			"messageCheck" : [],
 			"conversation" : [
 				{
-					"option" : false,
+					"option" : true,
 					"step" : 0,
 					"user" : "President",
 					"position" : "left",
@@ -56,7 +78,7 @@
 					"text2": ""
 				},
 				{
-					"option" : false,
+					"option" : true,
 					"step" : 1,
 					"user" : "Dave",
 					"position" : "left",
@@ -64,7 +86,7 @@
 					"text2": ""
 				},
 				{
-					"option" : false,
+					"option" : true,
 					"step" : 2,
 					"user" : "Charlotte",
 					"position" : "left",
@@ -77,9 +99,10 @@
 		{
 			"convoID" : 4,
 			"switchCheck" : [],
+			"messageCheck" : [],
 			"conversation" : [
 				{
-					"option" : false,
+					"option" : true,
 					"step" : 0,
 					"user" : "Random Dude",
 					"position" : "left",
@@ -87,7 +110,7 @@
 					"text2": ""
 				},
 				{
-					"option" : false,
+					"option" : true,
 					"step" : 1,
 					"user" : "Another Random Dude",
 					"position" : "left",
@@ -95,7 +118,7 @@
 					"text2": ""
 				},
 				{
-					"option" : false,
+					"option" : true,
 					"step" : 2,
 					"user" : "Another Random Dude 2",
 					"position" : "left",
@@ -108,6 +131,7 @@
 		{
 			"convoID" : 5,
 			"switchCheck" : [],
+			"messageCheck" : [],
 			"conversation" : [
 				{
 					"option" : false,
@@ -118,7 +142,7 @@
 					"text2": ""
 				},
 				{
-					"option" : true,
+					"option" : false,
 					"step" : 1,
 					"user" : "Counselor",
 					"position" : "left",
@@ -126,7 +150,7 @@
 					"text2": ""
 				},
 				{
-					"option" : false,
+					"option" : true,
 					"step" : 2,
 					"user" : "Counselor",
 					"position" : "left",
@@ -134,7 +158,7 @@
 					"text2": ""
 				},
 				{
-					"option" : false,
+					"option" : true,
 					"step" : 3,
 					"user" : "Counselor",
 					"position" : "left",
@@ -147,9 +171,10 @@
 		{
 			"convoID" : 6,
 			"switchCheck" : [],
+			"messageCheck" : [],
 			"conversation" : [
 				{
-					"option" : false,
+					"option" : true,
 					"step" : 0,
 					"user" : "The shitbag EX",
 					"position" : "left",
@@ -162,9 +187,10 @@
 		{
 			"convoID" : 7,
 			"switchCheck" : [],
+			"messageCheck" : [],
 			"conversation" : [
 				{
-					"option" : false,
+					"option" : true,
 					"step" : 0,
 					"user" : "Father",
 					"position" : "left",
@@ -177,9 +203,10 @@
 		{
 			"convoID" : 8,
 			"switchCheck" : [],
+			"messageCheck" : [],
 			"conversation" : [
 				{
-					"option" : false,
+					"option" : true,
 					"step" : 0,
 					"user" : "Anonymous",
 					"position" : "left",
@@ -192,9 +219,10 @@
 		{
 			"convoID" : 9,
 			"switchCheck" : [],
+			"messageCheck" : [],
 			"conversation" : [
 				{
-					"option" : false,
+					"option" : true,
 					"step" : 0,
 					"user" : "Horizon Mobile",
 					"position" : "left",

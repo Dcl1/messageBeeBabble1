@@ -24,6 +24,8 @@ class MessageContaner extends Component {
 
 		const { state, actions } = this.props;
 
+		console.log(state);
+
 	}	
 
 	render() {

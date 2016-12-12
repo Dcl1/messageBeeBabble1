@@ -49,6 +49,8 @@ export default function messagesreducer(state = initialState, action) {
 
 		case types.UPDATECONTINUE:
 
+			console.log(action.id);
+
 			return {
 				...state,
 				mlist: state.mlist.map(msg =>

@@ -29,7 +29,7 @@
 				},
 				{
 					"user" : "Random Dude, School Group Chat",
-					"active" : false,
+					"active" : true,
 					"text" : "Yo this shit is crazy",
 					"cid" : 4,
 					"start" : 0

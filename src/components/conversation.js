@@ -26,6 +26,7 @@ module.exports = React.createClass({
 		this._file;
 		this._switchCheck;
 		this._continue;
+		this._messageCheck;
 
 		return {
 			isPlayer: false,
@@ -51,11 +52,7 @@ module.exports = React.createClass({
 
 
 	componentDidMount: function(){
-
 		this.loadEpisode(this._episode, this._conversationID, this._step);
-
-		console.log("continue " + this._continue);
-
 	},
 
 
@@ -67,6 +64,7 @@ module.exports = React.createClass({
 				this._file = file;
 				this.grabConvo(file , step);
 				this._switchCheck = file.switchCheck;
+				this._messageCheck = file.messageCheck;
 				return null;
 			default : 
 				return null;
@@ -75,8 +73,6 @@ module.exports = React.createClass({
 	},
 
 	grabConvo: function( f , s){
-
-		console.log("s " + s);
 
 		var _this = this;	
 		var arr = [];
@@ -95,6 +91,8 @@ module.exports = React.createClass({
 			});
 
 			if( i === s ) {
+				console.log("i is the same as s");
+				console.log(f.conversation[i].option);
 				_this.props.updatecontinue(_this._conversationID, f.conversation[i].option );
 				//_this.addtomessagelist("bill", "billy kid", true, 34523423, 0 );
 			}
@@ -115,7 +113,6 @@ module.exports = React.createClass({
 
 		if( nextProps.conti !== this.props.conti ){
 			this._continue = nextProps.conti
-			console.log(this._continue);
 		}
 
 	},
@@ -124,13 +121,43 @@ module.exports = React.createClass({
 
 		var _this = this;
 
+		// if(prevState !== this.state){
+		// 	console.log("the state is different");
+		// 	console.log(prevState);
+		// 	console.log(this.state);
+		// } else if (prevProps !== this.props) {
+		// 	console.log("the props are different");
+		// } else {
+		// 	console.log("yolo");
+		// }
+
 		if(prevState.messages !== this.state.messages ) {
-			if(_this._continue == true) {
+			console.log("prev conti " + prevProps.conti);
+			if(_this.props.conti == true) {
+				console.log("call switch from message");
 				_this.isSwitch(_this._step);
 			}
 			
 		} else if (prevProps.conti !== _this.props.conti && _this.props.conti == true){
+			console.log("call switch from conti");
 			_this.isSwitch(_this._step);
+		} else {
+			console.log("nothing");
+		}
+
+	},
+
+
+	componentWillUpdate: function(nextProps, nextState){
+
+		var msgArr = this._messageCheck;
+
+		if(nextState.messages !== this.state.messages ) {
+			msgArr.map(function(obj){
+				if( obj.step === this._step ){
+					//console.log("call message action! from conversation");
+				}
+			});
 		}
 
 	},
@@ -143,8 +170,6 @@ module.exports = React.createClass({
 
 
 	isSwitch: function(ste){
-
-		console.log("isSwitch called");
 
 		var _this = this;
 
@@ -249,6 +274,10 @@ module.exports = React.createClass({
 			}
 
 
+		} else {
+			_this.setState({
+				isPlayer: false
+			});
 		}
 
 	},

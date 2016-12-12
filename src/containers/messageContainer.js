@@ -21,11 +21,7 @@ class MessageContaner extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState){
-
 		const { state, actions } = this.props;
-
-		console.log(state);
-
 	}	
 
 	render() {

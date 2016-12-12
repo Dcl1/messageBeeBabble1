@@ -91,8 +91,6 @@ module.exports = React.createClass({
 			});
 
 			if( i === s ) {
-				console.log("i is the same as s");
-				console.log(f.conversation[i].option);
 				_this.props.updatecontinue(_this._conversationID, f.conversation[i].option );
 				//_this.addtomessagelist("bill", "billy kid", true, 34523423, 0 );
 			}
@@ -121,28 +119,16 @@ module.exports = React.createClass({
 
 		var _this = this;
 
-		// if(prevState !== this.state){
-		// 	console.log("the state is different");
-		// 	console.log(prevState);
-		// 	console.log(this.state);
-		// } else if (prevProps !== this.props) {
-		// 	console.log("the props are different");
-		// } else {
-		// 	console.log("yolo");
-		// }
-
 		if(prevState.messages !== this.state.messages ) {
-			console.log("prev conti " + prevProps.conti);
 			if(_this.props.conti == true) {
-				console.log("call switch from message");
+
 				_this.isSwitch(_this._step);
 			}
 			
 		} else if (prevProps.conti !== _this.props.conti && _this.props.conti == true){
-			console.log("call switch from conti");
+			console.log("convo.js componentDidUpdate continue check changed");
 			_this.isSwitch(_this._step);
 		} else {
-			console.log("nothing");
 		}
 
 	},
@@ -151,11 +137,14 @@ module.exports = React.createClass({
 	componentWillUpdate: function(nextProps, nextState){
 
 		var msgArr = this._messageCheck;
+		var _this = this;
 
 		if(nextState.messages !== this.state.messages ) {
+			console.log("The messages are different");
+
 			msgArr.map(function(obj){
-				if( obj.step === this._step ){
-					//console.log("call message action! from conversation");
+				if( obj.step === _this._step ){
+					console.log("call message check action! from conversation");
 				}
 			});
 		}
